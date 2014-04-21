@@ -1,3 +1,11 @@
-name: Your New Jekyll Site
+name: 在闹市中修行
 markdown: redcarpet
 pygments: true
+author : Byronlee
+name : Byronlee
+email : lbyronlee@gmail.com
+github : Byronlee
+comments :
+  provider : disqus
+  disqus :
+  short_name : ginchenorlee
