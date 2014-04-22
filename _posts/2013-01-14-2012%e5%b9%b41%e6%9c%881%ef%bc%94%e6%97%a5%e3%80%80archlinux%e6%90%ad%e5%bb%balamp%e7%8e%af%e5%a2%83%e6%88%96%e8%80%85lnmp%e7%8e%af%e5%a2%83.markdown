@@ -1,0 +1,199 @@
+---
+layout: post
+status: publish
+published: true
+title: 2013年1月1４日　Archlinux搭建LAMP环境或者LNMP环境
+author: Byronlee
+author_login: ginchenorlee
+author_email: ginchenorlee@sina.com
+excerpt: ! "<div>\r\n\r\n    用Archlinux搭建个全能的环境出来，其实很简单，不过也比较繁琐，由于archlinux系统和各个软件的版本升级，配置各有不同，网上看了，很多，都因为不是最新版本系统就耗费了我大量的时间，再加之看的时候自己的粗心大意，把字看错，英语单词意思的不重视，走了很多弯路，所以，记录一下。\r\n\r\n其实lamp与lnmp的搭建是互通的，我们想用apach的时候把nginx服务关掉把apach服务开启就是，反之想用nginx的时候把apach关掉,把nginx开启即可．其他的php,phpmyadmin等都是通用的．\r\n\r\n<span
+  style=\"color: #ff0000;\">系统：</span>　archlinux 最新版，截至发稿是：2013／1月12　（最新版的都是systemd
+  启动进程，网上很多都是syslinux系统，终端运行　pstree可知， 具体区别见另外一篇博客:<a href=\"http://www.ginchenorlee.com/?p=375\">Archlinux安装+配置+打造自己的linux环境+小bug解决笔记</a> 中的［Archlinux的systemd
+  启动系统］）\r\n\r\n<span style=\"color: #ff0000;\">软件版本：</span>　都是最新，　apach phpmyadmin
+  mysql nigix\r\n<div>"
+wordpress_id: 367
+wordpress_url: http://www.ginchenorlee.com/?p=367
+date: !binary |-
+  MjAxMy0wMS0xNCAwNDozMTozOSArMDAwMA==
+date_gmt: !binary |-
+  MjAxMy0wMS0xNCAwNDozMTozOSArMDAwMA==
+categories:
+- 经验分享
+- linux
+- LAMP
+- LNMP
+- Nginx
+tags:
+- lamp
+- php
+- phpmyadmin
+- apach
+- lnmp
+- nginx
+comments: []
+---
+<div>
+<p>    用Archlinux搭建个全能的环境出来，其实很简单，不过也比较繁琐，由于archlinux系统和各个软件的版本升级，配置各有不同，网上看了，很多，都因为不是最新版本系统就耗费了我大量的时间，再加之看的时候自己的粗心大意，把字看错，英语单词意思的不重视，走了很多弯路，所以，记录一下。</p>
+<p>其实lamp与lnmp的搭建是互通的，我们想用apach的时候把nginx服务关掉把apach服务开启就是，反之想用nginx的时候把apach关掉,把nginx开启即可．其他的php,phpmyadmin等都是通用的．</p>
+<p><span style="color: #ff0000;">系统：</span>　archlinux 最新版，截至发稿是：2013／1月12　（最新版的都是systemd 启动进程，网上很多都是syslinux系统，终端运行　pstree可知， 具体区别见另外一篇博客:<a href="http://www.ginchenorlee.com/?p=375">Archlinux安装+配置+打造自己的linux环境+小bug解决笔记</a> 中的［Archlinux的systemd 启动系统］）</p>
+<p><span style="color: #ff0000;">软件版本：</span>　都是最新，　apach phpmyadmin mysql nigix</p>
+<div><a id="more"></a><a id="more-367"></a></p>
+<h3>首先安装LAMP环境，使用下面的命令：</h3>
+<pre class="brush: actionscript3; gutter: true">$ sudo  pacman -S apache mysql php php-apache php-gd php-mcrypt phpmyadmin openssh</pre>
+<p>解释下吧,apache mysql php php-apache都不用说了，最基本的软件包，其中php-gd是php的gd图形库，php-mcrypt是phpmyadmin的需求的一个加密函数库，openssh是ssh软件包，用来使用ssh软件来操作。</p>
+<p>( 注意：［一般不用］安装上之后先修改下"/etc/hostname"和“/etc/hosts”的主机名，因为apache启动的时候要解析，如果不正确那启动服务很慢，)</p>
+<p>然后开始配置apache和php支持</p>
+<p><strong>apache配置：（</strong>参考：<a href="https://wiki.archlinux.org/index.php/LAMP_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" shape="rect" target="_blank">https://wiki.archlinux.org/index.php/LAMP_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87</a><strong><a href="https://wiki.archlinux.org/index.php/LAMP_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" shape="rect" target="_blank">)</a>）</strong></p>
+<p>apache的配置文件/etc/httpd/conf/httpd.conf(这与老版本的配置文件名称不一样了，里面的内容　一定详细的读一下，如果你是一个新手，一定去读一下内容，虽然是英文，但是意思还是很容易懂，读了会对你apach的配置格局有一个大概的了解，不要为了配置而去配置，要懂为什么有这样的配置，要理解每一句配置语句的作用)</p>
+<p><strong>支持php</strong></p>
+<p><strong></strong>在apache的配置文件/etc/httpd/conf/httpd.conf　中添加模块到指定位置（配置文件中有提示）</p>
+<pre class="brush: actionscript3; gutter: true">&quot;LoadModule php5_module modules/libphp5.so&quot;</pre>
+<p>引入extra下的php配置文件，（extra　下的配置文件是不能自动加载的，需要像下面的一样引入进去）</p>
+<pre class="brush: actionscript3; gutter: true">&quot;Include conf/extra/php5_module.conf&quot;</pre>
+<p>然后重启启动下httpd服务就可以支持php了（不配置是不支持php的）. 启动和开机自启动的命令如下:</p>
+<pre class="brush: actionscript3; gutter: true">$ sudo systemctl enable httpd
+
+$ sudo systemctl start httpd 
+
+$ sudo systemctl enable mysqld
+
+$ sudo systemctl start mysqld</pre>
+<p>重启的话就将start修改成restart就可以了，另外apache默认www的工作路径是"/srv/http(apache的配置文件里有说明)" 建立phpinfo文件测试。在/srv/http/下新建一个文件 test.php 写入如下内容：</p>
+<pre class="brush: actionscript3; gutter: true">&lt;?php phpinfo(); ?&gt;</pre>
+<p>重启apach:</p>
+<pre class="brush: actionscript3; gutter: true">$ sudo systemctl restart httpd</pre>
+<p>就可以看见如内容了：</p>
+<p><a title="QQ截图20121028014114.png" href="http://www.bstaint.net/usr/uploads/2012/10/3884366414.png" shape="rect" target="_blank"><img src="https://app.yinxiang.com/shard/s2/res/8d06d543-85a5-48b0-9a00-9d510455e0c9.png?resizeSmall&amp;width=573" alt="QQ截图20121028014114.png" name="8d06d543-85a5-48b0-9a00-9d510455e0c9" /></a></p>
+<p>&nbsp;</p>
+<p><strong>安装phpmyadmin：  （</strong>参考：<strong>　</strong><a href="https://wiki.archlinux.org/index.php/Phpmyadmin" shape="rect" target="_blank">https://wiki.archlinux.org/index.php/Phpmyadmin</a><strong>）</strong></p>
+<p><strong></strong>复制一份phpmyadmin配置文件到apache额外配置文件目录extra下:</p>
+<pre class="brush: actionscript3; gutter: true">$ sudo cp /etc/webapps/phpmyadmin/apache.example.conf /etc/httpd/conf/extra/httpd-phpmyadmin.conf</pre>
+<p>然后再将这个phpmyadmin的配置文件的链接引入到apach 的配置文件httpd.conf中(在httpd.conf中加入如下代码，与前面引入php的额外配置文件一样)：</p>
+<pre class="brush: actionscript3; gutter: true">&quot;Include conf/extra/httpd-phpmyadmin.conf&quot;</pre>
+<p>然后检查你的 <code>/etc/httpd/conf/extra/httpd-phpmyadmin.conf</code> 因该是下面的内容:</p>
+<pre class="brush: actionscript3; gutter: true">Alias /phpmyadmin &quot;/usr/share/webapps/phpMyAdmin&quot;
+        &lt;Directory &quot;/usr/share/webapps/phpMyAdmin&quot;&gt;
+                AllowOverride All
+                Options FollowSymlinks
+                Order allow,deny
+                Allow from all
+                php_admin_value open_basedir &quot;/srv/:/tmp/:/usr/share/webapps/:/etc/webapps:/usr/share/pear/&quot;
+        &lt;/Directory&gt;</pre>
+<p>现在配置就好了，其次修改php.ini使phpmyadmin支持mysql: 在<code>/etc/php/php.ini　中去掉这两句的注释</code>:　（否则http://localhost/phpmyadmin是不能正常访问的）</p>
+<pre class="brush: actionscript3; gutter: true">extension=mysqli.so
+extension=mcrypt.so</pre>
+<p>最后重启下httpd服务就可以使用http://localhost/phpmyadmin访问:</p>
+<p><a title="QQ截图20121028014100.png" href="http://www.bstaint.net/usr/uploads/2012/10/783137765.png" shape="rect" target="_blank"><img src="https://app.yinxiang.com/shard/s2/res/641cf85f-6bbb-4965-aa39-d9f331dc0a76.png?resizeSmall&amp;width=573" alt="QQ截图20121028014100.png" name="641cf85f-6bbb-4965-aa39-d9f331dc0a76" /></a></p>
+<p>之后如果出现一下情况而不能正常访问：</p>
+<blockquote>
+<h3><em>Access forbidden!</em></h3>
+<p><em>You don't have permission to access the requested object. It is either read-protected or not readable by the server.</em> <em>If you think this is a server error, please contact the <a href="mailto:you@example.com" shape="rect" target="_blank">webmaster</a>.</em></p>
+<h3><em>Error 403</em></h3>
+<address><em><a href="http://localhost/" shape="rect" target="_blank">localhost</a></em><br clear="none" /><em>Fri Jan 11 23:54:47 2013</em><br clear="none" /><em>Apache/2.2.23 (Unix) PHP/5.4.10 mod_ssl/2.2.23 OpenSSL/1.0.1c DAV/2</em></address>
+</blockquote>
+<p><span style="color: #ff0000;">请编辑/usr/share/webapps/phpMyAdmin下的.htaccess将"deny from all"注释掉，最后重启下httpd服务就可以使用了。　</span></p>
+<p><span style="color: #ff0000;">如果还不能访问，就查看apach 的配置文件httpd.conf　将里面的　deny from all　全都注释掉！</span></p>
+<p><strong>登录phpmyadmin</strong></p>
+<p>如果在登录的过程中出现<span style="color: #ff0000;">　#1045 无法登录 MySQL 服务器　</span></p>
+<p>或许出现以下错误情况：phpmyadmin:#1045 无法登录 MySQL 服务器。Access denied for user ‘root’@'localhost’ (using password: YES) 说明你的用户名或密码有误</p>
+<p>首先查看你的用户名或密码（mysql的用户名和密码）输入正确没有，注意大小写，　如果还没有设置或记不清：</p>
+<p><strong>解决方法：</strong>这时可以尝试使用<a title="mysql数据库,权限分配" href="http://blog.unvs.cn/archives/mysql-create-user-order.html" shape="rect" target="_blank">mysql </a>默认的root账号的空密码登陆数据库。</p>
+<p>如果使用空密码登陆时又出现：<strong>空密码登录被禁止 (参见 允许空密码) </strong>的错误。则要修改/phpmyadmin/libraries/config.default.php 文件，找到下面两行</p>
+<pre class="brush: actionscript3; gutter: true">$cfg[&#039;Servers&#039;][$i][&#039;nopassword&#039;] = false;
+$cfg[&#039;Servers&#039;][$i][&#039;AllowNoPassword&#039;] = false;</pre>
+<p><span style="color: #ff0000;">将两个false改为true</span>，同时设置 $cfg['Servers'][$i]['password'] = ''；通过这样设置配置文件后phpmyadmin 就会允许以空密码方式登录mysql数据库了。<br clear="none" /><br clear="none" />若重新以空密码方式登录phpmyadmin有时仍无法登陆，请清除cookie或关闭原来的phpmyadmin 登录窗口，重新使用空密码登录。 <span style="color: #ff0000;">若这时候仍然显示空密码登陆被禁止，试试随便输入几个字符当作密码看是否能够登陆成功</span>。 或者改变一下文件</p>
+<pre class="brush: actionscript3; gutter: true">/etc/webapps/phpmyadmin/config.inc.php
+
+/usr/share/webapps/phpMyAdmin/config.inc.php</pre>
+<div></div>
+<div>中的</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">　$cfg[&#039;Servers&#039;][$i][&#039;AllowNoPassword&#039;] = false;</pre>
+</div>
+<div>设为 true !　就可以，最后登录成功后，在mysql的user表中删除除root以外所有用户。</div>
+<div></div>
+<div>-</div>
+<div></div>
+<h3>LAMP环境就搭建好了　现在搭建LNMP环境：</h3>
+<p>&nbsp;</p>
+<p>网上有集成安装LNMP，官网：<a href="http://lnmp.org/">http://lnmp.org</a>，　但是它只支持：CentOS/RadHat、Debian/Ubuntu VPS(VDS)，没有archlinux的，其实它就是写好了安装的脚本，要分开安装也不是很难，只需要安装nginx，把配置写好，并启动它，关闭之前的apach服务器就可以了 <strong>安装配置Nginx：</strong></p>
+<pre class="brush: actionscript3; gutter: true">$ sudo pacman -S nginx php-fpm
+
+$ sudo systemctl stop httpd      //停止apach
+
+$ sudo  systemctl enable nginx  //将nginx设为开机启动
+
+$ sudo  systemctl start nginx　　//开启nginx服务
+
+$ sudo systemctl enable php-fpm</pre>
+<div>停止apache然后启用nginx，之后是配置nginx支持php，修改nginx配置文件(/etc/nginx/nginx.conf)：</div>
+<div>
+<pre class="brush: actionscript3; gutter: true"> gzip  on;
+        location / {
+            root   /srv/http;
+            autoindex on;
+            index  index.html index.htm index.php;
+        }
+        location ~ \.php$ {
+            root           /srv/http;
+            fastcgi_pass   unix:/var/run/php-fpm/php-fpm.sock;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME /srv/http$fastcgi_script_name;
+            include        fastcgi_params;
+        }</pre>
+</div>
+<div></div>
+<div>就贴上修改过的内容，其他的就不贴了。</div>
+<div></div>
+<h3>nginx的phpmyadmin配置</h3>
+<div>
+<pre class="brush: actionscript3; gutter: true">$sudo ln -s /usr/share/webapps/phpMyAdmin/ /srv/http/phpmyadmin
+$sudo chown -R http:http /usr/share/webapps/phpMyAdmin/</pre>
+</div>
+<div>修改php.ini然后再open_basedir中追加</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">&quot;:/usr/share/webapps/:/etc/webapps/&quot;</pre>
+</div>
+<div>然后：</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">$ sudo systemctl restart nginx</pre>
+</div>
+<div>最后在nginx.conf文件中添加phpmyadmin 的配置：</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">server {
+         location /phpmyadmin {
+                 root    /srv/http/phpmyadmin;
+                 index   index.html index.htm index.php;
+         }
+
+         location ~ \.php$ {
+                 root            /srv/http/phpmyadmin;
+                 fastcgi_pass    unix:/var/run/php-fpm/php-fpm.sock;
+                 fastcgi_index   index.php;
+                 fastcgi_param   SCRIPT_FILENAME /srv/http/phpmyadmin/$fastcgi_script_name;
+                 include         fastcgi_params;
+         }
+ }</pre>
+</div>
+<div>最后就可以看见如下图了：</div>
+<div></div>
+<div>　　　　　　　<a title="QQ截图20121028020804.png" href="http://www.bstaint.net/usr/uploads/2012/10/1672289736.png" shape="rect" target="_blank"><img src="https://app.yinxiang.com/shard/s2/res/4d1afb15-3cd8-40ba-92b9-a120d91c0c7b.png?resizeSmall&amp;width=573" alt="QQ截图20121028020804.png" name="4d1afb15-3cd8-40ba-92b9-a120d91c0c7b" /></a></div>
+</div>
+</div>
+<address> </address>
+<address>可能问题　： </address>
+<h4 id="访问php页面提示an_error_occurred">访问php页面提示An Error Occurred</h4>
+<div>访问php页面的时候出现下述错误:</p>
+<pre>An error occurred.
+
+Sorry, the page you are looking for is currently unavailable.
+Please try again later.
+
+If you are the system administrator of this resource then you should check the error log for details.
+
+Faithfully yours, nginx.</pre>
+<p>最常见的原因是php-fastcgi或php5-fpm服务没有正常运行:</p>
+<pre class="brush: actionscript3; gutter: true">$ sudo systemctl start php-fpm</pre>
+</div>
+<address> OK, 配置完毕！</address>
+<div></div>

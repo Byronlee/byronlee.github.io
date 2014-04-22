@@ -1,0 +1,69 @@
+---
+layout: post
+status: publish
+published: true
+title: Android系统手机隐藏代码-你不知道的事
+author: Byronlee
+author_login: ginchenorlee
+author_email: ginchenorlee@sina.com
+wordpress_id: 176
+wordpress_url: http://www.ginchenorlee.com/?p=176
+date: !binary |-
+  MjAxMi0wNy0yNiAxNDowNDozNCArMDAwMA==
+date_gmt: !binary |-
+  MjAxMi0wNy0yNiAxNDowNDozNCArMDAwMA==
+categories:
+- 经验分享
+- Android
+tags:
+- android
+- 隐藏，代码
+comments:
+- id: 1
+  author: Byronlee
+  author_email: ginchenorlee@sina.com
+  author_url: ''
+  date: !binary |-
+    MjAxMi0wNy0yNyAxMDoxMTo1NCArMDAwMA==
+  date_gmt: !binary |-
+    MjAxMi0wNy0yNyAxMDoxMTo1NCArMDAwMA==
+  content: ! '*#*#2664#*#* – 触控屏幕测试 (最实用，开发人员理解触屏的位置坐标)  顶一下'
+---
+<p>不是全部都可以用，但是要看Android系统的编程改了多少!!</p>
+<p>不同厂商的手机都会隐***特的代码，用来查看系统及固件版本，或者进行硬件的测试，当然 Android 手机也不例外，除了好像计算机一样能显示更详细的手机信息外，更可重设为原厂设定，更新相机韧体等。但部份代码要谨慎使用，因为可能令手机失去原有的功能，笔者只是网络转载，出现问题一概恕不负责。</p>
+<p><span style="color: #ff6600;">*#*#2664#*#* – 触控屏幕测试 (最实用，开发人员理解触屏的位置坐标)</span></p>
+<p>*#*#4636#*#*</p>
+<p>显示手机信息、电池信息、电池记录、使用统计数据、WiFi 信息</p>
+<p>*#*#7780#*#*</p>
+<p>重设为原厂设定，不会删除预设程序，及 SD 卡档案。</p>
+<p>*2767*3855#</p>
+<p>重设为原厂设定，会删除 SD 卡所有档案。</p>
+<p>*#*#34971539#*#*</p>
+<p>显示相机相机韧体版本，或更新相机韧体</p>
+<p>*#*#7594#*#*</p>
+<p>当长按关机按钮时，会出现一个切换手机模式的窗口，包括: 静音模式、飞航模式及关机，你可以用以上代码，直接变成关机按钮。</p>
+<p>*#*#273283*255*663282*#*#*</p>
+<p>开启一个能让你备份媒体文件的地方，例如相片、声音及影片等</p>
+<p>*#*#197328640#*#*启动服务模式，可以测试手机部分设置及更改设定</p>
+<p>WLAN、 GPS 及蓝牙测试的代码</p>
+<p>*#*#232339#*#* 或 *#*#526#*#* 或 *#*#528#*#* – WLAN 测试</p>
+<p>*#*#232338#*#* – 显示 WiFi MAC 地址</p>
+<p>*#*#1472365#*#* – GPS 测试</p>
+<p>*#*#1575#*#* – 其它 GPS 测试</p>
+<p>*#*#232331#*#* – 蓝牙测试</p>
+<p>*#*#232337#*# – 显示蓝牙装置地址</p>
+<p>*#*#8255#*#*启动 GTalk 服务监视器</p>
+<p>显示手机软件版本的代码</p>
+<p>*#*#4986*2650468#*#* – PDA、 Phone、 H/W、 RFCallDate</p>
+<p>*#*#1234#*#* – PDA 及 Phone</p>
+<p>*#*#1111#*#* – FTA SW 版本</p>
+<p>*#*#2222#*#* – FTA HW 版本</p>
+<p>*#*#44336#*#* – PDA 、Phone、 CSC、 Build Time、 Changelist number</p>
+<p>各项硬件测试</p>
+<p>*#*#0283#*#* – Packet Loopback</p>
+<p>*#*#0*#*#* – LCD 测试</p>
+<p>*#*#0673#*#* 或 *#*#0289#*#* – Melody 测试</p>
+<p>*#*#0842#*#* – 装置测试，例如振动、亮度</p>
+<p>*#*#2663#*#* – 触控屏幕版本</p>
+<p>*#*#0588#*#* – 接近感应器测试</p>
+<p>*#*#3264#*#* – 内存版本</p>

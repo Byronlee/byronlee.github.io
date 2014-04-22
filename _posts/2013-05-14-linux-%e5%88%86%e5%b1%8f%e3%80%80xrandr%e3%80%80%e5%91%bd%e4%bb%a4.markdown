@@ -1,0 +1,75 @@
+---
+layout: post
+status: publish
+published: true
+title: linux 分屏xrandr命令
+author: Byronlee
+author_login: ginchenorlee
+author_email: ginchenorlee@sina.com
+wordpress_id: 429
+wordpress_url: http://www.ginchenorlee.com/?p=429
+date: !binary |-
+  MjAxMy0wNS0xNCAwMzoyODoxMyArMDAwMA==
+date_gmt: !binary |-
+  MjAxMy0wNS0xNCAwMzoyODoxMyArMDAwMA==
+categories:
+- linux
+- Archlinux
+tags:
+- linux
+- xrandr
+comments: []
+---
+<p>xrandr 命令行可以很方便地切换双屏，常用方式如下：</p>
+<div>
+<div>
+<div>命令</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">$ xrandr</pre>
+</div>
+</div>
+<p>罗列当前系统有的显示器</p>
+<div>
+<div>命令</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">$ xrandr --output VGA --same-as LVDS --auto</pre>
+</div>
+</div>
+<p>打开外接显示器LVDS (最高分辨率)，与笔记本液晶屏幕 VGA 显示同样内容（克隆）</p>
+<div>
+<div>命令</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">xrandr --output VGA --same-as LVDS --mode 1024x768</pre>
+</div>
+</div>
+<p>打开外接显示器(分辨率为1024x768)，与笔记本液晶屏幕显示同样内容（克隆）</p>
+<div>
+<div> 命令</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">xrandr --output VGA --right-of LVDS --auto</pre>
+</div>
+</div>
+<p>打开外接显示器(最高分辨率)，设置为右侧扩展屏幕</p>
+<div>
+<div>命令</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">xrandr --output VGA --off</pre>
+</div>
+</div>
+<p>关闭外接显示器</p>
+<div>
+<div>命令</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">xrandr --output VGA --auto --output LVDS --off</pre>
+</div>
+</div>
+<p>打开外接显示器，同时关闭笔记本液晶屏幕（只用外接显示器工作）</p>
+<div>
+<div>命令</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">xrandr --output VGA --off --output LVDS --auto</pre>
+</div>
+</div>
+<p>关闭外接显示器，同时打开笔记本液晶屏幕 (只用笔记本液晶屏)<br clear="none" />（最后两种情况请小心操作，不要误把两个屏幕都关掉了....）<br clear="none" /><br clear="none" />除了使用命令外，GNOME 中自带的“屏幕分辨率”软件功能很强大（系统-&gt;首选项-&gt;屏幕分辨率），打开和关闭第二个监视器的办法是调整它的分辨率，取消“克隆”就可以设置成扩展屏幕，还可以通过拖动图标位置调整双屏时两个屏幕的相对位置。</p>
+<p>&nbsp;</p>
+</div>

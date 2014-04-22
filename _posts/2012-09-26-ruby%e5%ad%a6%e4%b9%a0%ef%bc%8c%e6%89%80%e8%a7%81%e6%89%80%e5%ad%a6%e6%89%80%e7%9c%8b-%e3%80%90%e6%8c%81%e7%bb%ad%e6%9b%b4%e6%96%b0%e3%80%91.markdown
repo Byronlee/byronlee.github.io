@@ -1,0 +1,113 @@
+---
+layout: post
+status: publish
+published: true
+title: Ruby学习，所见所学所看.........【持续更新】
+author: Byronlee
+author_login: ginchenorlee
+author_email: ginchenorlee@sina.com
+excerpt: ! "学了段时间node, 对它喜爱有加，但是由于项目需要，得学习Ruby，记录学习中的所见所学 [原创]\r\n\r\n如果你学过java来看ruby刚开始觉得有写语法很相似，但是了解后你就觉得神奇的事情发生了:\r\n\r\n想知道
+  什么是ruby？\r\n\r\n先来花20分钟体验一下吧： <a href=\"http://www.ruby-lang.org/zh_cn/documentation/quickstart/\">http://www.ruby-lang.org/zh_cn/documentation/quickstart/</a>\r\n\r\n体验后你就有感觉了，你会重新理解
+  什么是面向对象，对吧，呵呵，\r\n\r\n接下来你会问 都是面向对象，那它和java 有什么区别？\r\n\r\n我们来看：\r\n\r\n<span style=\"color:
+  #ff0000;\">相似点 </span>\r\n\r\nRuby与Java一样的地方，...\r\n<ul>\r\n\t<li>内存透过垃圾回收(Garbage
+  Collection)机制管理。</li>\r\n\t<li>物件为强型别(Strongly typed)。</li>\r\n\t<li>有 public, private, 与 protected 方法。</li>\r\n\t<li>也有将原始码转成文件的工具(Ruby的叫做RDoc)，文件以 rdoc 产生的样子与 javadoc 类似。</li>\r\n</ul>\r\n<div><span
+  style=\"font-size: small;\"><span style=\"line-height: 24px;\">"
+wordpress_id: 264
+wordpress_url: http://www.ginchenorlee.com/?p=264
+date: !binary |-
+  MjAxMi0wOS0yNiAwNzoxNDoyMCArMDAwMA==
+date_gmt: !binary |-
+  MjAxMi0wOS0yNiAwNzoxNDoyMCArMDAwMA==
+categories:
+- 经验分享
+- 程序员生活
+- Ruby
+tags:
+- java
+- Ruby
+comments:
+- id: 22
+  author: simlegate
+  author_email: simlegate@163.com
+  author_url: http://simlegate.com
+  date: !binary |-
+    MjAxMi0xMC0wMSAxMDozNDowNCArMDAwMA==
+  date_gmt: !binary |-
+    MjAxMi0xMC0wMSAxMDozNDowNCArMDAwMA==
+  content: 楼主是一位NB加资深的程序员呀！
+- id: 23
+  author: Byronlee
+  author_email: ginchenorlee@sina.com
+  author_url: ''
+  date: !binary |-
+    MjAxMi0xMC0wNiAxMjoxMjozOCArMDAwMA==
+  date_gmt: !binary |-
+    MjAxMi0xMC0wNiAxMjoxMjozOCArMDAwMA==
+  content: 不敢当啊！ 共同学习
+---
+<p>学了段时间node, 对它喜爱有加，但是由于项目需要，得学习Ruby，记录学习中的所见所学 [原创]</p>
+<p>如果你学过java来看ruby刚开始觉得有写语法很相似，但是了解后你就觉得神奇的事情发生了:</p>
+<p>想知道 什么是ruby？</p>
+<p>先来花20分钟体验一下吧： <a href="http://www.ruby-lang.org/zh_cn/documentation/quickstart/">http://www.ruby-lang.org/zh_cn/documentation/quickstart/</a></p>
+<p>体验后你就有感觉了，你会重新理解 什么是面向对象，对吧，呵呵，</p>
+<p>接下来你会问 都是面向对象，那它和java 有什么区别？</p>
+<p>我们来看：</p>
+<p><span style="color: #ff0000;">相似点 </span></p>
+<p>Ruby与Java一样的地方，...</p>
+<ul>
+<li>内存透过垃圾回收(Garbage Collection)机制管理。</li>
+<li>物件为强型别(Strongly typed)。</li>
+<li>有 public, private, 与 protected 方法。</li>
+<li>也有将原始码转成文件的工具(Ruby的叫做RDoc)，文件以 rdoc 产生的样子与 javadoc 类似。</li>
+</ul>
+<div><span style="font-size: small;"><span style="line-height: 24px;"><a id="more"></a><a id="more-264"></a></span></span></div>
+<p><span style="color: #ff0000;">相异点</span></p>
+<p>Ruby与Java不同的地方，...</p>
+<ul>
+<li>不用编译程序，直接跑它就行了。</li>
+<li>有不同的图形接口(GUI)工具组，例如可以试试 <a href="http://wxruby.rubyforge.org/wiki/wiki.pl">WxRuby</a> ， <a href="http://www.fxruby.org/">FXRuby</a> ，<a href="http://ruby-gnome2.sourceforge.jp/">Ruby-GNOME2</a> ，或已经包在Ruby里的Tk。</li>
+<li>以 end 这个关键词作为定义类别(class)等的结尾，不必用大括号包着程序区块。</li>
+<li>用 require 而不是 import 。</li>
+<li>对象的所有成员变量皆为 private，外界需透过方法(method)来存取。</li>
+<li>呼叫方法时，可以省略括号。</li>
+<li><span style="color: #ff0000;">所有东西都是对象，包括像 2 与 3.14159 这些数字。</span></li>
+<li>没有静态的型别检查。</li>
+<li>变量名称只是标记，不与型别关联。</li>
+<li>不用宣告型别。只要依需要指定给一个新的变量，事情就”发生”了 (所以不用 int[] a = {1,2,3}; ，仅需 a = [1,2,3] )。</li>
+<li>直接呼叫方法，不用转型。在执行程序前，你的单元测试应该能告诉你是否会有例外(exception)。</li>
+<li>写 foo = Foo.new( "hi") ，而非 Foo foo = new Foo( "hi" ); 。</li>
+<li>建构式的名称固定为”initialize”，而非与类别同名。</li>
+<li>运用 “mixin” 而非接口(interface)。</li>
+<li>倾向使用YAML多于XML。</li>
+<li>是 nil ，不是 null 。</li>
+</ul>
+<p>Ruby处理 == 及 equals() 的方式迥异。要看是否等值，使用 == (Java用equals() )。要知道是否为同一对象，则使用 equal?() (Java用 == )。</p>
+<p>当然你也会有一些烦恼，ruby 的就业前景怎么样？  行业对它的认识怎么样？ 那我们看看官方社区的一篇博客：</p>
+<p><a href="http://ruby-china.org/topics/5688">http://ruby-china.org/topics/5688</a>【学Ruby好没有前途】</p>
+<p>哈哈，是不是诧异了？ 原来人们这么不看好它？？？都陷入了苦逼！！ 怎么办？</p>
+<p>该贴发布四天，就再社区排行榜排名第一，到我现在发帖现在是一百二十多次回复，95%的回复是楼主说的对</p>
+<p>好像一下子引起了大家学ruby 后心里的共鸣！！ 怎么办？ 还学不学？</p>
+<p>哈哈，我想任何人再这个时候都会徘徊了，你也可以去了解下ruby 的历史和它相关的发生的一些事情了；</p>
+<p>我坚信它的强调，强大的东西都是不很容易被人们认可的，况且国内的这个市场跟国际化的相比是有差距的；</p>
+<p>我们来看看有那些项目用过Ruby；<a href="http://ruby-china.org/sites">http://ruby-china.org/sites</a></p>
+<p>对你没看错，github。 twitter.....我就不说了...大家不言而喻......</p>
+<p>我们来看一下刚我发的那一篇帖子的几条评论：</p>
+<p><span style="color: #ff0000;">11楼：</span></p>
+<blockquote>
+<div><a href="http://ruby-china.org/ericguo" data-name="Eric-Guo">ericguo</a> 11楼, <abbr title="2012-09-22T16:23:27+08:00">3天前</abbr><a href="http://ruby-china.org/topics/5688#" rel="twipsy" data-count="0" data-id="53659" data-state="" data-type="Reply" data-original-title="喜欢"><em></em> 喜欢</a></div>
+</blockquote>
+<div>
+<blockquote><p>恩恩，楼主说得对<br />
+不过会Ruby是好程序员的标志，因为Ruby基本上不可能是程序员的第一门编程语言，现在学校也不教Ruby，所以会Ruby至少说明程序员的思路不局限于某一种特定架构或者产品，也说明此程序员是爱学习的。</p></blockquote>
+</div>
+<div><span style="color: #ff0000;">14楼：</span></div>
+<div></div>
+<blockquote>
+<div><a href="http://ruby-china.org/gaicitadie" data-name="盖茨他爹">gaicitadie</a> 14楼, <abbr title="2012-09-22T16:51:18+08:00">3天前</abbr><a href="http://ruby-china.org/topics/5688#" rel="twipsy" data-count="1" data-id="53665" data-state="" data-type="Reply" data-original-title="喜欢"><em></em> 1人喜欢</a></div>
+</blockquote>
+<div>
+<blockquote><p>学Ruby的都不只会Ruby</p></blockquote>
+</div>
+<p>&nbsp;</p>
+<p>所以你们都懂的.....</p>
+<p>【上课去了....... 持续更新...】</p>

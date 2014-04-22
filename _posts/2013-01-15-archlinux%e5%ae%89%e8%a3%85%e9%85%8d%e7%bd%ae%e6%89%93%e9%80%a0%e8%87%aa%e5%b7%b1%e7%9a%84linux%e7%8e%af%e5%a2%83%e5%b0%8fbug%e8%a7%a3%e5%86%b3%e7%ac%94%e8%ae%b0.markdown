@@ -1,0 +1,271 @@
+---
+layout: post
+status: publish
+published: true
+title: Archlinux安装+配置+打造自己的linux环境+小bug解决笔记
+author: Byronlee
+author_login: ginchenorlee
+author_email: ginchenorlee@sina.com
+excerpt: ! "用archlinx有段时间了，各种零星的笔记记了一大推，很想整理一下，所以整理了笔记，得此文，有不对望指正，内容有点多，给个导行读：\r\n\r\n系统：archlinux
+  　关键词汇：openbox,systemd,sysinit,feh,\r\n<ol>\r\n\t<li>写在前面</li>\r\n\t<li>archlinux的安装</li>\r\n\t<li>图形界面的安装和启动</li>\r\n\t<li>Archlinux的systemd
+  启动系统</li>\r\n\t<li>配置时间时区的纠正</li>\r\n\t<li>打造自己的archlinux环境，推荐常用软件</li>\r\n\t<li>openbox快捷键定义</li>\r\n\t<li>小巧、强大的图片浏览器：Feh</li>\r\n</ol>\r\n"
+wordpress_id: 375
+wordpress_url: http://www.ginchenorlee.com/?p=375
+date: !binary |-
+  MjAxMy0wMS0xNSAxNDozMDozMyArMDAwMA==
+date_gmt: !binary |-
+  MjAxMy0wMS0xNSAxNDozMDozMyArMDAwMA==
+categories:
+- 经验分享
+- linux
+- 系统熟悉
+- Archlinux
+tags:
+- archlinux.openbox
+- feh
+- systemd
+comments: []
+---
+<p>用archlinx有段时间了，各种零星的笔记记了一大推，很想整理一下，所以整理了笔记，得此文，有不对望指正，内容有点多，给个导行读：</p>
+<p>系统：archlinux 　关键词汇：openbox,systemd,sysinit,feh,</p>
+<ol>
+<li>写在前面</li>
+<li>archlinux的安装</li>
+<li>图形界面的安装和启动</li>
+<li>Archlinux的systemd 启动系统</li>
+<li>配置时间时区的纠正</li>
+<li>打造自己的archlinux环境，推荐常用软件</li>
+<li>openbox快捷键定义</li>
+<li>小巧、强大的图片浏览器：Feh</li>
+</ol>
+<p><a id="more"></a><a id="more-375"></a></p>
+<h3> 写在前面：</h3>
+<p>用linux也有段时间了，入手ubuntu，确实，ubunut+xfce打造的系统，用起确实还是可以，简单，美观，经典，而且很像mac系统的操作界面，作为初使用者，这样搭配那是再安逸不过了，可是不够折腾，折腾一段时间后，就感觉很混淆了， 它的配置啊，进程的管理啊等等，估计是我能力有限，就感觉很混乱，可定制性很不好，很多都是它给你做好了，想去研究下原理又找不到途径，结果就是:一般的使用，都还没有出什么大问题，基本的电脑需求能满足，但是出现问题后，就找不到最好的解决方案了，很是恼火，我遇的最明显的问题就是包依赖，我们经常会看到想如下的问题：</p>
+<p><span style="color: #ff0000;">问题一：</span></p>
+<blockquote><p>下列软件包有未满足的依赖关系：  <br clear="none" />libtiff4-dev : 依赖: libjpeg-dev  <br clear="none" />E: 无法修正错误，因为您要求某些软件包保持现状，就是它们破坏了软件包间的依赖关系。</p></blockquote>
+<p>解决方法：</p>
+<pre class="brush: actionscript3; gutter: true">$ sudo apt-get install build-essential libgtk2.0-dev libjpeg62-dev libtiff4-dev libjasper-dev libopenexr-dev cmake python-dev python-numpy libtbb-dev libeigen2-dev yasm libfaac-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev</pre>
+<p>把上面的命令分解成一个一个包安装，于是就发现成功了。因为这样安装他会重新卸载一些。</p>
+<p>看着就不舒服，在用rails的时候，安装sqlite3数据库，一直就出类似的包依赖问题，至今为解决！！网上没有找到一个完美的解决方案，即使有些包依赖根据网上的方法能解决，那也只是误打误撞（本人菜鸟），还是根本不懂为什么要那样解决！</p>
+<p>要解决包的依赖，跟C,C++，编译，宏依赖都还是有关的，这样才好解决问题，但对此目前都还不熟，只能拿他无奈何！</p>
+<p><span style="color: #ff0000;">问题二：</span></p>
+<p>还有一个蛋疼的问题，就是ubuntu的启动进程的工作方式：　upstart jobs，和传统的　System V initialization混合兼容使用，具体见另外一篇博客：<a href="http://www.ginchenorlee.com/?p=315" shape="rect" target="_blank">ubuntu为什么没有/etc/inittab文件? 深究ubuntu的启动流程分析</a>　，那个之混乱啊，对进程的控制，很不习惯！！　队友一直强调换系统，于是放弃了ubuntu, 来到了archlinux的世界！！　以下是archlinu官网这样介绍：</p>
+<blockquote><p>Arch Linux 一个简单、轻量级、适合计算机水平较高用户使用的发行版，是一个独立的开发的采用滚动升级模式的通用i686/x86-64 GNU/Linux 发行版，灵活适用于任何角色。它的开发注重于设计简洁、结构精简、代码优雅。Arch 刚安装后只提供了一个最基本的系统，可以让用户按照自己的喜好，通过仅仅安装自己需要的软件来配置自己的理想的环境。官方没有提供图形界面配置工具，大多数系统配置需要通过从命令行编辑简单的文本文件来配置。基于滚动升级模式，Arch 尽全力保证它的软件是最新的稳定版本</p></blockquote>
+<p>archlinux适合对linux使用有一定经验的人，最好不要作为入学系统，如果你经得起折腾，那你就试试吧　　呵呵</p>
+<p>&nbsp;</p>
+<h3>archlinux的安装</h3>
+<p>步骤就按照arichlinx官网的　教程去做，　尽量看英文版的，中文版的跟新好像不是那么及时：</p>
+<p>附上链接：</p>
+<p>英文：https://wiki.archlinux.org/index.php/Beginners%27_Guide</p>
+<p>中文：https://wiki.archlinux.org/index.php/Beginners%27_Guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</p>
+<p>下面就中间的个别我遇到的问题记录一下：</p>
+<p>找一个U盘，将archlinux的镜像文件写入U盘： <span style="color: #ff0000;">　</span></p>
+<p><span style="color: #ff0000;">  a) 先格式化工具：</span></p>
+<pre class="brush: actionscript3; gutter: true">#umount /dev/sdb1
+#注意/dev/后面的设备要根据你的实际情况而定 格式化并建立VFAT文件系统
+#mkfs.ext4 /dev/sdb1 最后再mount上就成了,或者把U盘拨了再插上,系统可能会自动mount上,就可以用U盘了</pre>
+<p><span style="color: #ff0000;">　b) U盘再写入工具：</span></p>
+<pre class="brush: actionscript3; gutter: true">sudo dd if=./*.iso  of=/dev/sdc bs=512</pre>
+<p>if 后面跟 iso 的路径 of 后面跟 U 盘的路径， 一般都是 /dev/sdc不知道可以用命令: fdisk -l 来查看．　bs是限制速度的，速度过快很可能写入出错，导致写入不正确！从U盘启动就能看见安装界面了，　<span style="color: #ff0000;">如果不能看见，那就是没有刻录正确！　要重新刻录</span>！</p>
+<p><span style="color: #ff0000;"> c) 分区工具(命令，自带的，根据提示就可完成)：</span>当前安装盘包含如下工具：</p>
+<ul>
+<li><a title="wikipedia:cgdisk" href="http://en.wikipedia.org/wiki/cgdisk" shape="rect" target="_blank">cgdisk</a> – 仅支持 <a title="GPT" href="https://wiki.archlinux.org/index.php/GPT" shape="rect" target="_blank">GPT</a> 分区表。</li>
+<li><a title="wikipedia:cfdisk" href="http://en.wikipedia.org/wiki/cfdisk" shape="rect" target="_blank">cfdisk</a> – 仅支持 <a title="MBR" href="https://wiki.archlinux.org/index.php/MBR" shape="rect" target="_blank">MBR</a> 分区表。</li>
+<li><a title="wikipedia:parted" href="http://en.wikipedia.org/wiki/parted" shape="rect" target="_blank">parted</a> – 两者都支持。</li>
+</ul>
+<p>我使用使用<strong>cfdisk，　</strong>用起很不错，也简单，按照提示做就是</p>
+<pre class="brush: actionscript3; gutter: true">$　cfdisk   //最好用</pre>
+<p><span style="color: #ff0000;">d) 添加包管理器的源的途径</span></p>
+<p>(在　/etc/pacman.d/mirrorlist按照它的格式写在最前面，这是163和清华大学的源，目的在于以后安装软件的时候快！)</p>
+<pre class="brush: actionscript3; gutter: true">Server = http://mirrors.163.com/archlinux/$repo/os/$arch
+Server = http://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch</pre>
+<p><span style="color: #ff0000;">e) 网络的配置：　</span></p>
+<p>推荐工具　：netcfg</p>
+<p>官网那个教程有点复杂，用这个工具轻易搞定！，只需要熟悉这个工具的配置，还是很容易的</p>
+<p>&nbsp;</p>
+<p><span style="color: #ff0000;">f) 配置启动加载器　</span>这就是引导程序，我们经常开机叫我们选系统，就是这个干的事情</p>
+<div>    推荐使用　Grub　，那个安装教程上有Syslinux　，我用的这个  //目前它在我电脑上还没有把window没有正确识别出来</div>
+<div></div>
+<div>
+<div><span style="color: #ff0000;">其他的认真阅读官网，　如果有什么问题，最后有一个老手在旁边指导一下，免得走很多弯路！</span></div>
+</div>
+<h3></h3>
+<p>&nbsp;</p>
+<h3>图形界面的安装和启动</h3>
+<p>我们按照教程做了后，都是在字符命令界面下工作的，我们需要图形界面，一般都只是用一个窗口管理器　openbox　就可以了</p>
+<p><span style="color: #ff0000;">openbox 的安装官网教程</span>：https://wiki.archlinux.org/index.php/Openbox_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</p>
+<p>从字符界面启动图形界面： 我之前很迷惑，因为我看不同的教程有至少有三种启动方式，就是不明白区别在什么地方：</p>
+<div>
+<pre class="brush: actionscript3; gutter: true">　　$ startx //第一种
+　　$ xinit //第二种
+　　$ xinit /usr/bin/openbox //第三种</pre>
+<p>对与我这样的菜鸟，就抛根问底了：</p>
+</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">xinit只执行xinit程序
+startx本身是一个脚本，会调用系统的xinitrc（/etc/X11/xinit/xinitrc）或用户的xinitrc（~/.xinitrc）。
+如果用startx来启动x，可以把这段代码加入xinitrc，让它执行xinitrc.d下面的脚本。
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+for i in /etc/X11/xinit/xinitrc.d/* ; do
+if [ -x &quot;$i&quot; ]; then
+. &quot;$i&quot;
+fi
+done
+fi
+gdm不会读取执行xinitrc，但会执行&quot;/etc/X11/xinit/xinitrc.d/&quot;下面所有的脚本</pre>
+</div>
+<div>换句话说，用startx　来启动图形界面，中途还是自动的会运行xinit程序的！　可以理解为一个包含的关系， xinit /usr/bin/openbox　就指明只开启这个openbox程序,这样启动很多配置文件都读不到，这样我们都一般用startx　来启动，它即包含应该启动的服务也把改读的配置文件给读了.</div>
+<div></div>
+<div>我们在写配置文件的时候可能对下面几个文件有点分不清，我查了下，做个记录：</div>
+<div></div>
+<pre class="brush: actionscript3; gutter: true">~/.xinitrc是在当前用户startx的时候载入。su切换到其它用户的时候不会运行。
+~/.bashrc是开终端的时候载入
+~/.*都是当前用户的配置文件。</pre>
+<h3></h3>
+<p>安装一个openbox窗口管理器推荐使用一个登录管理器　<span style="color: #ff0000;">slim</span> :</p>
+<p>slim　官网安装教程：https://wiki.archlinux.org/index.php/SLiM_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</p>
+<p>最后把slim 设置为开机启动：</p>
+<pre class="brush: actionscript3; gutter: true">$ sudo systemctl enable slim.server</pre>
+<p>就oK! 　systemctl　的讲解见下一个章</p>
+<p>&nbsp;</p>
+<h3> Archlinux的systemd 启动系统</h3>
+<p>在arch的安装过程中我遇到的最大问题，恰恰与我决定进入的arch的时间有关系。安装使用的是<a id="" href="https://www.archlinux.org/download/" shape="rect" target="_blank">Arch Linux2012.10.06</a>的安装镜像，而正是这个安装镜像第一次<a id="" href="https://www.archlinuxcn.org/install-medium-20121006-introduces-systemd/" shape="rect" target="_blank">引入 systemd</a>，默认<a id="" href="https://www.archlinuxcn.org/systemd-is-now-the-default-on-new-installations/" shape="rect" target="_blank">使用 systemd 启动系统</a>，而不是使用 /etc/rc.conf 文件中的 DAEMONS 数组来启动使用旧的 rc.d 脚本的服务。然而，官方的<a id="" href="https://wiki.archlinux.org/index.php/Beginners%27_Guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" shape="rect" target="_blank">新手指南wiki</a>中依然是按照以前的方式指导的，虽然官方强调这个改变不会影响已有的系统，但是我却因此遇到了很多问题，导致连续装了n次都不得成功，在配置中也出现很多低级机械性的问题！</p>
+<p>我反复查找问题才发现包括rc.conf,inittab等一系列的重要的配置文件都没有默认安装，虽然我手写的rc.conf但是显然这还不够。而这些脚本需要用户自己安装 initscripts 软件包，已经不在base和base-devel里默认安装到新系统了。于是我安装base和base-devel后紧接着安装了initscripts问题就解决了，最终结果是按照<a id="" href="https://wiki.archlinux.org/index.php/Beginners%27_Guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" shape="rect" target="_blank">新手指南</a>安装了一个使用旧的 rc.d 脚本的启动服务的arch系统。</p>
+<p>之后，我又根据<a id="" href="https://wiki.archlinux.org/index.php/Systemd" shape="rect" target="_blank">相关的wiki</a>，使用systemd一一替换掉rc.d来启动系统服务，进一步完成arch的最新改变，这里我是走了弯路了的。</p>
+<p>对于这个systemd启动系统推荐两篇完美的解说，附上链接，看了就明白了：</p>
+<p><span style="color: #ff0000;">第一篇</span>：<a id="" href="http://linuxtoy.org/archives/more-than-upstart-systemd.html" shape="rect" target="_blank">设计思路比Upstart更加超前的init系统--systemd</a></p>
+<p><span style="color: #ff0000;">第二篇</span>：　<a id="" href="http://fedoraproject.org/wiki/Systemd/zh-cn" shape="rect" target="_blank">systemd如何管理进程</a>　　（这篇一定好好的读，讲解堪称完美）</p>
+<p><span style="color: #ff0000;">第三篇</span>：　<a id="" href="https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" shape="rect" target="_blank">archlinux 官网systemd (简体中文)</a></p>
+<p><span style="color: #ff0000;">第四篇</span>：<a id="" href="http://mtoou.info/hing-systemd/" shape="rect" target="_blank">高速启动，现在开始systemd</a>　(这篇文章也值得读)</p>
+<p>可以对比阅读原来的SysVinit系统　：<a id="" href="https://wiki.archlinux.org/index.php/SysVinit_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" shape="rect" target="_blank">archlinux　官网　SysVinit (简体中文)</a></p>
+<p>下面罗列一下最常用的几条命令：</p>
+<pre class="brush: actionscript3; gutter: true">$ systemctl is-enabled name.service #查询服务是否开机启动
+$ sudo systemctl enable name.service #开机运行服务
+$ sudo systemctl disable name.service #取消开机运行
+$ sudo systemctl start name.service #启动服务
+$ sudo systemctl stop name.service #停止服务
+$ sudo systemctl restart name.service #重启服务
+$ sudo systemctl reload name.service #重新加载服务配置文件
+$ systemctl status name.service #查询服务运行状态
+$ systemctl --failed #显示启动失败的服务</pre>
+<p>&nbsp;</p>
+<h3>配置时间时区的纠正</h3>
+<div>
+<div>
+<div>设置时区：</div>
+<div></div>
+<div><span style="color: #ff0000;">传统的做法是：</span></div>
+<div>  复制相应的时区文件，替换系统时区文件；或者创建链接文件 cp /usr/share/zoneinfo/$主时区/$次时区 /etc/localtime 在中国可以使用：</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</pre>
+</div>
+<div></div>
+<div>将当前时间和日期写入BIOS，避免重启后失效</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">hwclock -w</pre>
+</div>
+<div>最后我们用date命令查看时间：</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">[byronlee@byronlee etc]$ date
+2013年 01月 10日 星期四 07:04:09 CST</pre>
+</div>
+<div>这样用的是，　cst 时区，　　与我们的时区，　时间是<span style="color: #ff0000;">不相吻合</span>的</div>
+<div><span style="color: #ff0000;">正确做法：</span></div>
+<div>如果存在/etc/adjtime文件和/etc/localtime 文件，<span style="color: #ff0000;">将它删除，</span>可以用下面命令自动生成 <code>/etc/adjtime</code>： UTC(推荐使用):</div>
+<div>
+<dl>
+<dd><strong>注意: </strong>硬件时钟使用 <a id="" title="wikipedia:Coordinated Universal Time" href="http://en.wikipedia.org/wiki/Coordinated_Universal_Time" shape="rect" target="_blank">UTC</a> 不代表显示时间时使用 UTC.</dd>
+<dd>
+<pre class="brush: actionscript3; gutter: true"># hwclock --systohc --utc</pre>
+</dd>
+</dl>
+<p>localtime，不推荐，但 Windows 默认使用此方式:</p>
+<dl>
+<dd><strong>警告: </strong>使用 <em>localtime</em> 可能导致一些无法修复的 bug。但目前还没有取消此设置选项的计划。</dd>
+<dd>
+<pre># hwclock --systohc --localtime</pre>
+<div></div>
+</dd>
+</dl>
+</div>
+</div>
+<h3>打造自己的archlinux环境，推荐常用软件</h3>
+<div></div>
+<div>
+<div>
+<ul>
+<li>openbox的图形化设置工具　：obconf</li>
+<li>openbox的图形化菜单编辑工具　：obmenu</li>
+<li>scrot : 截屏工具</li>
+<li>轻量极　图片查看工具　：　feh</li>
+<li>思维导图工具　xmind</li>
+<li>编辑器：emacs / Gvim</li>
+<li>系统垃圾清理工具（实用）bleachbit</li>
+<li>dia（流程图专用）</li>
+<li>文档阅读器：evince</li>
+<li>体播放器：mplayer</li>
+<li>清凉级查看图片工具，可以设置背景图片：　feh　／／具体使用见下一章节：小巧、强大的图片浏览器：Feh</li>
+<li>文件管理器：nautilus   ， 界面很好看。适用</li>
+</ul>
+<div></div>
+</div>
+<div>
+<h3>openbox快捷键定义</h3>
+<p>快捷键定义可以通过openbox本身或者xbindkeys来实现,xbindkeys放到下一章讨论,先说说openbox自带的设置.<br clear="none" />在openbox配置文件rc.xml中快捷键定义占了很大一部分篇幅,由于目前obconf还无法对快捷键定制,所以只能自己修改rc.xml<br clear="none" />xml的语法非常简单,下面是一个例子(具体的见openbox官方配置教程):</p>
+</div>
+<div>定义C+t 打开终端tolda:</div>
+<div></div>
+</div>
+<div>
+<pre class="brush: actionscript3; gutter: true">&lt;keybind key=&quot;C-t&quot;&gt; &lt;!--定义一个快捷键win健+v --&gt;
+  &lt;action name=&quot;Execute&quot;&gt; &lt;!--类型为执行 --&gt;
+    &lt;startupnotify&gt;
+      &lt;enabled&gt;true&lt;/enabled&gt;
+      &lt;name&gt;tilda&lt;/name&gt; &lt;!--名字 --&gt;
+    &lt;/startupnotify&gt;
+    &lt;command&gt;tilda&lt;/command&gt; &lt;!--命令,可以为脚本 --&gt;
+  &lt;/action&gt;
+&lt;/keybind&gt;</pre>
+</div>
+<div></div>
+<div></div>
+<div>
+<h3>小巧、强大的图片浏览器：Feh</h3>
+<p>Feh是一个轻量级、强大、具有很高的可配置性的、命令行操作的图像查看器，同时它也可以用来管理桌面壁纸，特别适合缺少这类特性的独立窗口管理器，如openbox、Fluxbox、awesome(似乎是标配)等。</p>
+<h5>图片浏览</h5>
+<p>要快速的浏览指定目录里的图像，你可以用以下参数启动feh：</p>
+<pre class="brush: actionscript3; gutter: true">$ feh -g 640×480 -D 5 -d -S filename /path/to/directory</pre>
+<ul>
+<li>-g 选项强制图像的显示大小不大于640×480</li>
+<li>-D 自动播放时间间隔，单位是秒</li>
+<li>-d 显示文件名</li>
+<li>-S filename 选项按文件名排列图像</li>
+</ul>
+<h5>制作拼贴画</h5>
+<p>要将目录的图片拼成一张大图可以这样：</p>
+<pre>$ feh -m -X -y 50 -E 50 -W 500 -o out.jpg /path/to/directory</pre>
+<ul>
+<li>-m 生成拼贴画</li>
+<li>-X 不保留宽高比</li>
+<li>-y 缩小后的宽度</li>
+<li>-E 缩小后的高度</li>
+<li>-W 指定拼贴画的宽度</li>
+<li>-o 拼贴画的输出</li>
+<li>/path*** 图片来源</li>
+</ul>
+<h5>管理背景图片</h5>
+<p>以我用的openbox为例，首先在~下新建文件“.fehbg”，内容为：</p>
+<pre>$ feh –bg-scale /path/image.jpg</pre>
+<p>然后在“~/.config/openbox/autostart.sh”添加：</p>
+<pre>$ eval `cat ~/.fehbg` &amp;</pre>
+<div> 也可以在.xinitrc中启动feh。</div>
+<h5>相关链接</h5>
+<ul>
+<li><a href="http://wiki.archlinux.org/index.php/Feh_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" shape="rect" target="_blank">ArchLinuxWiki Feh (简体中文)</a></li>
+<li><a href="http://blog.cathayan.org/item/1956" shape="rect" target="_blank">小巧强悍的看图工具Feh</a></li>
+</ul>
+<p>想了解更多请“$feh -help”。</p>
+</div>
+<div>OK ,整理完毕！！</div>
+<div></div>
+</div>
