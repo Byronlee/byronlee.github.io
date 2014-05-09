@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Java中的StringBuilder类 详解学习</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Byronlee</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Java中的StringBuilder类 详解学习</h2>
+<p class="meta">26 Jul 2012</p>
+
+<div class="post">
+<p>   字符串连接可以通过两种方法实现，其中一种是在Java中提供的一个StringBuilder类，字符串是Java程序中最常用的一种数据结构之一。在Java中的String类已经重载的"+"。也就是说，字符串可以直接使用"+"进行连接，如下面代码所示：<br />
+String s = "abc" + "ddd";<br />
+但这样做真的好吗？当然，这个问题不能简单地回答yes or no。要根据具体情况来定。在Java中提供了一个StringBuilder类（这个类只在J2SE5及以上版本提供，以前的版本使用StringBuffer类），这个类也可以起到"+"的作用。那么我们应该用哪个呢？</p>
+
+<p>下面让我们先看看如下的代码：</p>
+
+<blockquote><p>
+package string;  </p>
+<p>  public class TestSimplePlus<br />
+    {<br />
+      public static void main(String[] args)<br />
+        {<br />
+            String s = "abc";<br />
+            String ss = "ok" + s + "xyz" + 5;<br />
+            System.out.println(ss);<br />
+        }<br />
+    }
+</p></blockquote>
+<p>上面的代码将会输出正确的结果。从表面上看，对字符串和整型使用"+"号并没有什么区别，但事实真的如此吗？下面让我们来看看这段代码的本质。</p>
+<p>我们首先使用反编译工具（如jdk带的javap、或jad）将TestSimplePlus反编译成Java Byte Code，其中的奥秘就一目了然了。在本文将使用jad来反编译，命令如下：</p>
+<blockquote><p>
+jad -o -a -s d.java TestSimplePlus.class
+</p></blockquote>
+<p>反编译后的代码如下：</p>
+<blockquote><p>
+package string;  </p>
+<p>import java.io.PrintStream;  </p>
+<p>public class TestSimplePlus<br />
+{<br />
+    public TestSimplePlus()<br />
+      {<br />
+    //      0      0:aload_0<br />
+    //      1      1:invokespecial     #8     < Method void Object()><br />
+    //      2      4:return<br />
+      }  </p>
+<p>    public static void main(String args[])<br />
+      {<br />
+        String s = "abc";<br />
+    //      0      0:ldc1              #16    < String "abc"><br />
+    //      1      2:astore_1<br />
+        String ss = (new StringBuilder("ok")).append(s).append("xyz").append(5).toString();<br />
+    //      2      3:new               #18    < Class StringBuilder><br />
+    //      3      6:dup<br />
+    //      4      7:ldc1              #20    < String "ok"><br />
+    //      5      9:invokespecial     #22    < Method void StringBuilder(String)><br />
+    //      6     12:aload_1<br />
+    //      7     13:invokevirtual     #25    < Method StringBuilder StringBuilder.append(String)><br />
+    //      8     16:ldc1              #29    < String "xyz"><br />
+    //      9     18:invokevirtual     #25    < Method StringBuilder StringBuilder.append(String)><br />
+    //     10     21:iconst_5<br />
+    //     11     22:invokevirtual     #31    < Method StringBuilder StringBuilder.append(int)><br />
+    //     12     25:invokevirtual     #34    < Method String StringBuilder.toString()><br />
+    //     13     28:astore_2<br />
+        System.out.println(ss);<br />
+    //     14     29:getstatic         #38    < Field PrintStream System.out><br />
+    //     15     32:aload_2<br />
+    //     16     33:invokevirtual     #44    < Method void PrintStream.println(String)><br />
+    //     17     36:return<br />
+      }<br />
+}
+</p></blockquote>
+<p>读者可能看到上面的Java字节码感到迷糊，不过大家不必担心。本文的目的并不是讲解Java Byte Code，因此，并不用了解具体的字节码的含义。</p>
+<p>使用jad反编译的好处之一就是可以同时生成字节码和源代码。这样可以进行对照研究。从上面的代码很容易看出，虽然在源程序中使用了"+"，但在编译时仍然将"+"转换成StringBuilder。因此，我们可以得出结论，在Java中无论使用何种方式进行字符串连接，实际上都使用的是StringBuilder类。</p>
+<p>那么是不是可以根据这个结论推出使用"+"和StringBuilder类的效果是一样的呢？这个要从两个方面的解释。如果从运行结果来解释，那么"+"和StringBuilder是完全等效的。但如果从运行效率和资源消耗方面看，那它们将存在很大的区别。</p>
+<p>当然，如果连接字符串行表达式很简单（如上面的顺序结构），那么"+"和StringBuilder类基本是一样的，但如果结构比较复杂，如使用循环来连接字符串，那么产生的Java Byte Code就会有很大的区别。先让我们看看如下的代码：</p>
+<blockquote><p>
+package string;  </p>
+<p> import java.util.*;  </p>
+<p> public class TestComplexPlus<br />
+ {<br />
+     public static void main(String[] args)<br />
+       {<br />
+           String s = "";<br />
+           Random rand = new Random();<br />
+         for (int i = 0; i < 10; i++)<br />
+           {<br />
+               s = s + rand.nextInt(1000) + " ";<br />
+           }<br />
+           System.out.println(s);<br />
+       }<br />
+ }
+</p></blockquote>
+<blockquote>
+<p>上面的代码返编译后的Java Byte Code如下：</p>
+<p>package string;  </p>
+<p>import java.io.PrintStream;<br />
+import java.util.Random;  </p>
+<p>public class TestComplexPlus<br />
+{  </p>
+<p>    public TestComplexPlus()<br />
+      {<br />
+    //      0      0:aload_0<br />
+    //      1      1:invokespecial     #8     < Method void Object()><br />
+    //      2      4:return<br />
+      }  </p>
+<p>    public static void main(String args[])<br />
+      {<br />
+          String s = "";<br />
+    //      0      0:ldc1              #16    < String ""><br />
+    //      1      2:astore_1<br />
+          Random rand = new Random();<br />
+    //      2      3:new               #18    < Class Random><br />
+    //      3      6:dup<br />
+    //      4      7:invokespecial     #20    < Method void Random()><br />
+    //      5     10:astore_2<br />
+        for(int i = 0; i < 10; i++)<br />
+    //*     6     11:iconst_0<br />
+    //*     7     12:istore_3<br />
+    //*     8     13:goto              49<br />
+           s = (new StringBuilder(String.valueOf(s))).append(rand.nextInt(1000)).append(" ").toString();<br />
+    //      9     16:new               #21    < Class StringBuilder><br />
+    //     10     19:dup<br />
+    //     11     20:aload_1<br />
+    //     12     21:invokestatic      #23    < Method String String.valueOf(Object)><br />
+    //     13     24:invokespecial     #29    < Method void StringBuilder(String)><br />
+    //     14     27:aload_2<br />
+    //     15     28:sipush            1000<br />
+    //     16     31:invokevirtual     #32    < Method int Random.nextInt(int)><br />
+    //     17     34:invokevirtual     #36    < Method StringBuilder StringBuilder.append(int)><br />
+    //     18     37:ldc1              #40    < String " "><br />
+    //     19     39:invokevirtual     #42    < Method StringBuilder StringBuilder.append(String)><br />
+    //     20     42:invokevirtual     #45    < Method String StringBuilder.toString()><br />
+    //     21     45:astore_1            </p>
+<p>    //     22     46:iinc              3    1<br />
+    //     23     49:iload_3<br />
+    //     24     50:bipush            10<br />
+    //     25     52:icmplt            16<br />
+          System.out.println(s);<br />
+    //     26     55:getstatic         #49    < Field PrintStream System.out><br />
+    //     27     58:aload_1<br />
+    //     28     59:invokevirtual     #55    < Method void PrintStream.println(String)><br />
+    //     29     62:return<br />
+      }<br />
+}
+</p></blockquote>
+<p>大家可以看到，虽然编译器将"+"转换成了StringBuilder类，但创建StringBuilder对象的位置却在for语句内部。这就意味着每执行一次循环，就会创建一个StringBuilder对象（对于本例来说，是创建了10个StringBuilder对象），虽然Java有垃圾回收器，但这个回收器的工作时间是不定的。如果不断产生这样的垃圾，那么仍然会占用大量的资源。解决这个问题的方法就是在程序中直接使用StringBuilder类来连接字符串，代码如下：</p>
+<blockquote>
+<p>package string;  </p>
+<p>import java.util.*;  </p>
+<p>public class TestStringBuilder<br />
+{<br />
+    public static void main(String[] args)<br />
+     {<br />
+         String s = "";<br />
+         Random rand = new Random();<br />
+         StringBuilder result = new StringBuilder();<br />
+        for (int i = 0; i < 10; i++)<br />
+         {<br />
+             result.append(rand.nextInt(1000));<br />
+             result.append(" ");<br />
+         }<br />
+         System.out.println(result.toString());<br />
+     }<br />
+}  </p></blockquote>
+<p>上面代码反编译后的结果如下：</p>
+<blockquote><p>
+package string;  </p>
+<p>import java.io.PrintStream;<br />
+import java.util.Random;  </p>
+<p>public class TestStringBuilder<br />
+{  </p>
+<p>    public TestStringBuilder()<br />
+     {<br />
+    //     0     0:aload_0<br />
+    //     1     1:invokespecial    #8    < Method void Object()><br />
+    //     2     4:return<br />
+     }  </p>
+<p>    public static void main(String args[])<br />
+     {<br />
+         String s = "";<br />
+    //     0     0:ldc1             #16   < String ""><br />
+    //     1     2:astore_1<br />
+         Random rand = new Random();<br />
+    //     2     3:new              #18   < Class Random><br />
+    //     3     6:dup<br />
+    //     4     7:invokespecial    #20   < Method void Random()><br />
+    //     5    10:astore_2<br />
+         StringBuilder result = new StringBuilder();<br />
+    //     6    11:new              #21   < Class StringBuilder><br />
+    //     7    14:dup<br />
+    //     8    15:invokespecial    #23   < Method void StringBuilder()><br />
+    //     9    18:astore_3<br />
+        for(int i = 0; i < 10; i++)<br />
+    //*   10    19:iconst_0<br />
+    //*   11    20:istore           4<br />
+    //*   12    22:goto             47<br />
+         {<br />
+             result.append(rand.nextInt(1000));<br />
+    //    13    25:aload_3<br />
+    //    14    26:aload_2<br />
+    //    15    27:sipush           1000<br />
+    //    16    30:invokevirtual    #24   < Method int Random.nextInt(int)><br />
+    //    17    33:invokevirtual    #28   < Method StringBuilder StringBuilder.append(int)><br />
+    //    18    36:pop<br />
+             result.append(" ");<br />
+    //    19    37:aload_3<br />
+    //    20    38:ldc1             #32   < String " "><br />
+    //    21    40:invokevirtual    #34   < Method StringBuilder StringBuilder.append(String)><br />
+    //    22    43:pop<br />
+         }  </p>
+<p>    //    23    44:iinc             4   1<br />
+    //    24    47:iload            4<br />
+    //    25    49:bipush           10<br />
+    //    26    51:icmplt           25<br />
+         System.out.println(result.toString());<br />
+    //    27    54:getstatic        #37   < Field PrintStream System.out><br />
+    //    28    57:aload_3<br />
+    //    29    58:invokevirtual    #43   < Method String StringBuilder.toString()><br />
+    //    30    61:invokevirtual    #47   < Method void PrintStream.println(String)><br />
+    //    31    64:return<br />
+     }<br />
+}
+</p></blockquote>
+<p>从上面的反编译结果可以看出，创建StringBuilder的代码被放在了for语句外。虽然这样处理在源程序中看起来复杂，但却换来了更高的效率，同时消耗的资源也更少了。</p>
+<p>在使用StringBuilder类时要注意，尽量不要"+"和StringBuilder混着用，否则会创建更多的StringBuilder对象，如下面代码所：</p>
+<blockquote><p>
+for (int i = 0; i < 10; i++)<br />
+{<br />
+     result.append(rand.nextInt(1000));<br />
+     result.append(" ");<br />
+}
+</p></blockquote>
+<p>改成如下形式：</p>
+<blockquote><p>
+for (int i = 0; i < 10; i++)<br />
+{<br />
+      result.append(rand.nextInt(1000) + " ");<br />
+}
+ </p></blockquote>
+<p>则反编译后的结果如下：</p>
+<blockquote><p>
+ for(int i = 0; i < 10; i++)<br />
+//*   10    19:iconst_0<br />
+//*   11    20:istore           4<br />
+//*   12    22:goto             65<br />
+ {<br />
+   result.append((new StringBuilder(String.valueOf(rand.nextInt(1000)))).append(" ").toString());<br />
+//    13    25:aload_3<br />
+//    14    26:new              #21   < Class StringBuilder><br />
+//    15    29:dup<br />
+从上面的代码可以看出，Java编译器将"+"编译成了StringBuilder类，这样for语句每循环一次，又创建了一个StringBuilder对象。</p>
+</blockquote>
+
+<p><p>参考：http://hi.baidu.com/bluefishworld/blog/item/1f0cab6625fa8dfcf63654c1.html</p></blockquote>
+</blockquote>
+</blockquote>
+</blockquote></p>
+
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

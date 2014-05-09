@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>#android# scaleType属性与ImagView中图片的显示的关系</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Byronlee</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>#android# scaleType属性与ImagView中图片的显示的关系</h2>
+<p class="meta">15 Aug 2012</p>
+
+<div class="post">
+<p>最近在xml中，经常看见android:scaleType，于是找了相关资料，现在加以总结。</p>
+
+<p>关于android中ImageView的外观，即图片在其内显示出的样子，与布局文件中adjustViewBonds和scaleType<br />
+属性的关系。我进行了一些探索。现跟大家共享，欢迎各位指教。分别将adjustViewBonds设为true和false，与各种scaleType搭配，产生了不同效果。（上面的ImagView的adjstViewBonds值为false；下面的ImagView的adjstViewBonds值为true；两个ImagView大小相同）如下：</p>
+
+<blockquote><p>&lt;ImageView<br />
+android:id="@+id/imageView1"<br />
+android:layout_width="fill_parent"<br />
+android:layout_height="200dip"<br />
+android:adjustViewBounds="false"<br />
+android:scaleType="centerInside"//此处每次更改<br />
+android:src="@drawable/ic_3" /&gt;//两个 ImageView 同一个图片做对比。</p>
+<p>&lt;ImageView<br />
+android:id="@+id/imageView2"<br />
+android:layout_width="fill_parent"<br />
+android:layout_height="200dip"<br />
+android:adjustViewBounds="true"<br />
+android:scaleType="centerInside"//此处每次更改<br />
+android:src="@drawable/ic_3" /&gt;//两个 ImageView 同一个图片做对比。</p></blockquote>
+
+<p>我用的两张原图：</p>
+
+<p>图一：         <img src="http://dl.iteye.com/upload/attachment/0063/3485/5ec0a6be-9794-340f-973f-897c26ddb00f.gif" alt="" />       图二：<img class="alignnone" src="http://dl.iteye.com/upload/attachment/0063/3487/c614e7fa-7ea3-39e2-8001-436f3de9de26.jpg" alt="" width="100" height="200" /></p>
+
+<blockquote><p><span style="color: #ff0000;">1、scaleType=“matrix”</span><br />
+<span style="color: #ff0000;">如图pic1、pic2.</span><br />
+<span style="color: #ff0000;">是保持原图大小、从左上角的点开始，以矩阵形式绘图。</span></p></blockquote>
+
+<p>pic1：                        pic2:<br />
+<img src="http://dl.iteye.com/upload/attachment/0063/3489/4563ab80-6d91-3a15-8fde-2f4ed02dc69b.png" alt="" width="229" height="367" /> <img style="line-height: 21px;" src="http://dl.iteye.com/upload/attachment/0063/3491/b5bd405e-74f1-3180-8a54-d7b2b9400102.png" alt="" width="242" height="382" /></p>
+
+<blockquote><p><span style="color: #ff0000;">2、scaleType=“fitXY”</span><br />
+<span style="color: #ff0000;">如图pic3、pic4.</span><br />
+<span style="color: #ff0000;">是将原图进行横方向（即XY方向）的拉伸后绘制的。</span></p></blockquote>
+
+<p>pic3：                        pic4:<br />
+<img src="http://dl.iteye.com/upload/attachment/0063/3493/1d152b46-b876-3979-87da-fd6c34ff6e35.png" alt="" width="228" height="374" /><img style="line-height: 21px;" src="http://dl.iteye.com/upload/attachment/0063/3495/10901cf7-c601-3e73-b73d-07f6d651b5b7.png" alt="" width="237" height="374" /></p>
+
+<blockquote><p><span style="color: #ff0000;">3、scaleType=“fitStart”</span><br />
+<span style="color: #ff0000;">如图pic5、pic6。</span><br />
+<span style="color: #ff0000;">是将原图沿左上角的点（即matrix方式绘图开始的点），按比例缩放原图绘制而成的。</span></p></blockquote>
+
+<p>pic5：                          pic6:<br />
+<img src="http://dl.iteye.com/upload/attachment/0063/3497/17ac7fa1-641c-3b1f-a5bb-fdfa9c131182.png" alt="" width="220" height="367" /> <img style="line-height: 21px;" src="http://dl.iteye.com/upload/attachment/0063/3499/689b6640-ff87-3e8e-a280-d77d1e0bfb5d.png" alt="" width="224" height="371" /></p>
+
+<blockquote><p><span style="color: #ff0000;">4、scaleType=“fitCenter”</span><br />
+<span style="color: #ff0000;">如图pic7、pic8。</span><br />
+<span style="color: #ff0000;">是将原图沿上方居中的点（即matrix方式绘图第一行的居中的点），按比例缩放原图绘制而成的。</span></p></blockquote>
+
+<p>pic7:                           pic8:<br />
+<img src="http://dl.iteye.com/upload/attachment/0063/3501/1420dd69-1155-3966-8a84-8115db03fc5a.png" alt="" width="235" height="375" />  <img style="line-height: 21px;" src="http://dl.iteye.com/upload/attachment/0063/3503/e73ce939-6d2a-3806-a0e1-72c452c71909.jpg" alt="" width="239" height="378" /></p>
+
+<blockquote><p><span style="color: #ff0000;">5、scaleType=“fitEnd”</span><br />
+<span style="color: #ff0000;">如图pic9、pic10。、</span><br />
+<span style="color: #ff0000;">是将原图沿下方居中的点（即matrix方式绘图最后一行的居中的点），按比例缩放原图绘制而成的。</span></p></blockquote>
+
+<p>pic9:                           pic10:<br />
+<img src="http://dl.iteye.com/upload/attachment/0063/3505/b543a21d-41ba-3be2-b2ad-d10adeea1d91.png" alt="" width="233" height="366" />  <img style="line-height: 21px;" src="http://dl.iteye.com/upload/attachment/0063/3507/c256d519-5615-3c1b-b972-e4d21746c543.png" alt="" width="230" height="372" /></p>
+
+<blockquote><p><span style="color: #ff0000;">6、scaleType=“Center”</span><br />
+<span style="color: #ff0000;">如图pic11、pic12。</span><br />
+<span style="color: #ff0000;">是保持原图大小，以原图的几何中心点和ImagView的几何中心点为基准，只绘制ImagView大小的图像。</span></p></blockquote>
+
+<p>pic11:                           pic12<br />
+<img src="http://dl.iteye.com/upload/attachment/0063/3509/87fbcda8-b6a6-3302-9fef-6dea0efd87a2.png" alt="" width="251" height="376" />   <img style="line-height: 21px;" src="http://dl.iteye.com/upload/attachment/0063/3511/2e1c2a0d-0ebb-3995-8daf-0d789e534f2a.png" alt="" width="207" height="367" /></p>
+
+<blockquote><p><span style="color: #ff0000;">7、scaleType=“centerCrop”</span><br />
+<span style="color: #ff0000;">如图pic13、pic14。</span><br />
+<span style="color: #ff0000;">不保持原图大小，以原图的几何中心点和ImagView的几何中心点为基准，只绘制ImagView大小的图像（以填满</span><br />
+<span style="color: #ff0000;">ImagView为目标，对原图进行裁剪）。</span></p></blockquote>
+
+<p>pic13:                               pic14:<br />
+<img src="http://dl.iteye.com/upload/attachment/0063/3513/c49ab572-e827-3baf-a705-40d903aa98fe.png" alt="" width="233" height="377" />    <img style="line-height: 21px;" src="http://dl.iteye.com/upload/attachment/0063/3515/bd8a82d3-6676-3b8e-9508-f94885d25f4a.png" alt="" width="216" height="379" /></p>
+
+<blockquote><p><span style="color: #ff0000;">8、scaleType=“centerInside”</span><br />
+<span style="color: #ff0000;">如图pic15、pic16.</span><br />
+<span style="color: #ff0000;">不保持原图大小，以原图的几何中心点和ImagView的几何中心点为基准，只绘制ImagView大小的图像（以显示</span><br />
+<span style="color: #ff0000;">完整图片为目标，对原图进行缩放）。</span></p></blockquote>
+
+<p>pic15:                          pic16:<br />
+<img src="http://dl.iteye.com/upload/attachment/0063/3517/1181d059-8f09-33ae-abfe-e64113c074d0.png" alt="" width="231" height="376" />    <img style="line-height: 21px;" src="http://dl.iteye.com/upload/attachment/0063/3519/dc2a7ef4-5f2f-3f05-bc9e-ea54f68d6e41.png" alt="" width="225" height="382" /></p>
+
+<p>&nbsp;</p>
+
+<p>(事实证明，adjustViewBonds单独设置无影响。)</p>
+
+<p>依本人之见，scaletype的种类分为三类matrix（默认）、fit-X类、和center类。matrix就不多说。fit-X类中，<br />
+fitStart、fitCenter和fitEnd之间的都是根据需要使原图改变对ImgView进行适应，按matrix进行绘制，但它们<br />
+的区别在于基准不同。fitStart的基准为最上角的点（即matrix方式开始的点）fitCenter的基准点为中间的点<br />
+（matrix方式中可以使图片居中的点），而fitEnd的基准点为右下角的点（即matrix方式最后绘制点）。center类<br />
+中，center、centerCrop、centerInside都是以原图的几何中心点和ImagView的几何中心点为基准，且只绘制<br />
+ImagView大小的图像，不同的是是否保持原图大小和绘图的目标不同、采取的手段不同。</p>
+
+<p>文献参考：http://juliaailse.iteye.com/blog/1409317</p>
+
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

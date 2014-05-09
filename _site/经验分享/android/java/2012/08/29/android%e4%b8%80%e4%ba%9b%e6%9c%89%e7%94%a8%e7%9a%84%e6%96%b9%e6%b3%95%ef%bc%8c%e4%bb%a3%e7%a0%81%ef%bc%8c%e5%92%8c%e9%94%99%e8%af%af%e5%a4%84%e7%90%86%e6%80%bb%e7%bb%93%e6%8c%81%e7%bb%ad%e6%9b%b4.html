@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>android一些有用的方法，代码，和错误处理总结(持续更新)</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Byronlee</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>android一些有用的方法，代码，和错误处理总结(持续更新)</h2>
+<p class="meta">29 Aug 2012</p>
+
+<div class="post">
+<p>在开发的过程中，难免有些问题重复出现，然后有略有些忘记，所以准备写这边一篇博客，持续更新，以便查阅：</p>
+
+<p><strong><span style="color: #ff0000;"> 1.屏幕截图，把View转换成Bitmap</span></strong></p>
+
+<pre class="brush: actionscript3; gutter: true">/**
+* 把一个View的对象转换成bitmap
+*/
+//如果你传的 view 是一个布局的 view 比如（LinearLayout） 就可以实现整个屏幕的截图了
+static Bitmap getViewBitmap(View v) {
+  v.clearFocus();
+   v.setPressed(false);
+//能画缓存就返回false
+boolean willNotCache = v.willNotCacheDrawing();
+v.setWillNotCacheDrawing(false);
+int color = v.getDrawingCacheBackgroundColor();
+v.setDrawingCacheBackgroundColor(0);
+if (color != 0) {
+    v.destroyDrawingCache();
+}
+v.buildDrawingCache();
+Bitmap cacheBitmap = v.getDrawingCache();
+if (cacheBitmap == null) {
+    Log.e(TAG, &quot;failed getViewBitmap(&quot; + v + &quot;)&quot;, new
+
+    RuntimeException());
+    return null;
+}
+Bitmap bitmap = Bitmap.createBitmap(cacheBitmap);
+// Restore the view
+v.destroyDrawingCache();
+v.setWillNotCacheDrawing(willNotCache);
+v.setDrawingCacheBackgroundColor(color);
+return bitmap;
+}</pre>
+
+<p>//现在对 android 的 组件的 cache 机制讲解一下：<br />
+View组件显示的内容可以通过cache机制保存为bitmap, 使用到的api有</p>
+
+<p>&nbsp;</p>
+
+<pre class="brush: actionscript3; gutter: true">&lt;span style=&quot;color: #ff0000;&quot;&gt;void setDrawingCacheEnabled(boolean flag),&lt;/span&gt;
+
+&lt;span style=&quot;color: #ff0000;&quot;&gt;Bitmap getDrawingCache(boolean autoScale),&lt;/span&gt;
+
+&lt;span style=&quot;color: #ff0000;&quot;&gt;void buildDrawingCache(boolean autoScale),&lt;/span&gt;
+
+&lt;span style=&quot;color: #ff0000;&quot;&gt;void destroyDrawingCache()&lt;/span&gt;</pre>
+
+<p><span style="color: #ff0000;"><br />
+</span></p>
+
+<p>我们要获取它的cache先要通过setDrawingCacheEnable方法把cache开启，然后再调用getDrawingCache方法就可以获得view的cache图片了。buildDrawingCache方法可以不用调用，因为调用getDrawingCache方法时，若果cache没有建立，系统会自动调用buildDrawingCache方法生成cache。若果要更新cache, 必须要调用destoryDrawingCache方法把旧的cache销毁，才能建立新的。</p>
+
+<p>当调用setDrawingCacheEnabled方法设置为false, 系统也会自动把原来的cache销毁。</p>
+
+<p>ViewGroup在绘制子view时，而外提供了两个方法</p>
+
+<p>void setChildrenDrawingCacheEnabled(boolean enabled)</p>
+
+<p>setChildrenDrawnWithCacheEnabled(boolean enabled)</p>
+
+<p>setChildrenDrawingCacheEnabled方法可以使viewgroup里所有的子view开启cache, setChildrenDrawnWithCacheEnabled使在绘制子view时，若该子view开启了cache, 则使用它的cache进行绘制，从而节省绘制时间。</p>
+
+<p>获取cache通常会占用一定的内存，所以通常不需要的时候有必要对其进行清理，通过destroyDrawingCache或setDrawingCacheEnabled(false)实现。</p>
+
+<p><span style="color: #ff0000;">2. Stream转换成Byte</span></p>
+
+<pre class="brush: actionscript3; gutter: true">Stream转换成Byte
+static byte[] streamToBytes(InputStream is) {
+ByteArrayOutputStream os = new ByteArrayOutputStream(1024);
+byte[] buffer = new byte[1024];
+int len;
+try {
+   while ((len = is.read(buffer)) &gt;= 0) {
+   os.write(buffer, 0, len);
+}
+} catch (java.io.IOException e) {
+
+}
+   return os.toByteArray();
+}</pre>
+
+<p><span style="color: #ff0000;">3.读取raw资源文件中的mp3文件，然后通过音乐播放器播放：</span></p>
+
+<pre class="brush: actionscript3; gutter: true">读取raw资源文件中的mp3文件，然后通过音乐播放器播放：
+
+/**
+* 把mp3文件写入卡
+*
+* @param fileName
+* 输出的文件名（全路径）
+* @param context
+* context对象
+*/
+private void writeMP3ToSDcard(String fileName, Context context) {
+byte[] buffer = new byte[1024 * 8];
+int read;
+BufferedInputStream bin = new BufferedInputStream(context.getResources().openRawResource
+
+(R.raw.ring));
+try {
+  BufferedOutputStream bout = new        BufferedOutputStream(new
+
+   FileOutputStream(fileName));
+while ((read = bin.read(buffer)) &gt; -1) {
+bout.write(buffer, 0, read);
+}
+  bout.flush();
+   bout.close();
+  bin.close();
+} catch (FileNotFoundException e) {
+e.printStackTrace();
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+
+Intent intent = new Intent();
+intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+intent.setAction(android.content.Intent.ACTION_VIEW);
+intent.setDataAndType(Uri.fromFile(newFile(&quot;XXXXmp3的文件全路径&quot;
+
+)),&quot;audio/*&quot;);
+startActivity(intent);</pre>
+
+<p><span style="color: #ff0000;">4. getSharedPreferences 与 getPreferences 的区别。</span></p>
+
+<blockquote><p>getSharedPreferences是Context类中的方法，可以指定file name 以及 mode。</p>
+<p>getPreferences是Activity类中的方法，只需指定mode</p></blockquote>
+
+<p><span style="color: #ff0000;">5.scrollview 滚动到顶部</span></p>
+
+<pre class="brush: actionscript3; gutter: true">scrollView.post(new Runnable() {
+
+@Override
+public void run() {
+scrollView.scrollTo(0,0);
+}
+
+});</pre>
+
+<p><span style="color: #ff0000;">6.Android AlertDialog详解</span></p>
+
+<p align="left">一个对话框一般是一个出现在当前Activity之上的一个小窗口. <span style="color: #ff0000;">处于下面的Activity失去焦点, </span>对话框接受所有的用户交互. 对话框一般用于提示信息和与当前应用程序直接相关的小功能.<br />
+<span style="color: #ff0000;">对话框对象种类:</span><br />
+<span style="color: #ff0000;">警告对话框AlertDialog:</span> <wbr> 一个可以有0到3个按钮, 一个单选框或复选框的列表的对话框. 警告对话框可以创建大多数的交互界面, 是推荐的类型.<br />
+<span style="color: #ff0000;">进度对话框ProgressDialog:</span> <wbr> 显示一个进度环或者一个进度条. 由于它是AlertDialog的扩展, 所以它也支持按钮.<br />
+<span style="color: #ff0000;">日期选择对话框DatePickerDialog: </span><wbr> 让用户选择一个日期.<br />
+<span style="color: #ff0000;">时间选择对话框TimePickerDialog: </span><wbr> 让用户选择一个时间.<br />
+如果你希望自定义你的对话框, 可以扩展Dialog类.<br />
+<span style="color: #ff0000;">Showing a Dialog 显示对话框</span><br />
+<strong>一个对话框总是被创建和显示为一个Activity的一部分. 你应该在Activity的onCreateDialog(int)中创建对话框. 当你使用这个回调函数时,Android系统自动管理每个对话框的状态并将它们和Activity连接, 将Activity变为对话框的"所有者". 这样,每个对话框从Activity继承一些属性. 例如,当一个对话框打开时, MENU键会显示Activity的菜单, 音量键会调整Activity当前使用的音频流的音量.</strong><br />
+注意: 如果你希望在onCreateDialog()方法之外创建对话框, 它将不会依附在Activity上. 你可以使用<span style="color: #ff0000;">setOwnerActivity(Activity)来将它依附在Activity上.</span><br />
+当你希望显示一个对话框时, 调用showDialog(int)并将对话框的id传给它.<br />
+当一个对话框第一次被请求时,Android调用onCreateDialog(int). 这里是你初始化对话框的地方. 这个回调函数传入的id和showDialog(int)相同. 创建对话框之后,将返回被创建的对象.<br />
+在对话框被显示之前,Android还会调用onPrepareDialog(int, Dialog). 如果你希望每次显示对话框时有动态更改的内容, 那么就改写这个函数. 该函数在每次一个对话框打开时都调用. 如果你不定义该函数,则对话框每次打开都是一样的. 该函数也会传入对话框的id以及你在onCreateDialog()中创建的Dialog对象.<br />
+最好的定义onCreateDialog(int) 和onPrepareDialog(int, Dialog) 的方法就是使用一个switch语句来检查传入的id. 每个case创建相应的对话框. 例如, 一个游戏使用两个对话框: 一个来指示游戏暂停,另一个指示游戏结束. 首先, 为它们定义ID:static final int DIALOG_PAUSED_ID = 0;<br />
+static final int DIALOG_GAMEOVER_ID = 1; <wbr><br />
+然后, 在onCreateDialog(int)中加入一个switch语句:</wbr></wbr></wbr></wbr></wbr></p>
+
+<pre class="brush: actionscript3; gutter: true">protected Dialog onCreateDialog(int id) {
+   Dialog dialog;
+   switch(id) {
+   case DIALOG_PAUSED_ID:
+       // do the work to define the pause Dialog
+       break;
+   case DIALOG_GAMEOVER_ID:
+       // do the work to define the game over Dialog
+       break;
+   default:
+       dialog = null;
+   }
+   return dialog;
+}</pre>
+
+<p>注意: 在这个例子中, case语句为空因为定义Dialog的程序在后面会有介绍.<br />
+在需要显示对话框是, 调用showDialog(int), 传入对话框的id:<br />
+showDialog(DIALOG_PAUSED_ID);Dismissing a Dialog 解除对话框<br />
+当你准备关闭对话框时, 你可以使用dismiss()函数. 如果需要的话, 你也可以从Activity调用dismissDialog(int), 二者效果是一样的.<br />
+如果你使用onCreateDialog(int)来管理你的对话框的状态, 那么每次你的对话框被解除时, 该对话框对象的状态会被Activity保存. 如果你决定你不再需要这个对象或者需要清除对话框的状态, 那么你应该调用 removeDialog(int). 这将把所有该对象的内部引用移除, 如果该对话框在显示的话将被解除.<br />
+Using dismiss listeners 使用解除监听器<br />
+如果你希望在对话框解除时运行某些程序, 那么你应该给对话框附加一个解除监听器.<br />
+首先定义DialogInterface.OnDismissListener接口. 这个接口只有一个方法, onDismiss(DialogInterface), 该方法将在对话框解除时被调用.<br />
+然后将你的OnDismissListener实现传给setOnDismissListener().<br />
+然而,注意对话框也可以被"取消". 这是一个特殊的情形, 它意味着对话框被用户显式的取消掉. 这将在用户按下"back"键时,或者对话框显式的调用cancel()(按下对话框的cancel按钮)时发生. 当一个对话框被取消时, OnDismissListener将仍然被通知, 但如果你希望在对话框被显示取消(而不是正常解除)时被通知, 则你应该使用setOnCancelListener()注册一个DialogInterface.OnCancelListener.<br />
+Creating an AlertDialog 创建警告对话框<br />
+An AlertDialog is an extension of the Dialog class. It is capable of constructing most dialog user interfaces and is the suggested dialog type. You should use it for dialogs that use any of the following features:<br />
+一个警告对话框是对话框的一个扩展. 它能够创建大多数对话框用户界面并且是推荐的对话框类新星. 对于需要下列任何特性的对话框,你都应该使用它:<br />
+一个标题<br />
+一条文字消息<br />
+1个-3个按钮<br />
+一个可选择的列表(单选框或者复选框)<br />
+要创建一个AlertDialog, 使用AlertDialog.Builder子类. 使用AlertDialog.Builder(Context)来得到一个Builder, 然后使用该类的公有方法来定义AlertDialog的属性. 设定好以后, 使用create()方法来获得AlertDialog对象.<br />
+下面的主题展示了如何为AlertDialog定义不同的属性, 使用AlertDialog.Builder类. 如果你使用这些示例代码, 你可以在onCreateDialog()中返回最后的Dialog对象来获得图片中对话框的效果.<br />
+Adding buttons 增加按钮</p>
+
+<p>&nbsp;</p>
+
+<p><span style="color: #ff0000;">7. android 在有对话框的情况下，响应 activity 的返回键 （如何在alertdialog中响应  返回键）</span></p>
+
+<p>我有一个activity，在其中只是弹出了一个alertdialog。这时候我需要能够响应到一些按键操作。比如说 back按键。这时候我需要使用的是alertdialog.setOnKeyListener()来监听back按键。(<span style="color: #ff0000;">此时在activity中重载onKeyDown()是响应不到back按键的，因为alertdialog是模态的，阻塞了按键消息的传递，一个对话框一般是一个出现在当前Activity之上的一个小窗口. 处于下面的Activity失去焦点 </span>)但是我现在想在这样的情况下响应 back 按键,少说废话，上代码：</p>
+
+<p>&nbsp;</p>
+
+<pre class="brush: actionscript3; gutter: true">AlertDialog dialog;
+dialog= new AlertDialog.Builder(LoadingActivity.this)
+.setView(layout).show();
+
+dialog.setOnKeyListener(new OnKeyListener(){
+  public boolean onKey(DialogInterface arg0,
+
+int keyCode, KeyEvent arg2) {
+ if (keyCode == KeyEvent.KEYCODE_BACK) {
+  dialog.dismiss();
+ finish();
+ }
+return true;
+}} );        问题解决！！</pre>
+
+<blockquote><p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: #ff0000;">8. 手机屏幕截图：</span></p></blockquote>
+
+<p>&nbsp;</p>
+
+<pre class="brush: actionscript3; gutter: true">/**
+* 获取和保存当前屏幕的截图
+*/
+private Bitmap GetandSaveCurrentImage()
+{
+//1.构建Bitmap
+WindowManager windowManager = getWindowManager();
+Display display = windowManager.getDefaultDisplay();
+int w = display.getWidth();
+int h = display.getHeight();
+Bitmap Bmp = Bitmap.createBitmap( w, h, Config.ARGB_8888 );
+//2.获取屏幕
+View decorview = this.getWindow().getDecorView();
+decorview.setDrawingCacheEnabled(true);
+Bmp = decorview.getDrawingCache();
+return Bmp;
+}</pre>
+
+<p>&nbsp;</p>
+
+<p><span style="color: #ff0000;">9. 获取SDCard的目录路径功能  </span></p>
+
+<pre class="brush: actionscript3; gutter: true">/**
+* 获取SDCard的目录路径功能
+* @return
+*/
+private String getSDCardPath(){
+File sdcardDir = null;
+//判断SDCard是否存在
+boolean sdcardExist = Environment.getExternalStorageState()
+
+.equals(android.os.Environment.MEDIA_MOUNTED);
+
+if(sdcardExist){
+sdcardDir = Environment.getExternalStorageDirectory();
+}
+return sdcardDir.toString();
+}</pre>
+
+<p><span style="color: #ff0000;">10  给图片加水印</span></p>
+
+<pre class="brush: actionscript3; gutter: true">// 给图片添加水印
+private Bitmap createBitmap(Bitmap src, String str) {
+Time t = new Time();
+t.setToNow();
+int w = src.getWidth();
+int h = src.getHeight();
+String mstrTitle = &quot;截图时间：&quot;+t.hour + &quot;:&quot; + t.minute
+
++ &quot;:&quot; + t.second;
+Bitmap bmpTemp = Bitmap.createBitmap(w, h,
+
+Config.ARGB_8888);
+Canvas canvas = new Canvas(bmpTemp);
+Paint p = new Paint();
+String familyName = &quot;宋体&quot;;
+Typeface font = Typeface.create(familyName,
+
+Typeface.BOLD);
+p.setColor(Color.BLUE);
+p.setTypeface(font);
+p.setTextSize(22);
+canvas.drawBitmap(src, 0, 0, p);
+canvas.drawText(mstrTitle, 0, 20, p);
+canvas.save(Canvas.ALL_SAVE_FLAG);
+canvas.restore();
+return bmpTemp;
+}</pre>
+
+<p><span style="color: #ff0000;">11. 开启前置 摄像头</span></p>
+
+<pre class="brush: actionscript3; gutter: true">// 要提示用户 2.3 版本以上的 才能支持 前置摄像头
+&lt;span style=&quot;color: #ff0000;&quot;&gt;int cameraCount = 0; &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;Camera.CameraInfo cameraInfo = new Camera.&lt;/span&gt;
+
+&lt;span style=&quot;color: #ff0000;&quot;&gt;CameraInfo(); &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;cameraCount =&lt;/span&gt;
+
+&lt;span style=&quot;color: #ff0000;&quot;&gt;Camera.getNumberOfCameras(); // get cameras number &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;for ( int camIdx = 0; camIdx &amp;lt; cameraCount;camIdx++ ) { &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;Camera.getCameraInfo( camIdx,&lt;/span&gt;
+
+&lt;span style=&quot;color: #ff0000;&quot;&gt;cameraInfo ); // get camerainfo &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;if ( cameraInfo.facing ==Camera.CameraInfo.&lt;/span&gt;
+
+&lt;span style=&quot;color: #ff0000;&quot;&gt;CAMERA_FACING_FRONT ) { // 代表摄像头的方位，目前有定义值两个分别为CAMERA_FACING_FRONT前置和CAMERA_FACING_BACK后置 &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;try { &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;camera = Camera.open( camIdx ); &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;} catch (RuntimeException e) { &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;e.printStackTrace(); &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;} &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;} &lt;/span&gt;
+&lt;span style=&quot;color: #ff0000;&quot;&gt;}&lt;/span&gt;
+System.out.println(Build.VERSION.SDK_INT);
+// camera=Camera.open();     这是开启后置摄像头，  把注视去掉，把红色的代码去掉 就开启了 后置摄像头
+Camera.Parameters parameters=camera.getParameters();
+parameters.setPictureFormat(PixelFormat.JPEG);
+parameters.setPreviewSize(320, 240);
+parameters.setPictureSize(320, 240);
+camera.setParameters(parameters);
+camera.startPreview();//开始预览</pre>
+
+<p><span style="color: #ff0000;">12. 保存图片</span></p>
+
+<pre class="brush: actionscript3; gutter: true">//保存Bitmap
+try {
+File path = new File(SavePath);
+//文件
+String filepath = SavePath + &quot;/Screen_1.png&quot;;
+File file = new File(filepath);
+if(!path.exists()){
+path.mkdirs();
+}
+if (!file.exists()) {
+file.createNewFile();
+}
+
+FileOutputStream fos = null;
+fos = new FileOutputStream(file);
+if (null != fos) {
+Bmp.compress(Bitmap.CompressFormat.PNG, 90, fos);
+fos.flush();
+fos.close();
+
+Toast.makeText(mContext, &quot;截屏文件已保存至
+
+SDCard/AndyDemo/ScreenImage/下&quot;, Toast.LENGTH_LONG).show();
+}
+
+} catch (Exception e) {
+e.printStackTrace();
+}</pre>
+
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

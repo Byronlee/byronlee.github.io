@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Android BroadcastReceiver 两种注册方式区别</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Byronlee</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Android BroadcastReceiver 两种注册方式区别</h2>
+<p class="meta">26 Jul 2012</p>
+
+<div class="post">
+<p>第一种事静态注册，第二种事动态注册：</p>
+
+<p>静态注册，是使用：</p>
+
+<blockquote><p>registerReceiver("你注册BroadcastReceiver的对象", new IntentFilter(<br />
+WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));// 注册广播</p></blockquote>
+<p>静态注册是在xml中声明：</p>
+<blockquote><p>
+  receiver android:name="MyBroadcastReciever"><br />
+            intent -filter><br />
+                action android:name="ABC"><br />
+            /intent>  </p>
+</blockquote>
+
+<p>动态注册和静态注册一个BroadcastReceiver的区别：</p>
+
+<p>动态注册较静态注册灵活。实验证明：当静态注册一个BroadcastReceiver时，不论应用程序是启动与否。都可以接受对应的广播。</p>
+
+<p>动态注册的时候，如果不执行unregisterReceiver();方法取消注册，跟静态是一样的。但是如果执行该方法，当执行过以后，就不能接受广播了。</p>
+
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Ubuntu linux  下MongoDB+mViewer 安装详解 ，唉，弄了好久！</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Byronlee</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Ubuntu linux  下MongoDB+mViewer 安装详解 ，唉，弄了好久！</h2>
+<p class="meta">24 Oct 2012</p>
+
+<div class="post">
+<div>mongo 非关系型数据库，他的伟大就不说了，它是非关系型数据库中最接近关系型数据库的，它的图形界面管理，总体来说还是很少，其中做火的一个就是<a href="http://code.google.com/p/rock-php/">rockmongo</a>,但是安装的时候一直有什么包依赖问题，弄烦了，都没有安装起。觉得换一个：<a href="http://github.com/sbellity/futon4mongo">futon4mongo</a>， 安装起后呢，又不能新建数据库，唉，后来遇到 mViewer，唉，挺漂亮的决定用这个，于是就用起来了，对于mongo的图形管理工具可以参考 ：   <a href="http://blog.nosqlfan.com/html/213.html">MongoDB管理工具</a>， 现在我们来看 Ubuntu 下MongoDB+mViewer 安装详解：</div>
+
+<div></div>
+
+<div>都是官方教程：首先安装 mongodb:</div>
+
+<div></div>
+
+<div> 1. 添加密钥，在终端运行</div>
+
+<div></div>
+
+<div>
+<pre class="brush: actionscript3; gutter: true">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10</pre>
+</div>
+
+<div></div>
+
+<div>2.  添加源，打开/etc/apt/sources.list，添加</div>
+
+<div></div>
+
+<div>
+<pre class="brush: actionscript3; gutter: true">deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen</pre>
+</div>
+
+<div>
+<div> （这一步也可以 创建一个 文件  /etc/apt/sources.list.d/10gen.list 并添加：deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen，但是没有试过，但是是官方给出的）</div>
+<div></div>
+</div>
+
+<div>3.   确保密钥已经加上，运行</div>
+
+<div></div>
+
+<div>
+<pre class="brush: actionscript3; gutter: true">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10</pre>
+</div>
+
+<div></div>
+
+<div>4.   最后更新源，安装</div>
+
+<div></div>
+
+<div>
+<pre class="brush: actionscript3; gutter: true">sudo apt-get update
+sudo apt-get install mongodb-10gen</pre>
+</div>
+
+<div></div>
+
+<div>现在mongodb 就装好了，</div>
+
+<div></div>
+
+<div><span style="color: #ff0000;">注意：mongo的配置文件在：/etc/mongodb.conf 文件里</span></div>
+
+<div><span style="color: #ff0000;">           mongo的数据文件在：</span><span style="color: #ff0000;"><tt>/var/lib/mongodb  </tt></span></div>
+
+<div><span style="color: #ff0000;">           mongo的日志文件在：/var/log/mongodb</span></div>
+
+<div></div>
+
+<p>&nbsp;</p>
+
+<div></div>
+
+<div>装图形界面管理工具：mViewer, （java写的，所有必须装jdk：教程见我另一篇博文：<a href="http://www.ginchenorlee.com/?p=323">Ubuntu 12.04.1 下安装配置 JDK 7 笔者亲式</a>）</div>
+
+<div></div>
+
+<div>下载mViewer 安装包：<a href="https://github.com/Imaginea/mViewer/downloads" shape="rect" target="_blank">https://github.com/Imaginea/mViewer/downloads</a>  上对应的linux 版本</div>
+
+<div></div>
+
+<div><span style="color: #ff0000;">官方的这个运行脚本start_mViewer.sh 和那个配置文件脚本mViewer.properties 有问题</span>，改造方案：</div>
+
+<div>直接删除 mViewer.properties（他是设置端口号的）</div>
+
+<div>把 start_mViewer.sh 里面的内容替换成：</div>
+
+<div></div>
+
+<div>
+<pre class="brush: actionscript3; gutter: true">#!/bin/bash
+echo Using Http Port : 8080
+java -jar ./winstone-0.9.10.jar --httpPort=8080 --warfile=./mViewer.war</pre>
+<p>保存然后：</p>
+<pre class="brush: actionscript3; gutter: true">$ ./start_mViewer.sh</pre>
+<p>就可以访问： <a href="http://127.0.0.1:8080/index.html" shape="rect" target="_blank">http://127.0.0.1:8080/index.html</a></p>
+<p>一般默认情况下直接点Go 就可以了，但是有的不行，需要配置，在这之前首先要保证你的mongo 已经正常启动：</p>
+<p><span style="color: #ff0000;"> 启动：</span></p>
+<pre class="brush: actionscript3; gutter: true">sudo service mongodb start</pre>
+<p><span style="color: #ff0000;">关闭：</span></p>
+<pre class="brush: actionscript3; gutter: true">sudo service mongodb stop</pre>
+<p><span style="color: #ff0000;"> 重启：</span></p>
+<pre class="brush: actionscript3; gutter: true">sudo service mongodb restart</pre>
+<p><span style="color: #ff0000;"> 使用mongo终端：</span></p>
+<pre class="brush: actionscript3; gutter: true">mongo</pre>
+<p>通常我们使用 service mongodb start 会报错：</p>
+<pre class="brush: actionscript3; gutter: true">byronlee@byronlee:~$ service mongodb start
+start: Rejected send message, 1 matched rules; type=&quot;method_call&quot;, sender=&quot;:1.58&quot; (uid=1000 pid=5302 comm=&quot;start mongodb &quot;) interface=&quot;com.ubuntu.Upstart0_6.Job&quot; member=&quot;Start&quot; error name=&quot;(unset)&quot; requested_reply=&quot;0&quot; destination=&quot;com.ubuntu.Upstart&quot; (uid=0 pid=1 comm=&quot;/sbin/init&quot;)</pre>
+<p>【解决办法】<br />
+需要root权限才可以正常运行： $ sudo service mongodb start   就得一下结果：</p>
+<pre class="brush: actionscript3; gutter: true">byronlee@byronlee:~$ sudo service mongodb start
+mongodb start/running, process 5498</pre>
+<p>如果不能正常运行报错中有这么一句：</p>
+<pre class="brush: actionscript3; gutter: true">exception in initAndListen: 10296 dbpath (/data/db) does not exist, terminating</pre>
+<div>
+<p>则选择下面的方式之一启动：（我使用第一种 OK，其他没有试过但是是官方给出的）</p>
+<pre class="brush: actionscript3; gutter: true">mongod --config /etc/mongodb.conf       （指定配置文件途径）
+mongod -f /etc/mongodb.conf
+mongos --config /srv/mongodb/mongos.conf
+mongos -f /srv/mongodb/mongos.conf</pre>
+<p>好像有的时候我们登录mongo 的时候 还是提示 mongo 没有启动， 其实还可以这样指定启动 ：(指定途径）这也是我经常用的方式只要，问题原因是没有配置好，这个还没有研究，等我配置好了，再更新！！</p>
+<pre>$ mongod  --dbpath /var/lib/mongodb/data</pre>
+<div></div>
+<pre>参考文献：</pre>
+<p>MongoDB Configuration File Options ：<a href="http://docs.mongodb.org/manual/reference/configuration-options/">http://docs.mongodb.org/manual/reference/configuration-options/</a></p>
+<p>Install MongoDB on Ubuntu ：<a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/</a></p>
+</div>
+
+<p>mViewer：<a href="http://imaginea.github.com/mViewer/0.9/">http://imaginea.github.com/mViewer/0.9/</a></p>
+
+<p>最后推荐：  mongodb 模拟终端:</p>
+
+<p><a href="http://try.mongodb.org/" shape="rect" target="_blank">http://try.mongodb.org/</a>  模拟终端</p>
+
+<p>ok.   唉，弄了好久，不懂英语，翻译也是问题，不过还是看英文文档看懂了！！！！</p>
+
+<p>&nbsp;</p>
+
+<p></div></p>
+
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

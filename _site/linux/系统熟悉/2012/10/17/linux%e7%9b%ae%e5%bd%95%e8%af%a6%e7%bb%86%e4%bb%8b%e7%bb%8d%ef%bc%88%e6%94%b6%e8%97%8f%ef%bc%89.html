@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>linux目录详细介绍（收藏+自己探索）</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Byronlee</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>linux目录详细介绍（收藏+自己探索）</h2>
+<p class="meta">17 Oct 2012</p>
+
+<div class="post">
+<p>根文件系统</p>
+
+<p>通常情况下，根文件系统所占空间一般应该比较小，因为其中的绝大部分文件都不需要经常改动，而且包括严格的文件和一个小的不经常改变的文件系统不容易损坏。除了可能的一个叫/vmlinuz标准的系统引导映像之外，根目录一般不含任何文件。所有其他文件在根文件系统的子目录中。</p>
+
+<p><span style="color: #00ff00;">1. /bin目录</span></p>
+
+<p>/bin目录包含了引导启动所需的命令或普通用户可能用的命令(可能在引导启动后)。这些命令都是二进制文件的可执行程序(bin是binary -- 二进制的简称)，多是系统中重要的系统文件。</p>
+
+<p><span style="color: #00ff00;">2. /sbin目录</span></p>
+
+<p>/sbin目录类似/bin ，也用于存储二进制文件。因为其中的大部分文件多是系统管理员使用的基本的系统程序，所以虽然普通用户必要且允许时可以使用，但一般不给普通用户使用。</p>
+
+<p><span style="color: #00ff00;">3. /etc目录</span></p>
+
+<p>/etc目录存放着各种系统配置文件，其中包括了用户信息文件/etc/passwd，系统初始化文件/etc/rc等。Linux正是靠这些文件才得以正常地运行。</p>
+
+<p><span style="color: #ff0000;">      【注】    <span style="color: #000000;">e</span></span>tc 不是什么缩写， 是and so on的意思 来源于 法语的 et cetera翻译成中文就是 等等 的意思.至于为什么在/etc下面存放配置文件， 按照原始的UNIX的说法(linux文件结构参考UNIX的教学实现MINIX) 这下面放的都是一堆零零碎碎的东西， 就叫etc好了 哈哈 ，这其实是个历史遗留</p>
+
+<div><span style="color: #00ff00;">4. /root目录</span></div>
+
+<div></div>
+
+<div>/root 目录是超级用户的目录。</div>
+
+<div>
+<span style="color: #00ff00;">5. /lib目录</span></div>
+<div>
+/lib目录是根文件系统上的程序所需的共享库，存放了根文件系统程序运行所需的共享文件。这些文件包含了可被许多程序共享的代码，以避免每个程序都包含有相同的子程序的副本，故可以使得可执行文件变得更小，节省空间。</div>
+<div>
+<span style="color: #00ff00;">6. /lib/modules 目录</span></div>
+<div>
+/lib/modules 目录包含系统核心可加载各种模块，尤其是那些在恢复损坏的系统时重新引导系统所需的模块(例如网络和文件系统驱动)。</div>
+<div>
+<span style="color: #00ff00;">7. /dev目录</span></div>
+<div>
+/dev目录存放了<strong>设备</strong>文件，即设备驱动程序，用户通过这些文件访问外部设备。比如，用户可以通过访问/dev/mouse来访问鼠标的输入，就像访问其他文件一样。</div>
+<div>
+<span style="color: #00ff00;">8. /tmp目录</span></div>
+<div>
+/tmp 目录存放程序在运行时产生的信息和数据。但在引导启动后，运行的程序最好使用/var/tmp来代替/tmp ，因为前者可能拥有一个更大的磁盘空间。</div>
+<div>
+<span style="color: #00ff00;">9. /boot目录</span></div>
+<div>
+/boot 目录存放引导加载器(bootstrap loader)使用的文件，如LILO，核心映像也经常放在这里，而不是放在根目录中。但是如果有许多核心映像，这个目录就可能变得很大，这时使用单独的文件系统会更好一些。还有一点要注意的是，要确保核心映像必须在IDE硬盘的前1024柱面内。</div>
+<div>
+<span style="color: #00ff00;">10. /mnt目录</span></div>
+<div>
+/mnt目录是系统管理员临时安装(mount)文件系统的安装点。程序并不自动支持安装到/mnt 。/mnt 下面可以分为许多子目录，例如/mnt/dosa 可能是使用MS DOS文件系统的软驱，而 /mnt/exta 可能是使用ext 2文件系统的软驱，/mnt/cdrom 光驱等等。</div>
+<div></div>
+<div><span style="color: #00ff00;">11. /var目录</span></div>
+<div></div>
+<div>   这个目录中存放着那些不断在扩充着的东西，为了保持/usr的相对稳定，那些经常被修改的目录可以放在这个目录下，实际上许多系统管理员都是这样干的。顺带说一下系统的日志文件就在/var/log目录中。</div>
+<div></div>
+<div><span style="color: #00ff00;">12. usr目录</span></div>
+<div></div>
+<div>这是个最庞大的目录，我们要用到的很多应用程序和文件几乎都存放在这个目录下。具体来说：</div>
+<div></div>
+<div> /usr/bin   存放着许多应用程序；<br />
+/usr/sbin   给超级用户使用的一些管理程序就放在这；<br />
+/usr/doc   这就是LINUX文档的大本营；<br />
+/usr/include LINUX下开发和编译应用程序需要的头文件，在这找；<br />
+/usr/lib   存放一些常用的动态链接共享库和静态档案库；<br />
+/usr/local   这是提供给一般用户的/usr目录，在这安装软件最适合；<br />
+/usr/man   man是什么，对了是帮助。这里就是帮助文档目录啊！<br />
+/usr/src   LINUX开放的源代码，就存在这个目录，爱好者们别放过哦！</div>
+<div></div>
+<div><span style="color: #00ff00;">/home目录，</span>用户主目录</div>
+<div>其他文件系统的安装点。</div>
+<div><span style="color: #ff0000;">下面详细介绍</span></div>
+<div></div>
+<div></div>
+<div><span style="color: #000000;"><strong>/etc文件系统</strong></span></div>
+<div></div>
+<div></div>
+<div>/etc 目录包含各种系统配置文件，下面说明其中的一些。其他的你应该知道它们属于哪个程序，并阅读该程序的man页。许多网络配置文件也在/etc 中。</div>
+<div></div>
+<div><span style="color: #00ff00;">1. /etc/rc或/etc/rc.d或/etc/rc?.d</span></div>
+<div>
+启动、或改变运行级时运行的脚本或脚本的目录。</div>
+<div>
+<span style="color: #00ff00;">2. /etc/passwd</span></div>
+<div>
+用户数据库，其中的域给出了用户名、真实姓名、用户起始目录、加密口令和用户的其他信息。</div>
+<div>
+<span style="color: #00ff00;">3. /etc/fdprm</span></div>
+<div>
+软盘参数表，用以说明不同的软盘格式。可用setfdprm 进行设置。更多的信息见setfdprm的帮助页。</div>
+<div>
+<span style="color: #00ff00;">4. /etc/fstab</span></div>
+<div>
+指定启动时需要自动安装的文件系统列表。也包括用swapon -a启用的swap区的信息。</div>
+<div>
+<span style="color: #00ff00;">5. /etc/group</span></div>
+<div>
+类似/etc/passwd ，但说明的不是用户信息而是组的信息。包括组的各种数据。</div>
+<div>
+<span style="color: #00ff00;">6. /etc/inittab</span></div>
+<div>
+init 的配置文件。</div>
+<div>
+<span style="color: #00ff00;">7. /etc/issue</span></div>
+<div>
+包括用户在登录提示符前的输出信息。通常包括系统的一段短说明或欢迎信息。具体内容由系统管理员确定。</div>
+<div>
+<span style="color: #00ff00;">8. /etc/magic</span></div>
+<div>
+“file”的配置文件。包含不同文件格式的说明，“file”基于它猜测文件类型。</div>
+<div>
+<span style="color: #00ff00;">9. /etc/motd</span></div>
+<div>
+motd是Message Of The Day的缩写，用户成功登录后自动输出。内容由系统管理员确定。<br />
+常用于通告信息，如计划关机时间的警告等。</div>
+<div>
+<span style="color: #00ff00;">10. /etc/mtab</span></div>
+<div>
+当前安装的文件系统列表。由脚本(scritp)初始化，并由mount 命令自动更新。当需要一个当前安装的文件系统的列表时使用(例如df 命令)。</div>
+<div>
+<span style="color: #00ff00;">11. /etc/shadow</span></div>
+<div>
+在安装了影子(shadow)口令软件的系统上的影子口令文件。影子口令文件将/etc/passwd文件中的加密口令移动到/etc/shadow中，而后者只对超级用户(root)可读。这使破译口令更困难，以此增加系统的安全性。</div>
+<div>
+<span style="color: #00ff00;">12. /etc/login.defs</span></div>
+<div>
+login命令的配置文件。</div>
+<div>
+<span style="color: #00ff00;">13. /etc/printcap</span></div>
+<div>
+类似/etc/termcap ，但针对打印机。语法不同。</div>
+<div>
+<span style="color: #00ff00;">14. /etc/profile 、/etc/csh.login、/etc/csh.cshrc</span></div>
+<div>
+登录或启动时Bourne或C shells执行的文件。这允许系统管理员为所有用户建立全局缺省环境。</div>
+<div>
+<span style="color: #00ff00;">15. /etc/securetty</span></div>
+<div>
+确认安全终端，即哪个终端允许超级用户(root)登录。一般只列出虚拟控制台，这样就不可能(至少很困难)通过<strong>调制解调器</strong>(modem)或网络闯入系统并得到超级用户特权。</div>
+<div>
+<span style="color: #00ff00;">16. /etc/shells</span></div>
+<div>
+列出可以使用的shell。chsh 命令允许用户在本文件指定范围内改变登录的shell。提供一台机器FTP服务的服务进程ftpd 检查用户shell是否列在/etc/shells 文件中，如果不是，将不允许该用户登录。</div>
+<div>
+<span style="color: #00ff00;">17. /etc/termcap</span></div>
+<div>
+终端性能数据库。说明不同的终端用什么“转义序列”控制。写程序时不直接输出转义序列(这样只能工作于特定品牌的终端)，而是从/etc/termcap 中查找要做的工作的正确序列。<br />
+这样，多数的程序可以在多数终端上运行。</div>
+<div>
+<p><span style="color: #ff0000;"> /dev文件系统</span></p>
+<p>/dev 目录包括所有设备的设备文件。设备文件用特定的约定命名，这在设备列表中说明。<br />
+设备文件在安装时由系统产生，以后可以用/dev/MAKEDEV 描述。/dev/MAKEDEV.local 是系统管理员为本地设备文件 (或连接)写的描述文稿(即如一些非标准设备驱动不是标准MAKEDEV 的一部分)。下面简要介绍/dev下一些常用文件。<br />
+<span style="color: #00ff00;">1. /dev/console</span></p>
+<p>系统控制台，也就是直接和系统连接的监视器。</p>
+<p><span style="color: #00ff00;">2. /dev/hd</span></p>
+<p>I D E 硬盘驱动程序接口。如：/dev/hda指的是第一个硬盘， had1则是指/dev/hda的第一个分区。如系统中有其他的硬盘，则依次为/dev/hdb、/dev/hdc、. . . . . .；如有多个分区则依次为 hda1、hda2 . . . . .</p>
+<p><span style="color: #00ff00;">3. /dev/sd</span></p>
+<p>SCSI磁盘驱动程序接口。如有系统有SCSI硬盘，就不会访问/dev/had，而会访问/dev/sda。</p>
+<p><span style="color: #00ff00;">4. /dev/fd</span></p>
+<p>软驱设备驱动程序。如：/dev/fd0指系统的第一个软盘，也就是通常所说的A：盘，/dev/fd1指第二个软盘，. . . . . .而/dev/fd1H1440则表示访问驱动器1中的4.5高密盘。</p>
+<p><span style="color: #00ff00;">5. /dev/st</span></p>
+<p>SCSI磁带驱动器驱动程序。</p>
+<p><span style="color: #00ff00;">6. /dev/tty</span></p>
+<p>提供虚拟控制台支持。如：/dev/tty1指的是系统的第一个虚拟控制台，/dev/tty2则是系统的第二个虚拟控制台。</p>
+<p><span style="color: #00ff00;">7. /dev/pty</span></p>
+<p>提供远程登陆伪终端支持。在进行Te l n e t登录时就要用到/dev/pty设备。</p>
+<p><span style="color: #00ff00;">8. /dev/ttys</span></p>
+<p>计算机串行接口，对于D O S来说就是“COM1”口。</p>
+<p><span style="color: #00ff00;">9. /dev/cua</span></p>
+<p>计算机串行接口，与调制解调器一起使用的设备。</p>
+<p><span style="color: #00ff00;">10. /dev/null</span></p>
+<p>不断完善.......</p>
+</div>
+
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>
