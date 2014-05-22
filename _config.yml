@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
 permalink: /:categories/:year/:month/:day/:title 
@@ -9,14 +8,14 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
+title : Jekyll Bootstrap
 tagline: Site Tagline
 author :
-  name : Byronlee
-  email : lbyronlee@gmail.com
-  github : Byronlee
-  twitter : Ginchenorlee
+  name : Name Lastname
+  email : blah@email.test
+  github : username
+  twitter : username
   feedburner : feedname
-
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 

@@ -7,5 +7,3 @@ http://username.github.io/atom.xml
 http://username.github.io/categories.html
 http://username.github.io/sitemap.txt
 http://username.github.io/archive.html
-
-http://username.github.io/2014/04/11/Jquery_code_standard_summarize
