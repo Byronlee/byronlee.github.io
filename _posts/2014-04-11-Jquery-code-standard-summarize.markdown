@@ -1,5 +1,9 @@
-Jquery代码学习规范总结
-========================
+---
+layout: page
+title: Jquery代码学习规范总结
+header: Pages
+---
+{% include JB/setup %}
 
 ### 提纲
 
@@ -10,17 +14,29 @@ Jquery代码学习规范总结
 ### 如何开始Jquery代码
 
 我们常看见的代码的都开始如下：
-```js
+
+{% highlight js%}
 (function($){
   ...
 })(jQuery)
-```
+{% endhighlight %}
+
+{% highlight ruby %}
+def foo
+  p 'foo'
+end
+{% endhighlight %}
+
+
+
 实际上是匿名函数，不懂得朋友可以继续往下看。
 
 这里实际上是匿名函数 
+
 ```js
 function(arg){...}
 ```
+
 这就定义了一个匿名函数，参数为arg 
 
 而调用函数时，是在函数后面写上括号和实参的，由于操作符的优先级，函数本身也需要用括号，即：
