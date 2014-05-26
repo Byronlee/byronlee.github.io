@@ -2,43 +2,33 @@
 layout: home
 title: 在闹市中修行
 ---
-
-<div class="dashbord" ng-app>
-  <div class="user_infor">
-    <img src="/assets/images/avatar.png">
-    <h2> Hi, I'm Byronlee</h2>
-    <p>A full stack web development engineer in ChengDu, China.</p>
-    <p>
-        <i class="icon-facebook-sign"></i>
-        <i class="icon-twitter-sign"></i>
-        <i class="icon-github"></i>
-        <i class="icon-pinterest"></i>
-        <i class="icon-google-plus-sign"></i>
-    </p>
-    <div class="contact">
-        <button>Contact Me</button>
+<div class="dashbord" ng-app="myApp">
+    <div class="user_infor">
+        <img src="/assets/images/avatar.png">
+        <h2> Hi, I'm Byronlee</h2>
+        <p>A full stack web development engineer in ChengDu, China.</p>
+        <p>
+            <i class="icon-facebook-sign"></i>
+            <i class="icon-twitter-sign"></i>
+            <i class="icon-github"></i>
+            <i class="icon-pinterest"></i>
+            <i class="icon-google-plus-sign"></i>
+        </p>
+        <div class="contact">
+            <button>Contact Me</button>
+        </div>
+        <p class="language">
+            <a href="#" >中文</a>
+            <a href="#" >English</a>
+        </p>
+        <p class="description">
+            We all have moments of desperation. But if we can face them head on, that’s when we find out just how strong we really are
+        </p>
     </div>
-    <p class="language">
-        <a href="#" >中文</a>
-        <a href="#" >English</a>
-    </p>
-    <p class="description">
-        We all have moments of desperation. But if we can face them head on, that’s when we find out just how strong we really are
-    </p>
-  </div>
-  <div class="showcase" ng-controller="ShowCaseListCtrl">
-
-     <p ng-repeat="case in cases">
-         {{cases.length}}
-         {{cases}}
-       <span>{{case.content}}</span>
-     </p>
-  </div>
-
-    <div ng-controller="GreetingController">
-        {{ greeting }}
-        Your name: <input type="text" ng-model="yourname" placeholder="World">
-        <hr>
-        Hello {{yourname || 'World'}}!
+    <div class="showcase" ng-controller="ShowCaseListCtrl">
+        <p ng-repeat="case in cases">
+            <span>{(case.content)}</span>
+        </p>
     </div>
+
 </div>
