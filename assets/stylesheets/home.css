@@ -1,0 +1,43 @@
+.dashbord{
+    margin-top: 13%;
+}
+.dashbord .user_infor{
+    width: 50%;
+    float: left;
+    border-right: 1px solid #ddd;
+    text-align: center;
+}
+.dashbord .user_infor img{
+    width: 14em;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+.dashbord .contact button{
+    background: #fff;
+    border: 1px solid #ddd;
+    margin: 20px 0 20px;
+}
+.dashbord p.language a:first-child{
+    margin-right: 50px;
+}
+.dashbord p.language a:last-child{
+    color: #555;
+}
+.dashbord p.description{
+    width: 90%;
+    margin: 0 auto;
+}
+.dashbord .showcase{
+    width: 50%;
+    float: right;
+    padding: 80px 30px;
+    font-size: 17px;
+}
+.dashbord p:first-child{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}

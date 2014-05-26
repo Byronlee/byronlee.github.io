@@ -1,6 +1,7 @@
 permalink: /:categories/:year/:month/:day/:title 
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
+gems: ['jekyll-slim']
 
 highlighter: 'pygments'
 
@@ -17,9 +18,7 @@ production_url : http://www.ginchenorlee.com
 
 JB :
   version : 0.3.0
-
   BASE_PATH : false
-
   ASSET_PATH : false
 
   archive_path: /archive.html
