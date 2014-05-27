@@ -16,6 +16,8 @@
     <link href="{{ ASSET_PATH }}/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
     <link href="{{ ASSET_PATH }}/css/font-awesome.css" rel="stylesheet">
     <link href="/assets/stylesheets/home.css" rel="stylesheet">
+    <link href="/assets/stylesheets/archive.css" rel="stylesheet">
+    <link href="/assets/stylesheets/post.css" rel="stylesheet">
     <!--code highlighter-->
     <link href="/assets/stylesheets/syntax.css" rel="stylesheet">
     <!-- Custom styles -->
@@ -42,6 +44,7 @@
 <body>
 <div id="wrap">
     <div class="container">
+        {% include part/nav.html %}
         {{ content }}
     </div>
 </div>
