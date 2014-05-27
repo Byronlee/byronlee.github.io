@@ -215,12 +215,11 @@ $("#input1")　为一个jQuery实例，当它调用成员方法 alertWhileClick�
 ### 注意事项
 
 * ```jQuery(function(){ }); ```全写为
-  {% highlight js %}
+  * {% highlight js %}
     jQuery(document).ready(function(){ 
-      
-  }); 
+  });
   {% endhighlight %}
-  意义为在DOM加载完毕后执行了ready()方法。 
+    * 意义为在DOM加载完毕后执行了ready()方法。
 * jQuery(function(){　});用于存放操作DOM对象的代码，执行其中代码时DOM对象已存在。不可用于存放开发插件的代码，因为jQuery对象没有得到传递，外部通过jQuery.method也调用不了其中的方法（函数）。
 * (function(){　})(jQuery)；用于存放开发插件的代码，执行其中代码时DOM不一定存在，所以直接自动执行DOM操作的代码请小心使用。
 
