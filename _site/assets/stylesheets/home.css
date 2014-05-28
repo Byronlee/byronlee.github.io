@@ -161,3 +161,7 @@ ul.site_nav:hover li:nth-of-type(5) span { -webkit-transform:rotate(-60deg); }
  /* Fix white screens on animation */
 
 /* site nav css end*/
+
+blockquote {
+    color: #777;
+}
