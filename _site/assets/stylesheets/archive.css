@@ -1,0 +1,15 @@
+.archive_list {
+  width: 55%;
+  margin: 0 auto; }
+  .archive_list ul {
+    list-style: none;
+    padding-left: 0; }
+    .archive_list ul li h3 a {
+      width: 73%;
+      display: inline-block;
+      overflow: hidden;
+      word-break: keep-all;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .archive_list ul span {
+      color: #9a9a9a; }

@@ -1,0 +1,53 @@
+.post_show {
+  width: 75%;
+  margin: 0 auto;
+  word-break: break-all; }
+  .post_show .page-header {
+    border-bottom: 5px solid red;
+    text-align: center;
+    margin: 40px 0 10px; }
+    .post_show .page-header h1 {
+      font-weight: 800; }
+    .post_show .page-header .post_infor {
+      color: #aaa;
+      margin-top: 30px; }
+      .post_show .page-header .post_infor .pull-left span {
+        margin-right: 40px; }
+  .post_show .row.post-full {
+    width: 100%;
+    margin: 0 auto; }
+
+.jiathis_style > div {
+  width: 320px !important; }
+
+.jiathis_style .jiathis_counter.jiathis_bubble_style {
+  min-width: 36px !important; }
+
+.row.post-full h1:before {
+  content: "#"; }
+.row.post-full h2:before {
+  content: "##"; }
+.row.post-full h3:before {
+  content: "###"; }
+
+.row.post-full h1:before, h2:before, h3:before {
+  display: inline;
+  color: #ccc;
+  padding-right: 15px;
+  position: relative; }
+
+.col-xs-12 {
+  padding-right: 0px;
+  padding-left: 0px; }
+  .col-xs-12 .content {
+    margin-left: 55px; }
+    .col-xs-12 .content p {
+      line-height: 1.7;
+      margin: 15px 0; }
+    .col-xs-12 .content h1, .col-xs-12 .content h2, .col-xs-12 .content h3 {
+      position: relative;
+      margin: 30px 0 20px -55px; }
+
+pre {
+  margin: 15px 0;
+  border: 0px; }
