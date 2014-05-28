@@ -22,6 +22,7 @@ header: Pages
 jQuery最快的选择器是ID ($('#someid')). 因为直接对应JavaScript方法, getElementById().
 
 看看class是怎么选的 ($('sometag.someclass')).
+
 {% highlight js%}
 function getElementsByClassName(n) {
     var el = [],
@@ -286,7 +287,7 @@ $('#myList).bind('click', function(e){
 
 如果没有找到任何匹配的元素，虽然jQuery将失败的查询处理地很好，它仍然需要花费时间来寻找他们。
 
-如果整个网站需要一个全局的JavaScript，大部分人会用$(document).ready(function(){ // all my glorious code })实现。
+如果整个网站需要一个全局的JavaScript，大部分人会用`$(document).ready(function(){ // all my glorious code })`实现。
 
 最有效的办法是使用内联的初始化功能，让模板页面能完全控制JavaScript的执行时间和地点。
 
@@ -333,18 +334,18 @@ var mylib =
 }
 {% endhighlight %}
 
-### 延迟加载到 $(window).load
+### 延迟加载到 `$(window).load`
 
-大多数页面都可以看到 $(document).ready
+大多数页面都可以看到 `$(document).ready`
 
-如果你发现网页载入时停滞， 可能问题就在$(document).ready上. 通过 将函数绑定到$(window).load中，减少CPU使用率。
+如果你发现网页载入时停滞， 可能问题就在`$(document).ready`上. 通过 将函数绑定到`$(window).load`中，减少CPU使用率。
 
 二者的差别在于：
 
-* $(document).ready(fn)发生在"网页本身的HTML"载入后就触发，
-* $(window).load(fn)则会等到"网页HTML标签中引用的图档、内嵌物件(如Flash)、IFrame"等拉哩拉杂的东西都载入后才会触发。
+* `$(document).ready(fn)`发生在"网页本身的HTML"载入后就触发，
+* `$(window).load(fn)`则会等到"网页HTML标签中引用的图档、内嵌物件(如Flash)、IFrame"等拉哩拉杂的东西都载入后才会触发。
 
-{% highlight js%}
+* {% highlight js%}
 $(window).load(function(){
     // jQuery functions to initialize after the page has loaded.
 });
