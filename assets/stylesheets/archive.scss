@@ -4,11 +4,28 @@
 .archive_list{
   width: 55%;
   margin: 0 auto;
+  margin-top: 100px;
+  h2{
+    float: left;
+    margin-left: -100px;
+    margin-top: 0px;
+    font-weight: 800;
+    color: #999;
+  }
   ul{
       list-style: none;
     padding-left: 0;
     li{
       h3{
+        font-size: 20px;
+        &:before {
+          content: "#";
+          display: inline;
+          color: #ccc;
+          padding-right: 2px;
+          position: relative;
+          font-size: 25px;
+        }
         a{
           width: 73%;
           display: inline-block;
@@ -16,11 +33,17 @@
           word-break: keep-all;
           white-space: nowrap;
           text-overflow: ellipsis;
+          color: #999;
+          &:hover{
+            color: red;
+            text-decoration: none;
+          }
         }
       }
     }
     span{
       color: #9a9a9a;
+      font-size: 17px;
     }
 }
 }
