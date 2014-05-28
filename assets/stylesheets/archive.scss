@@ -7,6 +7,18 @@
   ul{
       list-style: none;
     padding-left: 0;
+    li{
+      h3{
+        a{
+          width: 73%;
+          display: inline-block;
+          overflow: hidden;
+          word-break: keep-all;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
     span{
       color: #9a9a9a;
     }
