@@ -165,10 +165,8 @@ __解决思路：__ 用启动盘chroot进入本地系统重新更新一次。也
 {% endhighlight %}
 * reboot～
 
-之后重新yaourt -Syu一次，结束。
+__之后重新yaourt -Syu一次，结束。__
 
-----------------------------------------------------------
-
-Arch ,我的唯一。
+__Arch ,我的唯一__
 
 Ruby-china: [http://ruby-china.org/topics/15921](http://ruby-china.org/topics/15921)

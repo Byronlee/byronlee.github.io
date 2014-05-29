@@ -61,13 +61,16 @@ body {
   float: left; }
 
 .tag_box a {
-  padding: 3px 6px;
-  margin: 2px;
-  background: #eee;
-  color: #555;
-  border-radius: 3px;
-  text-decoration: none;
-  border: 1px dashed #cccccc; }
+    padding: 0px 8px;
+    margin: 2px;
+    background: #eee;
+    color: #555;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px dashed #cccccc;
+    float: left;
+    height: 23px;
+    line-height: 11px;}
 
 .tag_box a span {
   vertical-align: super;

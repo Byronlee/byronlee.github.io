@@ -29,10 +29,11 @@
     <div class="content">
       {{ content }}
     </div>
-
+      <hr>
   {% unless page.categories == empty %}
-    <ul class="tag_box inline">
-      <li><i class="glyphicon-open"></i></li>
+    <ul class="tag_box inline pull-left">
+
+      <li><i class="icon-folder-close"> 文章分类：</i></li>
       {% assign categories_list = page.categories %}
       {% include JB/categories_list %}
     </ul>
@@ -40,7 +41,7 @@
 
   {% unless page.tags == empty %}
     <ul class="tag_box inline">
-      <li><i class="glyphicon-tags"></i></li>
+      <li><i class="icon-tags">文章标签：</i></li>
       {% assign tags_list = page.tags %}
       {% include JB/tags_list %}
     </ul>
@@ -62,5 +63,6 @@
     </ul>
     <hr>
     {% include JB/comments %}
+    {% include JB/analytics %}
   </div>
 </div>
