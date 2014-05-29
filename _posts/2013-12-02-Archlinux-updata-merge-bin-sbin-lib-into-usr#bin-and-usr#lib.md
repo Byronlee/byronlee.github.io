@@ -2,6 +2,8 @@
 layout: post
 title: Archlinux 更新，merge /bin, /sbin,/lib into /usr/bin and /usr/lib
 header: Pages
+category: linux
+tags: [linux, archlinux]
 ---
 {% include JB/setup %}
 

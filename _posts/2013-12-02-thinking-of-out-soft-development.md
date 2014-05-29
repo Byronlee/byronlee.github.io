@@ -2,6 +2,8 @@
 layout: post
 title: 那些来自《走出软件作坊》的思考与感受
 header: Pages
+categories: [读书笔记, 情绪世界]
+tags: [走出软件作坊]
 ---
 {% include JB/setup %}
 

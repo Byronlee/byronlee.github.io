@@ -2,6 +2,8 @@
 layout: post
 title: jQuery提升性能的代码规范
 header: Pages
+categories: [技术经验, jQuery]
+tags: [jQuery, 代码规范, 性能]
 ---
 {% include JB/setup %}
 

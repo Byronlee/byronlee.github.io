@@ -2,6 +2,8 @@
 layout: post
 title: 对ruby中的class << object以及class_eval和instance_eval的探讨
 header: Pages
+categories: [技术经验, Ruby]
+tags: [Ruby, 元编程]
 ---
 {% include JB/setup %}
 

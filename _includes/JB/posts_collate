@@ -17,7 +17,7 @@
     {{ post.title }}
     </a>
 
-        <span class="pull-right">{{ post.date | date: "%B %e, %Y" }}</span>
+        <span class="pull-right">{{ post.date | date: "%Y-%m-%d" }}</span>
     </h3>
     </li>
     {% if forloop.last %}

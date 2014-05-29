@@ -1,7 +1,9 @@
 ---
 layout: post
-title: Jquery代码学习规范总结
+title: jQuery代码学习规范总结
 header: Pages
+categories: [技术经验, jQuery]
+tags: [jQuery, 代码规范]
 ---
 {% include JB/setup %}
 

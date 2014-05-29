@@ -2,6 +2,8 @@
 layout: post
 title: 设计模式- 组合模式
 header: Pages
+category: 设计模式
+tags: [设计模式, 组合模式]
 ---
 {% include JB/setup %}
 

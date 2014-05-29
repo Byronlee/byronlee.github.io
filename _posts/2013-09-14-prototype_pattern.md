@@ -2,6 +2,8 @@
 layout: post
 title: 设计模式- 原型模式
 header: Pages
+category: 设计模式
+tags: [设计模式, 原型模式]
 ---
 {% include JB/setup %}
 

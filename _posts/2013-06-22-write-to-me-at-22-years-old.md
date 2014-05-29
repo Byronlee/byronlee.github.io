@@ -2,9 +2,12 @@
 layout: post
 title: 写给２2岁的自己
 header: Pages
+category: 情绪世界
+tags: [生活感悟]
 ---
-{% include JB/setup %}
 
+{% include JB/setup %}
+{{ site | debug }}
 前天几天（农历５月１１）是我的生日…..
 
 其实在年前就想写这篇文章的

@@ -5,6 +5,7 @@ gems: ['jekyll-slim']
 
 highlighter: 'pygments'
 markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
 
 title : 一个好人
 tagline: 在闹市中修行

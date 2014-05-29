@@ -2,6 +2,8 @@
 layout: post
 title: 20大中国式弱点营销
 header: Pages
+category: 互联网创业
+tags: [销售]
 ---
 {% include JB/setup %}
 
