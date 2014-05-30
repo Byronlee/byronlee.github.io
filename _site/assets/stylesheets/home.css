@@ -68,7 +68,7 @@
     vertical-align: bottom; /* fixes the mysterious gaps bug */
 }
 
-.lifted_content_box .ng-scope div {
+.lifted_content_box .tips div {
     padding: 10px;
     background: #fff;
     border-top: 5px solid #505050; /* was just experimenting. gives a nice look and feel: D */;

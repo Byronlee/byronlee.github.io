@@ -40,7 +40,20 @@ title: 在闹市中修行
             </div>
             <div ng-switch-when="code" ></div>
             <div ng-switch-when="demo" >
-                <iframe src="{( active_case[1] )}" scrolling="no" ></iframe>
+                <div ng-switch on="active_active_index">
+                   <div ng-switch-when=0 >
+                     <iframe src="http://codepen.io/Byronlee/full/BntEA/" scrolling="no" ></iframe>
+                   </div>
+                   <div ng-switch-when=1 >
+                     <iframe src="http://codepen.io/skyinlayer/full/EDwsf" scrolling="no" ></iframe>
+                   </div>
+                    <div ng-switch-when=2 >
+                        <iframe src="http://codepen.io/skyinlayer/full/ktcFB/" scrolling="no" ></iframe>
+                    </div>
+                    <div ng-switch-when=3 >
+                        <iframe src="http://codepen.io/Byronlee/full/woDIA/" scrolling="no" ></iframe>
+                    </div>
+                </div>
             </div>
         </article>
     </div>
