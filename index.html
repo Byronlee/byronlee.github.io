@@ -11,8 +11,8 @@ title: 在闹市中修行
             <p>
                 <i class="icon-facebook-sign"></i>
                 <i class="icon-twitter-sign"></i>
-                <i class="icon-github"></i>
-                <i class="icon-pinterest"></i>
+                <a href="https://github.com/byronlee" target="_blank"><i class="icon-github"></i></a>
+                <a href="http://weibo.com/ginchenorlee" target="_blank"><i class="icon-pinterest" ></i></a>
                 <i class="icon-google-plus-sign"></i>
             </p>
             <button>Contact Me</button>
@@ -26,16 +26,23 @@ title: 在闹市中修行
         </p>
     </div>
     <div class="showcase" ng-controller="ShowCaseListCtrl">
-        <article class="lifted_content_box" ng-repeat="case in cases">
-            <h1>Tips</h1>
-            <div>
-            <p >
-                <span>{(case.content)}</span>
-            </p>
+        <article class="lifted_content_box" ng-switch on="active_case[0]">
+            <div ng-switch-when="text" class="tips">
+                <h1>Tips</h1>
+                <div>
+                  <p>
+                     <span>{( active_case[1] )}</span>
+                  </p>
+                </div>
+            </div>
+            <div ng-switch-when="image" >
+                <img src="{( active_case[1] )}">
+            </div>
+            <div ng-switch-when="code" ></div>
+            <div ng-switch-when="demo" >
+                <iframe src="{( active_case[1] )}" scrolling="no" ></iframe>
             </div>
         </article>
-
-
     </div>
 
 </div>

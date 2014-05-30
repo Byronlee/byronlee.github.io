@@ -49,6 +49,9 @@
     display: block;
     position: relative;
 }
+.lifted_content_box .tips {
+    margin-top: 130px;
+}
 
 .lifted_content_box h1 {
     font-size: 14px;
@@ -65,7 +68,7 @@
     vertical-align: bottom; /* fixes the mysterious gaps bug */
 }
 
-.lifted_content_box div {
+.lifted_content_box .ng-scope div {
     padding: 10px;
     background: #fff;
     border-top: 5px solid #505050; /* was just experimenting. gives a nice look and feel: D */;
@@ -79,39 +82,24 @@
     color: #555;
     line-height: 1.5em;
 }
-
+.lifted_content_box iframe{
+    width: 100%;
+    min-height: 95%;
+    border: 1px;
+}
 /* lifted shadows  */
 
-.lifted_content_box::before,
+.lifted_content_box img{
+    margin-top: 60px;
+}
 .lifted_content_box::after {
-    content: '';
-    position: absolute;
-    width: 50%; /* maybe we could set a max-width for larger content boxes ? */
-    height: 20px;
-    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    -webkit-transform: rotate(-5deg) skew(-10deg);
-    -moz-transform: rotate(-5deg) skew(-10deg);
-    -o-transform: rotate(-5deg) skew(-10deg);
-    -ms-transform: rotate(-5deg) skew(-10deg);
-    transform: rotate(-5deg) skew(-10deg);
-    left: 10px;
-    bottom: 13px;
-    z-index: -1;
+
 }
 
-.lifted_content_box::after {
-    left: auto;
-    right: 10px;
-    -webkit-transform: rotate(5deg) skew(10deg);
-    -moz-transform: rotate(5deg) skew(10deg);
-    -o-transform: rotate(5deg) skew(10deg);
-    -ms-transform: rotate(5deg) skew(10deg);
-    transform: rotate(5deg) skew(10deg);
-}
 .dashbord .showcase article:first-child{
     margin-bottom: 60px;
+    height: 520px;
+    overflow: hidden;
 }
 /* dashbord right css end */
 
