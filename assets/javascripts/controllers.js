@@ -6,6 +6,7 @@ function ShowCaseListCtrl($scope) {
         ["demo","http://codepen.io/Byronlee/full/woDIA/"]
     ];
     $scope.active_active_index = Math.floor(Math.random() * $scope.cases.length)
+    $scope.demo_active_index = Math.floor(Math.random() * $scope.cases.length)
     $scope.active_case = $scope.cases[ $scope.active_active_index ]
 }
 
