@@ -39,6 +39,7 @@
     float: right;
     padding: 40px 30px;
     font-size: 17px;
+    padding-bottom: 0px;
 }
 
 
@@ -97,7 +98,6 @@
 }
 
 .dashbord .showcase article:first-child{
-    margin-bottom: 60px;
     height: 520px;
     overflow: hidden;
 }
