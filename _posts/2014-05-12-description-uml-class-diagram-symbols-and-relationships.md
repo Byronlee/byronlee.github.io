@@ -6,7 +6,7 @@ categories: [技术经验, UML]
 tags: [UML]
 ---
 {% include JB/setup %}
-{{ site | debug }}
+
 _[注]主要以java为例做讲解_
 
 ### UML中描述对象和类之间相互关系的方式对比说明：
