@@ -153,3 +153,8 @@ ul.site_nav:hover li:nth-of-type(5) span { -webkit-transform:rotate(-60deg); }
 blockquote {
     color: #777;
 }
+
+ol li ul{
+    list-style: none;
+    padding-left: 0;
+}
