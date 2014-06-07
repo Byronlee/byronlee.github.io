@@ -1,9 +1,9 @@
 ---
 layout: post
-title: android:获取联系人原理（姓名和电话）详解
+title: android:获取联系人原理（姓名和电话
 header: Pages
 categories: [Android]
-tags: [adnroid]
+tags: [android]
 ---
 {% include JB/setup %}
 
