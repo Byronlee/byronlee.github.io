@@ -12,9 +12,14 @@ group: navigation
         <div class="drip"></div>
     </div>
     <div class="showcase lists" >
-        <ul class="tag_box ">
-          {% assign categories_list = site.categories %}
+        <ul class="tag_box " style="width: 47%;float: left;">
+          {% assign categories_list = site.categories  %}
           {% include JB/categories_list %}
+        </ul>
+        <ul class="tag_box " style="width: 40%;float: left;">
+            {% assign second_categories_list = 2 %}
+            {% assign categories_list = site.categories %}
+            {% include JB/categories_list %}
         </ul>
     </div>
 
