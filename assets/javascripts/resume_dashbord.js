@@ -1,7 +1,7 @@
 $(function () {
 
    // 右边终端效果
-    var html ='(● ◡ ●)ﾉ♥ 嗨，欢迎光临！我叫李江华，你想了解我的什么呢？\n用法：\n　　1.　简洁版简历\n　　2.　文艺版简历\n　　3.　github版简历\n　　4.　给我留言\n请输入你想了解的编号：\n' ;
+    var html ='(● ◡ ●)ﾉ♥ 嗨，欢迎光临！我叫李江华，你想了解我的什么呢？\n用法：\n　　1.　简洁版简历\n　　2.　文艺版简历\n　　3.　github版简历\n　　4.　给我留言\n　　5.　回到博客首页\n请输入你想了解的编号：\n' ;
     var jqconsole = $('#console').jqconsole(html, 'Ξ ~/ByronleeStyle git:(master) ▶ ','I like you! and you?');
 
     var startPrompt = function () {
@@ -13,16 +13,19 @@ $(function () {
 		window.open("https://gist.github.com/Byronlee/b00a1a24c67f1f6c49d5")
 		break;
 	    case "2":               
-		window.open("http://style.ginchenorlee.com/dashbord/resume")
+		window.open("/resume/show.html")
 		break;
 	    case "3":
 		window.open("http://resume.github.io/?Byronlee")
 		break;
 	    case "4":
-		$('#myModal').modal('show')
+        alert("Please Email To Me: lbyronlee@gmail.com")
 		break;
+        case "5":
+        window.open("/")
+        break;
 	    default:
-		jqconsole.Write(html + '\n', 'jqconsole-output');
+		jqconsole.Write(html , 'jqconsole-output');
 	    }
 
             startPrompt();

@@ -1,3 +1,6 @@
+---
+---
+
 ul.site_nav li:nth-of-type(6) {
   z-index: 1;
   background: #000 !important;
@@ -158,6 +161,11 @@ body{
     /* The inner console element. */
     .jqconsole {
         padding: 10px;
+      background: #000;
+      border: 0;
+      font-size: 17px;
+      color: #cccccc;
+      line-height: 20px;
     }
     /* The cursor. */
     .jqconsole-cursor {

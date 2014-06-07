@@ -1,9 +1,6 @@
-###
-Copyrights 2011, the repl.it project.
-Licensed under the MIT license
-###
+---
+---
 
-# Shorthand for jQuery.
 $ = jQuery
 
 # The states in which the console can be.
