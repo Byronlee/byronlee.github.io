@@ -2,6 +2,9 @@
 
 {% case site.JB.analytics.provider %}
 {% when "baidu" %}
+  {% if resume == 1 %}
+  {% assign resume = 1 %}
+  {% endif %}
   {% include JB/analytics-providers/baidu %}
 {% when "google" %}
   {% include JB/analytics-providers/google %}
