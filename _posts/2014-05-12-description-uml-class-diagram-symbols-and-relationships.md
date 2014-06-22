@@ -53,9 +53,9 @@ _其中依赖（Dependency）的关系最弱，而关联（Association），聚�
      }
     }
     {% endhighlight %}
-    * uml图:
+  * uml图:
 
-    * ![依赖关系UML图](http://pic002.cnblogs.com/images/2012/285763/2012061315032141.jpg)
+  * ![依赖关系UML图](http://pic002.cnblogs.com/images/2012/285763/2012061315032141.jpg)
 
 2. 关联（Association）：实线箭头表示
   * 关联关系是类与类之间的联结，它使一个类知道另一个类的属性和方法
