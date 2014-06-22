@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 一步一个脚印(一)
+title: 一步一个脚印（一）
 header: Pages
 categories: [情绪世界, 生活感悟]
 tags: [成长]

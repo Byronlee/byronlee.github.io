@@ -1,6 +1,7 @@
 .dashbord{
     margin-top: 8%;
 }
+
 .dashbord .user_infor{
     width: 50%;
     float: left;
@@ -228,4 +229,47 @@ ol li ul{
     float: right;
     margin: -40px 0 0 0;
     color: #000;
+}
+
+.item_lists_resps{
+    display: none;
+}
+.show_item_lists{
+    width: 40%;
+    float: left;
+    margin-left: 70px;
+    max-height: 516px;
+    overflow-y: overlay;
+}
+.show_item_lists h2{
+    font-weight: 800;
+    color: #999;
+}
+.show_item_lists ul{
+    margin-left: 0;
+    padding-left: 30px;
+    list-style: none;
+}
+.show_item_lists ul{
+    margin-left: 0;
+    padding-left: 30px;
+    list-style: none;
+}
+.show_item_lists a{
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #999;
+    line-height: 25px;
+}
+.show_item_lists a:before {
+    content: "#";
+    display: inline;
+    color: #ccc;
+    padding-right: 2px;
+    position: relative;
+    font-size: 20px;
 }

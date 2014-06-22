@@ -29,14 +29,14 @@ Usage:
   {% else %}
     {% if second_categories_list == 2 %}
       {% for category in categories_list offset:17 %}
-      	  <li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+      	  <li><a href="javascript:void(0)" onclick="show_categories_item('{{ category[0] }}-ref')">
     	  	  {{ category[0] | join: "/" }} <span>{{ category[1].size }}</span>
     	    </a>
     	  </li>
       {% endfor %}
     {% else %}
       {% for category in categories_list limit:17 %}
-      	  <li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+      	  <li><a href="javascript:void(0)" onclick="show_categories_item('{{ category[0] }}-ref')">
     	  	  {{ category[0] | join: "/" }} <span>{{ category[1].size }}</span>
     	    </a>
     	  </li>

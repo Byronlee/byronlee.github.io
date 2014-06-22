@@ -11,6 +11,20 @@ group: navigation
         <strong>文章分类</strong>
         <div class="drip"></div>
     </div>
+    <div class="show_item_lists">
+    </div>
+    <div class="item_lists_resps">
+        {% for category in site.categories %}
+          <div id="{{ category[0] }}-ref">
+            <h2 class="item_title" >{{ category[0] | join: "/" }}</h2>
+            <ul>
+                {% assign pages_list = category[1] %}
+                {% include JB/pages_list %}
+            </ul>
+          </div>
+         {% endfor %}
+    </div>
+
     <div class="showcase lists" >
         <ul class="tag_box " style="width: 47%;float: left;">
           {% assign categories_list = site.categories  %}

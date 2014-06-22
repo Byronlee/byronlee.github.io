@@ -9,3 +9,8 @@ function dashbord_answer_check(){
       $("#answer_status").removeAttr("class").addClass(status)
     }
 }
+
+function show_categories_item(id){
+    $(".di_shui").remove();
+    $(".show_item_lists").html($("#"+id).html());
+}
