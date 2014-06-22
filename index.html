@@ -4,7 +4,7 @@ title: 在闹市中修行
 ---
 <div class="dashbord clearfix" ng-app="myApp">
     <div class="user_infor">
-        <img src="/assets/images/avatar.png">
+        <img src="/assets/images/dashborad/my_photo.jpg">
         <h2> Hi, I'm Byronlee</h2>
         <p>A full stack web development engineer in ChengDu, China.</p>
         <div class="contact">
@@ -27,34 +27,21 @@ title: 在闹市中修行
         </p>
     </div>
     <div class="showcase" ng-controller="ShowCaseListCtrl">
+        <!--<a class="button_fresh" href="javascript:void(0)" onclick="window.location.reload()">
+            <i class="icon-refresh"></i>
+        </a>-->
         <article class="lifted_content_box" ng-switch on="active_case[0]">
             <div ng-switch-when="text" class="tips">
-                <h1>Tips</h1>
-                <div>
-                  <p>
-                     <span>{( active_case[1] )}</span>
-                  </p>
-                </div>
+                {% include part/index/text/default.html %}
             </div>
             <div ng-switch-when="image" >
-                <img src="{( active_case[1] )}">
+                {% include part/index/images/default.html %}
             </div>
-            <div ng-switch-when="code" ></div>
-            <div ng-switch-when="demo" >
-                <div ng-switch on="demo_active_index">
-                   <div ng-switch-when=0 >
-                     <iframe src="http://codepen.io/Byronlee/full/BntEA/" scrolling="no" ></iframe>
-                   </div>
-                   <div ng-switch-when=1 >
-                     <iframe src="http://codepen.io/skyinlayer/full/EDwsf" scrolling="no" ></iframe>
-                   </div>
-                    <div ng-switch-when=2 >
-                        <iframe src="http://codepen.io/skyinlayer/full/ktcFB/" scrolling="no" ></iframe>
-                    </div>
-                    <div ng-switch-when=3 >
-                        <iframe src="http://codepen.io/Byronlee/full/woDIA/" scrolling="no" ></iframe>
-                    </div>
-                </div>
+            <div ng-switch-when="code" class="codescase"  ref="{( actived_code[0] )}" >
+                {% include part/index/code/default.html %}
+            </div>
+            <div ng-switch-when="demo" class="demoscase" ref="{( actived_demo[0] )}">
+                {% include part/index/demos/default.html %}
             </div>
         </article>
     </div>

@@ -1,0 +1,19 @@
+---
+---
+<h2>A Ruby Level Exercises</h2>
+{% highlight ruby %}
+# Ruby
+class Class
+  def to_proc
+    proc {|x,y| new x, y }
+  end
+end
+
+[[1, "a"], [2, "b"], [3, "c"]].map(&Array)
+
+# =>  请使用 Ruby 1.9 以上版本, 说出你的答案.
+
+{% endhighlight %}
+<input type="text" class="answer" oninput="dashbord_answer_check()" placeholder="input your answer...">
+<input type="hidden" value='[["a"],["b","b"],["c","c","c"]]'>
+<i id="answer_status" class="icon-question-sign"></i>

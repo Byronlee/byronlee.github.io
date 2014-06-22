@@ -1,0 +1,21 @@
+---
+---
+<h2> Quick Sort Erlang VS Ruby</h2>
+{% highlight Erlang %}
+% quick sort in erlang
+qsort([]) -> [];
+qsort([Pivot|T]) ->
+        qsort[[X| X <- T, X < Pivot])
+        ++ [Pivot] ++
+        qsort[[X| X <- T, X >= Pivot]).
+{% endhighlight %}
+<h3> VS </h3>
+{% highlight ruby %}
+# quick sort in Ruby
+def quick_sort(arr)
+  return [] if arr == []
+  pivot, *tail = *arr
+  left, right = tail.partition { |n| n < pivot }
+  quick_sort(left) + [pivot] + quick_sort(right)
+end
+{% endhighlight %}

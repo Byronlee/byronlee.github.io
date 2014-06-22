@@ -1,0 +1,10 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        url = $(".codescase").attr("ref");
+        html = $.get(url, function(html){
+            $(".codescase").html(html)
+        })
+    })
+</script>
+
+

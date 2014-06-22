@@ -1,0 +1,20 @@
+---
+---
+<h2>Tips: Top 10 Shell In Common Use</h2>
+{% highlight sh %}
+# shell command
+
+history | awk '{a[$2]++}END{for(i in a){print a[i]" "i}}'|sort -rn|head
+
+{% endhighlight %}
+<h2>Tips: Ruby Shock</h2>
+{% highlight ruby %}
+# Ruby shell
+
+x = 0
+loop do
+  puts '-' * ((1 + Math.sin(x += 0.1)) * 20)
+  sleep 0.01
+end
+
+{% endhighlight %}
