@@ -1,0 +1,54 @@
+---
+layout: home
+title: 文章标签
+header: Posts By Tags
+group: navigation
+---
+{% include JB/setup %}
+<div class="dashbord clearfix categories-lists" >
+
+    <div class="show_item_lists">
+        <script type="text/javascript">
+                setTimeout(function(){
+                    var str = location.search;
+                    id = decodeURI(str.substring(1,str.length));
+                    $(".show_item_lists").html($("#"+id).html());
+                },200)
+        </script>
+    </div>
+    <div class="item_lists_resps">
+        {% for tag in site.tags %}
+        <div id="{{ tag[0] }}-ref">
+            <h2 class="item_title" >{{ tag[0] | join: "/" }}</h2>
+            <ul>
+                {% assign pages_list = tag[1] %}
+                {% include JB/pages_list %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="showcase lists" >
+        <ul class="tag_box inline">
+            {% assign tags_list = site.tags %}
+            {% if tags_list.first[0] == null %}
+            {% for tag in tags_list %}
+            <li>
+                <a href="javascript:void(0)" onclick="show_categories_item('{{ tag[0] }}-ref')">
+                    {{ tag[0] | join: "/" }} <span>{{ tag[1].size }}</span>
+                </a>
+            </li>
+            {% endfor %}
+            {% else %}
+            {% for tag in tags_list %}
+            <li>
+                <a href="javascript:void(0)" onclick="show_categories_item('{{ tag[0] }}-ref')">
+                    {{ tag[0] | join: "/" }} <span>{{ tag[1].size }}</span>
+                </a>
+            </li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+
+</div>
