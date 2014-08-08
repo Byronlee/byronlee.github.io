@@ -44,10 +44,12 @@
 }
 
 .dashbord .showcase .ng-scope img{
-    max-width: 100%;
-    margin: 0 auto;
-    display: block;
-    margin-top: 60px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+
 }
 
 .dashbord .codescase h2,.dashbord .codescase h3{
@@ -138,7 +140,7 @@
 /* lifted shadows  */
 
 .lifted_content_box img{
-    margin-top: 60px;
+   /* margin-top: 60px;*/
 }
 .lifted_content_box::after {
 

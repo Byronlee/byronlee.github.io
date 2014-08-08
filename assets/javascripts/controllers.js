@@ -1,8 +1,8 @@
 function ShowCaseListCtrl($scope) {
     $scope.cases = [
-        ["text"],
+     //   ["text"],
         ["image"],
-        ["demo"],
+      //  ["demo"],
         ["code"]
     ];
 
@@ -12,12 +12,12 @@ function ShowCaseListCtrl($scope) {
     ];
 
     $scope.images = [
-        ["/assets/images/dashborad/biye.jpg"],
+      //  ["/assets/images/dashborad/biye.jpg"],
         ["/assets/images/dashborad/my_dog.png"],
         ["/assets/images/dashborad/team_begin.jpg"],
         ["/assets/images/dashborad/team_time.jpg"],
-        ["/assets/images/dashborad/xiaohui.jpg"],
-        ["/assets/images/dashborad/biye.jpg"]
+        ["/assets/images/dashborad/myhome.jpg"]//,
+      //  ["/assets/images/dashborad/biye.jpg"]
     ];
 
     $scope.demos  = [
