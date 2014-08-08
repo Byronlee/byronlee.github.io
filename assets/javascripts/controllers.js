@@ -1,8 +1,8 @@
 function ShowCaseListCtrl($scope) {
     $scope.cases = [
      //   ["text"],
+     //  ["demo"],
         ["image"],
-      //  ["demo"],
         ["code"]
     ];
 
@@ -16,7 +16,7 @@ function ShowCaseListCtrl($scope) {
         ["/assets/images/dashborad/my_dog.png"],
         ["/assets/images/dashborad/team_begin.jpg"],
         ["/assets/images/dashborad/team_time.jpg"],
-        ["/assets/images/dashborad/myhome.jpg"]//,
+        ["/assets/images/dashborad/myhome.jpg"]
       //  ["/assets/images/dashborad/biye.jpg"]
     ];
 
