@@ -14,3 +14,7 @@ function show_categories_item(id){
     $(".di_shui").remove();
     $(".show_item_lists").html($("#"+id).html());
 }
+
+$(document).ready(function(){
+    $(".highlight").parent().css("list-style","none");
+})
