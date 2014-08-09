@@ -1,4 +1,4 @@
-
+/* 自行车相关动画的CSS
 .centerBike{
   position: absolute;
   top: 45%;
@@ -66,10 +66,213 @@
   66.6%  {-webkit-transform: rotate(-360deg);transform: rotate(-360deg);margin-left: -50px;opacity:1;}
   100% {margin-left:264px;opacitiy:0;-webkit-transform:rotate(-360deg);transform:rotate(-360deg);}
 }
+*/
+
+
+.illustration {
+   /* height: 200px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;*/
+}
+.illustration svg {
+    bottom: 0;
+    fill: green;
+    height: 300px;
+    width: 100%;
+}
+
+@-webkit-keyframes ripple {
+    0% {
+        opacity: auto;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: auto;
+    }
+}
+@-moz-keyframes ripple {
+    0% {
+        opacity: auto;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: auto;
+    }
+}
+@-o-keyframes ripple {
+    0% {
+        opacity: auto;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: auto;
+    }
+}
+@keyframes ripple {
+    0% {
+        opacity: auto;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: auto;
+    }
+}
+.ring-1,
+.ring-2,
+.ring-3,
+.ring-4,
+.ring-5,
+.ring-6 {
+    -webkit-animation: ripple 3s ease infinite;
+    -moz-animation: ripple 3s ease infinite;
+    animation: ripple 3s ease infinite;
+}
+
+.ring-1 {
+    opacity: 1;
+}
+
+.ring-2 {
+    -webkit-animation-delay: 0.25s;
+    -moz-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+    opacity: 0.8;
+}
+
+.ring-3 {
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    opacity: 0.6;
+}
+
+.ring-4 {
+    -webkit-animation-delay: 0.75s;
+    -moz-animation-delay: 0.75s;
+    animation-delay: 0.75s;
+    opacity: 0.3;
+}
+
+.ring-5 {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+    opacity: 0.2;
+}
+
+.ring-6 {
+    -webkit-animation-delay: 1.25s;
+    -moz-animation-delay: 1.25s;
+    animation-delay: 1.25s;
+    opacity: 0.1;
+}
+
+@-webkit-keyframes glide {
+    0% {
+        -webkit-transform: translateX(0px);
+    }
+
+    50% {
+        -webkit-transform: translateX(5px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0px);
+    }
+}
+@-moz-keyframes glide {
+    0% {
+        -moz-transform: translateX(0px);
+    }
+
+    50% {
+        -moz-transform: translateX(5px);
+    }
+
+    100% {
+        -moz-transform: translateX(0px);
+    }
+}
+@-o-keyframes glide {
+    0% {
+        -o-transform: translateX(0px);
+    }
+
+    50% {
+        -o-transform: translateX(5px);
+    }
+
+    100% {
+        -o-transform: translateX(0px);
+    }
+}
+@keyframes glide {
+    0% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+.cloud-level-top {
+    -webkit-animation: glide 6s ease-in-out infinite;
+    -moz-animation: glide 6s ease-in-out infinite;
+    animation: glide 6s ease-in-out infinite;
+    -webkit-animation-delay: 0.25s;
+    -moz-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+}
+
+.cloud-level-middle {
+    -webkit-animation: glide 4s ease-in-out infinite;
+    -moz-animation: glide 4s ease-in-out infinite;
+    animation: glide 4s ease-in-out infinite;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    opacity: 0.5;
+}
+
+.cloud-level-bottom {
+    -webkit-animation: glide 8s ease-in-out infinite;
+    -moz-animation: glide 8s ease-in-out infinite;
+    animation: glide 8s ease-in-out infinite;
+    -webkit-animation-delay: 0.75s;
+    -moz-animation-delay: 0.75s;
+    animation-delay: 0.75s;
+    opacity: 0.15;
+}
+
 .tags-lists .lists{
     width: 70%;
     margin: 0 auto;
-    margin-top: 21.4%;
+    border-top: 5px solid green;
+    padding-top: 20px;
+}
+.tags-lists .lists ul{
+    padding-left: 25px;
 }
 .tags-lists strong{
     position: fixed;

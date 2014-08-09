@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 《Erlang程序设计》第八章十一小节习题解答
+title: 关于《Erlang程序设计》第八章十一小节习题解答
 header: Pages
 categories: [技术经验, Erlang, 读书笔记]
 tags: [Erlang, 《Erlang程序设计》]

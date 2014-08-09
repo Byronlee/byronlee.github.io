@@ -2,7 +2,7 @@
   <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
     <div class="post_infor clearfix">
         <div class="pull-left clearfix">
-        <span >发布日期：{{ page.date | date_to_long_string }}</span>
+        <span >发布日期：{{ page.date | date: "%Y-%m-%d" }}</span>
         </div>
         <div class="pull-right clearfix">
             <!-- JiaThis Button BEGIN -->
