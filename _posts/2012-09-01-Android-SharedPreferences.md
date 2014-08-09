@@ -59,9 +59,10 @@ remove(String key)：删除preference
 ### 具体代码的书写流程为
 
 
-* 存放数据信息
-  1. 打开Preferences，名称为setting，如果存在则打开它，否则创建新的Preferences
-    * {% highlight java %}
+**存放数据信息**
+
+1. 打开Preferences，名称为setting，如果存在则打开它，否则创建新的Preferences
+  * {% highlight java %}
         SharedPreferences settings = getSharedPreferences(“setting”, 0);
         // 这个地方对参数好好的介绍一下：
          public SharedPreferences getSharedPreferences(String name, int mode)
@@ -71,31 +72,32 @@ remove(String key)：删除preference
         Context.MODE_PRIVATE 或者0：指定该SharedPreferences数据只能被本应用程序读、写
         Context.MODE_WORLD_READABLE：指定该SharedPreferences数据能被其他应用程序读，但不能写
         Context.MODE_WORLD_WRITEABLE：指定该SharedPreferences数据能被其他应用程序读写。
-      {% endhighlight %}
-  2. 让setting处于编辑状态
-    * {% highlight java %}
+  {% endhighlight %}
+2. 让setting处于编辑状态
+  * {% highlight java %}
         SharedPreferences.Editor editor = settings.edit();
-      {% endhighlight %}
-  3. 存放数据
-    * {% highlight java %}
+  {% endhighlight %}
+3. 存放数据
+  * {% highlight java %}
         editor.putString(“name”,”ATAAW”);
         editor.putString(“URL”,”ATAAW.COM”);
-      {% endhighlight %}
-  4. 完成提交
-    * {% highlight java %}
+  {% endhighlight %}
+4. 完成提交
+  * {% highlight java %}
          editor.commit();
-      {% endhighlight %}
+  {% endhighlight %}
 
-* 读取数据信息
-  1. 获取Preferences
-    * {% highlight java %}
+**读取数据信息**
+
+1. 获取Preferences
+  * {% highlight java %}
          SharedPreferences settings = getSharedPreferences(“setting”, 0);
-      {% endhighlight %}
-  2. 取出数据
-    * {% highlight java %}
+    {% endhighlight %}
+2. 取出数据
+  * {% highlight java %}
         String name = settings.getString(“name”,”默认值”);
         String url = setting.getString(“URL”,”default”);
-      {% endhighlight %}
+  {% endhighlight %}
 
 以上就是Android中SharedPreferences的使用方法，其中创建的Preferences文件存放位置可以在Eclipse中查看：
 {% highlight java %}
