@@ -76,7 +76,8 @@ public Mail clone(){
 ### 原型模式的注意事项
 
 * 构造函数不会被执行
-  * 一个实现了Cloneable并重写了clone方法的类A,有一个无参构造或有参构造B，通过new关键字产生了一个对象S，再然后通过S.clone()方式产生了一个新的对象T，那么在对象拷贝时构造函数B是不会被执行的，我们来写一小段程序来说明这个问题，如代码所示:
+
+一个实现了Cloneable并重写了clone方法的类A,有一个无参构造或有参构造B，通过new关键字产生了一个对象S，再然后通过S.clone()方式产生了一个新的对象T，那么在对象拷贝时构造函数B是不会被执行的，我们来写一小段程序来说明这个问题，如代码所示:
 
 {% highlight java %}
 public class Thing implements Cloneable{
