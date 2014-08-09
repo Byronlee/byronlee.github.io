@@ -62,42 +62,42 @@ remove(String key)：删除preference
 * 存放数据信息
   1. 打开Preferences，名称为setting，如果存在则打开它，否则创建新的Preferences
     * {% highlight java %}
-      SharedPreferences settings = getSharedPreferences(“setting”, 0);
-      // 这个地方对参数好好的介绍一下：
-       public SharedPreferences getSharedPreferences(String name, int mode)
-    name： 是指文件名称，不需要加后缀.xml,系统会自动为我们添加上。
-    一般这个文件存储在/data/data/<package name>/shared_prefs下(这个面试常问到)
-    mode：是指定读写方式，其值有三种，分别为：
-    Context.MODE_PRIVATE 或者0：指定该SharedPreferences数据只能被本应用程序读、写
-    Context.MODE_WORLD_READABLE：指定该SharedPreferences数据能被其他应用程序读，但不能写
-    Context.MODE_WORLD_WRITEABLE：指定该SharedPreferences数据能被其他应用程序读写。
-    {% endhighlight %}
+        SharedPreferences settings = getSharedPreferences(“setting”, 0);
+        // 这个地方对参数好好的介绍一下：
+         public SharedPreferences getSharedPreferences(String name, int mode)
+        name： 是指文件名称，不需要加后缀.xml,系统会自动为我们添加上。
+        一般这个文件存储在/data/data/<package name>/shared_prefs下(这个面试常问到)
+        mode：是指定读写方式，其值有三种，分别为：
+        Context.MODE_PRIVATE 或者0：指定该SharedPreferences数据只能被本应用程序读、写
+        Context.MODE_WORLD_READABLE：指定该SharedPreferences数据能被其他应用程序读，但不能写
+        Context.MODE_WORLD_WRITEABLE：指定该SharedPreferences数据能被其他应用程序读写。
+      {% endhighlight %}
   2. 让setting处于编辑状态
     * {% highlight java %}
         SharedPreferences.Editor editor = settings.edit();
       {% endhighlight %}
   3. 存放数据
     * {% highlight java %}
-      editor.putString(“name”,”ATAAW”);
-      editor.putString(“URL”,”ATAAW.COM”);
+        editor.putString(“name”,”ATAAW”);
+        editor.putString(“URL”,”ATAAW.COM”);
       {% endhighlight %}
   4. 完成提交
     * {% highlight java %}
-       editor.commit();
+         editor.commit();
       {% endhighlight %}
 
 * 读取数据信息
   1. 获取Preferences
     * {% highlight java %}
-       SharedPreferences settings = getSharedPreferences(“setting”, 0);
+         SharedPreferences settings = getSharedPreferences(“setting”, 0);
       {% endhighlight %}
   2. 取出数据
     * {% highlight java %}
-      String name = settings.getString(“name”,”默认值”);
-      String url = setting.getString(“URL”,”default”);
+        String name = settings.getString(“name”,”默认值”);
+        String url = setting.getString(“URL”,”default”);
       {% endhighlight %}
 
 以上就是Android中SharedPreferences的使用方法，其中创建的Preferences文件存放位置可以在Eclipse中查看：
 {% highlight java %}
-DDMS->File Explorer /<package name>/shared_prefs/setting.xml
+  DDMS->File Explorer /<package name>/shared_prefs/setting.xml
 {% endhighlight %}
