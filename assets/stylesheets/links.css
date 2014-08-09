@@ -78,12 +78,13 @@
 
 .links_page .all_links ul{
     list-style: none;
+    margin-left: 55px;
 }
 
 
 .links_page .all_links ul li{
     float: left;
-    margin-right: 100px;
+    margin-right: 90px;
 }
 
 .links_page .all_links ul li img{
