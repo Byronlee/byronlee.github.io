@@ -43,6 +43,14 @@
     padding-bottom: 0px;
 }
 
+.dashbord p.frindlink{
+    margin-top: 20px;
+    color: #ccc;
+    margin-bottom: 0px;
+}
+.dashbord p.frindlink a{
+    color: #ccc;
+}
 .dashbord .showcase .ng-scope img{
     position: fixed;
     top: 0;

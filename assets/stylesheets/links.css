@@ -1,0 +1,99 @@
+
+#logo h1 {
+    font-size: 28px;
+    font-weight: 300;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    line-height: 54px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    height: 56px;
+    margin: 0;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    white-space:nowrap;
+}
+
+#logo h1 a {
+    color:#fff;
+    text-decoration:none;
+}
+
+.ribbon {
+    background-color: green;
+    border: 3px solid #fff;
+    padding: 0 20px;
+    height: 56px;
+    display: inline-block;
+    position: relative;
+    margin-left: 56px;
+    margin-right: 56px;
+}
+
+
+
+.ribbon:before, .ribbon:after {
+    content: '.';
+    text-indent: -9999em;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 28px;
+    position: absolute;
+    left: -45px;
+    top: 10px;
+    display: block;
+    z-index: -1;
+}
+
+.ribbon:before {
+    border-color: green green green transparent;
+
+}
+
+.ribbon:after {
+    border-color: green transparent green green;
+    right: -45px;
+    left: auto;
+}
+
+
+.tags_logo{
+    position: relative;
+    left: 24%;
+    top: -55px;
+}
+
+.links_page{
+    width: 75%;
+    margin: 0 auto;
+}
+
+.links_page .notice ul{
+    border-bottom: 5px solid #ddd;
+    padding: 0 73px 35px 73px;
+    margin-bottom: 20px;
+    list-style: upper-alpha;
+}
+
+.links_page .all_links ul{
+    list-style: none;
+}
+
+
+.links_page .all_links ul li{
+    float: left;
+    margin-right: 100px;
+}
+
+.links_page .all_links ul li img{
+    width: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+.links_page .all_links ul li p{
+    text-align: center;
+    color: #888;
+}
