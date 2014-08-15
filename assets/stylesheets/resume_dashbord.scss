@@ -84,6 +84,9 @@ ul.site_nav li:nth-of-type(6) {
     }
     .job_flow{
       margin-top: 40px;
+      small{
+        color:#666;
+      }
       li.line{
         height: 3px;
         width: 95%;
@@ -99,6 +102,9 @@ ul.site_nav li:nth-of-type(6) {
         width: 264px;
         overflow: visible;
         margin-right: 50px;
+        .media-heading{
+          margin: 0 0 -5px;
+        }
         &:after{
           content: "";
           float: left;
@@ -113,7 +119,7 @@ ul.site_nav li:nth-of-type(6) {
         &:last-child{
           margin-left: 200px;
           &:after{
-            top: -90px;
+            top: -100px;
           }}
         p{
           margin-top: 0px;

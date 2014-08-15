@@ -60,6 +60,9 @@ ul.site_nav li:nth-of-type(6) {
     margin-top: 34px; }
 .container .job_hunting_and_experence .job_flow {
     margin-top: 40px; }
+.container .job_hunting_and_experence .job_flow small{
+    color:#666;
+}
 .container .job_hunting_and_experence .job_flow li.line {
     height: 3px;
     width: 95%;
@@ -87,7 +90,10 @@ ul.site_nav li:nth-of-type(6) {
 .container .job_hunting_and_experence .job_flow .media:last-child {
     margin-left: 200px; }
 .container .job_hunting_and_experence .job_flow .media:last-child:after {
-    top: -90px; }
+    top: -100px; }
+.container .job_hunting_and_experence .job_flow .media .media-heading{
+    margin: 0 0 -5px;
+}
 .container .job_hunting_and_experence .job_flow .media p {
     margin-top: 0px;
     font-size: 16px; }
