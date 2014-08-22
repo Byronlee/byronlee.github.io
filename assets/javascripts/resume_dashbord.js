@@ -1,7 +1,7 @@
 $(function () {
 
     // 右边终端效果
-    var html = '(● ◡ ●)ﾉ♥ 嗨，欢迎光临！我叫李江华，你想了解我的什么呢？\n用法：\n　　1.　简洁版简历\n　　2.　文艺版简历\n　　3.　github版简历\n　　4.　获取纸质简历（PDF格式，中文）\n　　5.　Getting paper resume（PDF，English）\n　　6.　给我留言\n　　7.　回到博客首页\n请输入你想了解的编号：\n';
+    var html = '(● ◡ ●)ﾉ♥ 嗨，欢迎光临！我叫李江华，你想了解我的什么呢？\n用法：\n　　1.　简洁版简历\n　　2.　文艺版简历\n　　3.　github版简历\n　　4.　获取纸质简历（PDF格式，中文）\n　　5.　Getting paper resume（PDF，English）\n　　6.　给我留言\n　　7.　回到博客首页\n请输入你想了解的编号,然后敲回车键：\n';
     var jqconsole = $('#console').jqconsole(html, 'Ξ ~/ByronleeStyle git:(master) ▶ ', 'I like you! and you?');
 
     var startPrompt = function () {
