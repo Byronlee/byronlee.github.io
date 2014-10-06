@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 写给２2岁的自己
+title: 写给22岁的自己
 header: Pages
 category: 情绪世界
 tags: [生活感悟]
