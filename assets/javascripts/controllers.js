@@ -2,8 +2,8 @@ function ShowCaseListCtrl($scope) {
     $scope.cases = [
      //   ["text"],
      //  ["demo"],
-        ["image"],
-        ["code"]
+        ["image"]//,
+      //  ["code"]
     ];
 
     $scope.texts  = [
@@ -13,11 +13,25 @@ function ShowCaseListCtrl($scope) {
 
     $scope.images = [
       //  ["/assets/images/dashborad/biye.jpg"],
-        ["/assets/images/dashborad/my_dog.png"],
-        ["/assets/images/dashborad/team_begin.jpg"],
-        ["/assets/images/dashborad/team_time.jpg"],
-        ["/assets/images/dashborad/myhome.jpg"]
+      //  ["/assets/images/dashborad/my_dog.png"],
+      //  ["/assets/images/dashborad/team_begin.jpg"],
+      //  ["/assets/images/dashborad/team_time.jpg"],
+      //  ["/assets/images/dashborad/myhome.jpg"]
       //  ["/assets/images/dashborad/biye.jpg"]
+
+        ["/assets/images/dashborad/2014-10/1.jpg"],
+        ["/assets/images/dashborad/2014-10/2.jpg"],
+        ["/assets/images/dashborad/2014-10/12.jpg"],
+        ["/assets/images/dashborad/2014-10/3.jpg"],
+        ["/assets/images/dashborad/2014-10/4.jpg"],
+        ["/assets/images/dashborad/2014-10/5.jpg"],
+        ["/assets/images/dashborad/2014-10/6.jpg"],
+        ["/assets/images/dashborad/2014-10/7.jpg"],
+        ["/assets/images/dashborad/2014-10/8.jpg"],
+        ["/assets/images/dashborad/2014-10/9.jpg"],
+        ["/assets/images/dashborad/2014-10/10.jpg"],
+        ["/assets/images/dashborad/2014-10/11.jpg"],
+        ["/assets/images/dashborad/2014-10/13.jpg"]
     ];
 
     $scope.demos  = [
