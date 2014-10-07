@@ -5,10 +5,7 @@
   {% if resume == 1 %}
   {% assign resume = 1 %}
   {% endif %}
-  {% include JB/analytics-providers/google %}
-  {% comment %}<!--
-   {% include JB/analytics-providers/baidu %}
-  -->{% endcomment %}
+  {% include JB/analytics-providers/baidu %}
 {% when "google" %}
   {% include JB/analytics-providers/google %}
 {% when "getclicky" %}
