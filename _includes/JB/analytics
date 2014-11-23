@@ -6,6 +6,7 @@
   {% assign resume = 1 %}
   {% endif %}
   {% include JB/analytics-providers/baidu %}
+  {% include JB/analytics-providers/google %}
 {% when "google" %}
   {% include JB/analytics-providers/google %}
 {% when "getclicky" %}
