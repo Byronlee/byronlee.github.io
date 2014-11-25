@@ -17,4 +17,6 @@ function show_categories_item(id){
 
 $(document).ready(function(){
     $(".highlight").parent().css("list-style","none");
+    $('a[data-toggle="tooltip"]').tooltip({title: '<img src="/assets/images/weixin.png">', html:true})
 })
+

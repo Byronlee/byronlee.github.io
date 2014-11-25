@@ -1,14 +1,16 @@
 function ShowCaseListCtrl($scope) {
     $scope.cases = [
-     //   ["text"],
+        ["text"],
      //  ["demo"],
-        ["image"]//,
-      //  ["code"]
+        ["image"],
+        ["code"]
     ];
 
     $scope.texts  = [
-        ["A woman programmer husband to let him go to the store to buy things: you go to a nearby store to buy some bread, eggs if there is, then, to buy six back, the husband bought a six bread back, his wife was shocked: Why did you buy 6 bread? ! Programmer husband replied: because they have eggs."],
-        ["在那山的这边海的那边有一群程序员，他们老实又胹腆，他们聪明又没钱。他们一天到晚坐在那里熬夜写软件，饿了就咬一口方便面～～哦苦命的程序员，哦苦命的程序员，只要一改需求他们就要重新搞一遍，但是期限只剩下两天"]
+       // ["A woman programmer husband to let him go to the store to buy things: you go to a nearby store to buy some bread, eggs if there is, then, to buy six back, the husband bought a six bread back, his wife was shocked: Why did you buy 6 bread? ! Programmer husband replied: because they have eggs."],
+       // ["在那山的这边海的那边有一群程序员，他们老实又胹腆，他们聪明又没钱。他们一天到晚坐在那里熬夜写软件，饿了就咬一口方便面～～哦苦命的程序员，哦苦命的程序员，只要一改需求他们就要重新搞一遍，但是期限只剩下两天"]
+          ["一切都是最好的安排！"],
+          ["在汽车时代早期，你问客户要什么，很多人可能都会回答'要一匹跑的更快的马'"]
     ];
 
     $scope.images = [
@@ -19,19 +21,8 @@ function ShowCaseListCtrl($scope) {
       //  ["/assets/images/dashborad/myhome.jpg"]
       //  ["/assets/images/dashborad/biye.jpg"]
 
-        ["/assets/images/dashborad/2014-10/1.jpg"],
-        ["/assets/images/dashborad/2014-10/2.jpg"],
-        ["/assets/images/dashborad/2014-10/12.jpg"],
-        ["/assets/images/dashborad/2014-10/3.jpg"],
-        ["/assets/images/dashborad/2014-10/4.jpg"],
-        ["/assets/images/dashborad/2014-10/5.jpg"],
-        ["/assets/images/dashborad/2014-10/6.jpg"],
-        ["/assets/images/dashborad/2014-10/7.jpg"],
-        ["/assets/images/dashborad/2014-10/8.jpg"],
-        ["/assets/images/dashborad/2014-10/9.jpg"],
-        ["/assets/images/dashborad/2014-10/10.jpg"],
-        ["/assets/images/dashborad/2014-10/11.jpg"],
-        ["/assets/images/dashborad/2014-10/13.jpg"]
+        ["/assets/images/dashborad/2014-12/1.jpg"],
+        ["/assets/images/dashborad/2014-12/3.jpg"]
     ];
 
     $scope.demos  = [

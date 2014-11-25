@@ -1,7 +1,7 @@
 permalink: /:categories/:year/:month/:day/:title 
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-gems: ['jekyll-slim']
+#gems: ['jekyll-slim']
 
 highlighter: 'pygments'
 markdown: kramdown

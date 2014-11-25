@@ -8,7 +8,7 @@
     border-right: 1px solid #ddd;
     text-align: center;
 }
-.dashbord .user_infor img{
+.dashbord .user_infor > img{
     width: 14em;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -17,6 +17,15 @@
     border-radius: 50%;
     width: 215px;
 }
+
+.tooltip-inner {
+    max-width: 400px !important;
+    padding: 5px 5px !important;
+}
+.dashbord .user_infor .weixin_sao img{
+    width: 242px;
+}
+
 .dashbord .contact p i{
     margin: 0 10px 0 0;
     font-size: 18px;
