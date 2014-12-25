@@ -1,9 +1,9 @@
 function ShowCaseListCtrl($scope) {
     $scope.cases = [
-        ["text"],
+      //  ["text"],
      //  ["demo"],
-        ["image"]//,
-     //   ["code"]
+      //  ["image"]//,
+        ["code"]
     ];
 
     $scope.texts  = [
@@ -42,7 +42,8 @@ function ShowCaseListCtrl($scope) {
     $scope.codes= [
         ["/code/qsort_in_erlang_and_ruby.html"],
         ["/code/view_top_10_shell.html"],
-        ["/code/js_true_add_one.html"],
+       // ["/code/js_true_add_one.html"],
+        ["/code/ruby_quize.html"],
         ["code/one_ruby_test.html"]
     ];
 

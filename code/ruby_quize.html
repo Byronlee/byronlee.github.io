@@ -1,0 +1,34 @@
+---
+---
+<h2>Thinking And Show Your Answer</h2>
+{% highlight ruby %}
+// Ruby code
+
+class C
+  def hello
+    @v1 = "var v1 hello"
+    puts @v1
+    puts @@v1
+  end
+  @v1 = "var v1"
+  @@v1 = "var v1 C"
+  puts @v1
+end
+
+class D < C
+  @@v1 = "var v1 D"
+end
+
+# 为什么会出现这样的原因?
+# 为什么显示的是 var v1 D ?
+# 怎么改写程序才能打印 var v1 C ?
+# 怎么改写程序才能打印 var v1 ?
+# C.new.v1   => ？
+# C.v1       => ？
+# C.new.hello => ? 
+
+
+{% endhighlight %}
+<input type="text" class="answer" oninput="dashbord_answer_check()"  placeholder="input your answer...">
+<input type="hidden" value="var v1 D">
+<i id="answer_status" class="icon-question-sign"></i>
