@@ -62,12 +62,16 @@
     color: #ccc;
 }
 .dashbord .showcase .ng-scope img{
-    position: fixed;
+  /*  position: fixed;
     top: 0;
     left: 50%;
     width: 50%;
-    height: 100%;
+    height: 100%;*/
 
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20%;
 }
 
 .dashbord .codescase h2,.dashbord .codescase h3{
