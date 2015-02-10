@@ -1,4 +1,4 @@
-permalink: /:categories/:year/:month/:day/:title 
+permalink: /:categories/:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 #gems: ['jekyll-slim']
@@ -32,7 +32,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : Byronlee
+      short_name : byronlee
     livefyre :
       site_id : 123
     intensedebate :
@@ -42,7 +42,7 @@ JB :
       num_posts: 5
       width: 580
       colorscheme: light
-   
+
   analytics :
     provider : baidu
   #  google :
@@ -58,15 +58,15 @@ JB :
 
   sharing :
     provider : false
-    
-  # Settings for all other include helpers can be defined by creating 
+
+  # Settings for all other include helpers can be defined by creating
   # a hash with key named for the given helper. ex:
   #
   #   pages_list :
-  #     provider : "custom"   
+  #     provider : "custom"
   #
   # Setting any helper's provider to 'custom' will bypass the helper code
   # and include your custom code. Your custom file must be defined at:
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
-  
+
