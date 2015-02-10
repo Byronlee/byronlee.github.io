@@ -15,7 +15,8 @@ function ShowCaseListCtrl($scope) {
           ["但行好事，莫问前程"],
           ["泰山崩于前，我依然沐浴更衣焚香沏茶，诚心正意，手起键落： Hello, World!"],
           ["生命中遇到的每一本书，都不是偶然"],
-          ["北方有佳人，绝世而独立。一顾倾人城，再顾倾人国"]
+          ["北方有佳人，绝世而独立。一顾倾人城，再顾倾人国"],
+          ["Iphone使用小技巧: 双击Home键，三个手指同时向上滑，可以一次性关闭3个App"]
     ];
 
     $scope.images = [
@@ -30,7 +31,11 @@ function ShowCaseListCtrl($scope) {
       //  ["/assets/images/dashborad/2014-12/2.jpeg"],
        // ["/assets/images/dashborad/2014-12/3.jpeg"],
       //  ["/assets/images/dashborad/2014-12/4.jpeg"]
-        ["/assets/images/dashborad/2015-1/1.jpg"]
+        ["/assets/images/dashborad/2015-1/1.jpg"],
+        ["/assets/images/dashborad/2015-1/2.jpeg"],
+        ["/assets/images/dashborad/2015-1/3.jpeg"],
+        ["/assets/images/dashborad/2015-1/4.jpeg"],
+        ["/assets/images/dashborad/2015-1/5.jpeg"]
     ];
 
     $scope.demos  = [
