@@ -33,14 +33,14 @@ title: 2015行为和目标指南
   <tbody>
     <tr>
       <td></td>
-      <td style="text-align: left;width:26%; height: 150px;padding-left: 30px;">
+      <td style="text-align: center;width:26%; height: 150px;padding-left: 30px;">
       本年度还剩<font color="red">XX</font>个愿景<br>
          本年还剩<font color="red">XX</font>月
       </td>
     </tr>
     <tr>
       <td></td>
-        <td style="height: 130px;"> 本周总结
+        <td style="height: 130px;"> 本月总结
         </td>
     </tr>
   </tbody>
