@@ -3,7 +3,7 @@ layout: post
 title: 记忆：51HOME上的部分内容迁移(一)(日志部分：2008年-2010年)
 header: Pages
 categories: [51HOME, 情绪世界, 生活感悟]
-tags: [51HOME, 心情, 生活,成才, 说说]
+tags: [51HOME, 心情, 生活, 成长, 说说]
 ---
 {% include JB/setup %}
 
@@ -50,7 +50,7 @@ tags: [51HOME, 心情, 生活,成才, 说说]
 > 新的，一切都是新的！<span style="float:right">(2010-09-02 20:48)</span> <br />
 > 拿到录取通知书，也许有几分高兴，但不是全心的，毕竟没有达到自己的目的！
 
-> 也许这就是结局 <span style="float:right">(2010-06-09 01:32)</span> <br /> 
+> 也许这就是结局 <span style="float:right">(2010-06-09 01:32)</span> <br />
 > 正如我所说的那一句话，有些爱就像盛开在冬天里的梅花，越是寒冷，越是一尘不染。。。。。
 
 > 高三高考誓言<span style="float:right">(2010-03-12 17:21) </span><br />
@@ -231,7 +231,7 @@ tags: [51HOME, 心情, 生活,成才, 说说]
 
 
 > 力量 <span style="float:right">(2008-05-11 14:23)</span> <br />
-> life  is aways the same.lt is full of ups and dawns.Many problems prvent life from going easy.lf you  dont got friteng.keep calm and try again and again .you will...... 
+> life  is aways the same.lt is full of ups and dawns.Many problems prvent life from going easy.lf you  dont got friteng.keep calm and try again and again .you will......
 
 
 >__夜座__<span style="float:right">(2008-05-11 14:19)</span> <br />
