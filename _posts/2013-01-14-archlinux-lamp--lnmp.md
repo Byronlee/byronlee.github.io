@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 2013年1月1４日Archlinux搭建LAMP环境或者LNMP环境
+title: 2013年1月14日Archlinux搭建LAMP环境或者LNMP环境
 header: Pages
 categories: [Archlinux]
 tags: [archlinux, lamp, lnmp]
