@@ -156,7 +156,7 @@ title: 2015行为和目标指南
   </tbody>
 </table>
 
-###  年度必须实现目标 &nbsp;&nbsp; (1/49)
+###  年度必须实现目标 &nbsp;&nbsp; (1/50)
 
 // 生活类 (0/13)
 
@@ -193,8 +193,9 @@ title: 2015行为和目标指南
 * <input type="checkbox" /> &nbsp; &nbsp;学习Go语言
 
 
-// 产品类 (0/8)
+// 产品类 (0/9)
 
+* <input type="checkbox" /> &nbsp; &nbsp;收集所有网站的架构，然后分享出来，罗列出主要开发者(周边可以联想到很多盈利模式)
 * <input type="checkbox" /> &nbsp; &nbsp;尽可能的实现帮助肖敏，开发一套完整的在线教育网站
 * <input type="checkbox" /> &nbsp; &nbsp;总结一款产品面试，一般会经过那些环境，回收到哪些常用的质疑？
 * <input type="checkbox" /> &nbsp; &nbsp;GItPage`s View Count
