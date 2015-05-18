@@ -224,5 +224,5 @@ title: 2015行为和目标指南
 // 线下活动类 (1/3)
 
 * <input type="checkbox"  checked /> &nbsp; &nbsp;拿下 Google I/O 门票
-* <input type="checkbox" /> &nbsp; &nbsp;RubyChina
+* <input type="checkbox" /> &nbsp; &nbsp;RubyConf2015
 * <input type="checkbox" /> &nbsp; &nbsp;WISE
