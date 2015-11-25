@@ -91,17 +91,50 @@ p.copright {
     padding: 0px 4% 14px 4%;
 }
 
-table{
-  width: 100%;
-  margin-bottom: 25px;
-  border-collapse: collapse;
-  border-left: none;
-  border: 1px solid #ddd;
+table {
+    width: 100%;
+    margin-bottom: 25px;
+    border-collapse: collapse;
+    border-left: none;
+    border: 1px solid #ddd;
 }
 
-table th, table td{
-  border: 1px solid #ddd;
-  text-align: center;
-  padding: 8px;
-  line-height: 20px;
+table th,
+table td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 8px;
+    line-height: 20px;
+}
+
+@media (max-width: 865px) {
+    .post_show {
+        width: 100%;
+    }
+    .site_nav {
+        display: none;
+    }
+    .post_show .page-header h1 {
+        font-size: 20px;
+    }
+    .post_show .page-header .post_infor .pull-right {
+        display: none;
+    }
+    .row.post-full h1:before,
+    h2:before,
+    h3:before {
+        content: none;
+    }
+    .content h3 {
+        margin: 0;
+        font-size: 17px;
+    }
+    .col-xs-12 .content {
+        margin-left: 0;
+    }
+    .col-xs-12 .content p {
+        line-height: 20px;
+        margin: 10px 0;
+        font-size: 14px;
+    }
 }

@@ -1,14 +1,15 @@
-.dashbord{
+.dashbord {
     margin-top: 5%;
 }
 
-.dashbord .user_infor{
+.dashbord .user_infor {
     width: 50%;
     float: left;
     border-right: 1px solid #ddd;
     text-align: center;
 }
-.dashbord .user_infor > img{
+
+.dashbord .user_infor > img {
     width: 14em;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -22,30 +23,36 @@
     max-width: 400px !important;
     padding: 5px 5px !important;
 }
-.dashbord .user_infor .weixin_sao img{
+
+.dashbord .user_infor .weixin_sao img {
     width: 242px;
 }
 
-.dashbord .contact p i{
+.dashbord .contact p i {
     margin: 0 10px 0 0;
     font-size: 18px;
 }
-.dashbord .contact button{
+
+.dashbord .contact button {
     background: #fff;
     border: 1px solid #ddd;
     margin: 0px 0 20px;
 }
-.dashbord p.language a:first-child{
+
+.dashbord p.language a:first-child {
     margin-right: 50px;
 }
-.dashbord p.language a:last-child{
+
+.dashbord p.language a:last-child {
     color: #555;
 }
-.dashbord p.description{
+
+.dashbord p.description {
     width: 90%;
     margin: 0 auto;
 }
-.dashbord .showcase{
+
+.dashbord .showcase {
     width: 50%;
     float: right;
     padding: 40px 30px;
@@ -53,32 +60,44 @@
     padding-bottom: 0px;
 }
 
-.dashbord p.frindlink{
+@media (max-width: 865px) {
+    .dashbord .showcase {
+        display: none;
+    }
+    .dashbord .user_infor {
+        width: 100%;
+        border-right: 0;
+    }
+}
+
+.dashbord p.frindlink {
     margin-top: 20px;
     color: #ccc;
     margin-bottom: 0px;
 }
-.dashbord p.frindlink a{
+
+.dashbord p.frindlink a {
     color: #ccc;
 }
-.dashbord .showcase .ng-scope img{
-  /*  position: fixed;
+
+.dashbord .showcase .ng-scope img {
+    /*  position: fixed;
     top: 0;
     left: 50%;
     width: 50%;
     height: 100%;*/
-
     width: 100%;
     margin: 0 auto;
     display: block;
     margin-top: 20%;
 }
 
-.dashbord .codescase h2,.dashbord .codescase h3{
+.dashbord .codescase h2,
+.dashbord .codescase h3 {
     text-align: center;
 }
 
-.dashbord .codescase .icon-question-sign{
+.dashbord .codescase .icon-question-sign {
     font-size: 100px;
     display: block;
     color: #777;
@@ -87,19 +106,21 @@
     margin-top: 20px;
 }
 
-.dashbord .codescase input{
+.dashbord .codescase input {
     width: 100%;
     border: 0px;
     border-bottom: 1px solid #ddd;
     margin-top: 80px;
 }
-.dashbord .codescase input:active, .dashbord .codescase input:focus{
+
+.dashbord .codescase input:active,
+.dashbord .codescase input:focus {
     border: 0px;
     border-bottom: 1px solid #ddd;
     outline: 0;
 }
 
-.dashbord .codescase [class|="icon"]{
+.dashbord .codescase [class|="icon"] {
     font-size: 100px;
     display: block;
     color: #777;
@@ -108,19 +129,22 @@
     margin-top: 20px;
 }
 
-.dashbord .codescase .icon-ok-sign{
+.dashbord .codescase .icon-ok-sign {
     color: green;
 }
 
-.dashbord .codescase .icon-remove-sign{
+.dashbord .codescase .icon-remove-sign {
     color: red;
 }
+
+
 /* dashbord right css begin */
 
 .lifted_content_box {
     display: block;
     position: relative;
 }
+
 .lifted_content_box .tips {
     margin-top: 130px;
 }
@@ -129,24 +153,30 @@
     font-size: 14px;
     font-weight: bold;
     line-height: 2em;
-    margin: 0; /* for the triangular shape/cut */
+    margin: 0;
+    /* for the triangular shape/cut */
     height: 0;
-    border-bottom: 25px solid #505050; /* kinda acts as the height */
-    border-right: 15px solid transparent; /* adjust to change the angle */
+    border-bottom: 25px solid #505050;
+    /* kinda acts as the height */
+    border-right: 15px solid transparent;
+    /* adjust to change the angle */
     display: inline-block;
     color: #fff;
     text-shadow: 1px 1px 0 #585858;
     padding: 0 10px;
-    vertical-align: bottom; /* fixes the mysterious gaps bug */
+    vertical-align: bottom;
+    /* fixes the mysterious gaps bug */
 }
 
 .lifted_content_box .tips div {
     padding: 10px;
     background: #fff;
-    border-top: 5px solid #505050; /* was just experimenting. gives a nice look and feel: D */;
-    -webkit-box-shadow: inset 0px 0px 10px rgba(0,0,0,0.20);
-    -moz-box-shadow: inset 0px 0px 10px rgba(0,0,0,0.20);
-    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.20);
+    border-top: 5px solid #505050;
+    /* was just experimenting. gives a nice look and feel: D */
+    ;
+    -webkit-box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.20);
+    -moz-box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.20);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.20);
 }
 
 .lifted_content_box p {
@@ -154,71 +184,146 @@
     color: #555;
     line-height: 1.5em;
 }
-.lifted_content_box iframe{
+
+.lifted_content_box iframe {
     width: 100%;
     min-height: 95%;
     border: 1px;
 }
+
+
 /* lifted shadows  */
 
-.lifted_content_box img{
-   /* margin-top: 60px;*/
-}
-.lifted_content_box::after {
-
+.lifted_content_box img {
+    /* margin-top: 60px;*/
 }
 
-.dashbord .showcase article:first-child{
+.lifted_content_box::after {}
+
+.dashbord .showcase article:first-child {
     height: 520px;
     overflow: hidden;
 }
+
+
 /* dashbord right css end */
 
 
 /* site nav css begin*/
-ul.site_nav { padding:0;
-    position:fixed;
-    height:125px;
-    width:0px;
+
+ul.site_nav {
+    padding: 0;
+    position: fixed;
+    height: 125px;
+    width: 0px;
     left: 15px;
     top: 10px;
 }
+
 ul.site_nav li {
-    color:#000;
-    width:40px; height:35px;
-    position:absolute; bottom:25px;
-    list-style:none; text-align:center;
-    -webkit-transform-origin:150% top;
-    transition:all 0.5s linear;
+    color: #000;
+    width: 40px;
+    height: 35px;
+    position: absolute;
+    bottom: 25px;
+    list-style: none;
+    text-align: center;
+    -webkit-transform-origin: 150% top;
+    transition: all 0.5s linear;
 }
-ul.site_nav li a {    color: #000; }
-ul.site_nav li a:hover{ text-decoration: none;}
-ul.site_nav li:nth-of-type(1) { -webkit-transform:transform 0.5s linear; }
-ul.site_nav li:nth-of-type(2) { -webkit-transform:transform 0.4s linear; }
-ul.site_nav li:nth-of-type(3) { -webkit-transform:transform 0.3s linear; }
-ul.site_nav li:nth-of-type(4) { -webkit-transform:transform 0.2s linear; }
-ul.site_nav li:nth-of-type(5) { -webkit-transform:transform 0.1s linear; }
-ul.site_nav li:nth-of-type(6) { z-index:1; background: #fff; }
 
-ul.site_nav li span { transition:transform 0.2s linear; }
+ul.site_nav li a {
+    color: #000;
+}
 
-ul.site_nav:hover { width:115px; }
-ul.site_nav:hover li:nth-of-type(1) { -webkit-transform:rotate(300deg); }
-ul.site_nav:hover li:nth-of-type(2) { -webkit-transform:rotate(240deg); }
-ul.site_nav:hover li:nth-of-type(3) { -webkit-transform:rotate(180deg); }
-ul.site_nav:hover li:nth-of-type(4) { -webkit-transform:rotate(120deg); }
-ul.site_nav:hover li:nth-of-type(5) { -webkit-transform:rotate(60deg); }
-ul.site_nav:hover li:nth-of-type(1) span { -webkit-transform:rotate(-300deg); }
-ul.site_nav:hover li:nth-of-type(2) span { -webkit-transform:rotate(-240deg); }
-ul.site_nav:hover li:nth-of-type(3) span { -webkit-transform:rotate(-180deg); }
-ul.site_nav:hover li:nth-of-type(4) span { -webkit-transform:rotate(-120deg); }
-ul.site_nav:hover li:nth-of-type(5) span { -webkit-transform:rotate(-60deg); }
+ul.site_nav li a:hover {
+    text-decoration: none;
+}
 
-*:not(body){ backface-visibility: hidden; }
+ul.site_nav li:nth-of-type(1) {
+    -webkit-transform: transform 0.5s linear;
+}
+
+ul.site_nav li:nth-of-type(2) {
+    -webkit-transform: transform 0.4s linear;
+}
+
+ul.site_nav li:nth-of-type(3) {
+    -webkit-transform: transform 0.3s linear;
+}
+
+ul.site_nav li:nth-of-type(4) {
+    -webkit-transform: transform 0.2s linear;
+}
+
+ul.site_nav li:nth-of-type(5) {
+    -webkit-transform: transform 0.1s linear;
+}
+
+ul.site_nav li:nth-of-type(6) {
+    z-index: 1;
+    background: #fff;
+}
+
+ul.site_nav li span {
+    transition: transform 0.2s linear;
+}
+
+ul.site_nav:hover {
+    width: 115px;
+}
+
+ul.site_nav:hover li:nth-of-type(1) {
+    -webkit-transform: rotate(300deg);
+}
+
+ul.site_nav:hover li:nth-of-type(2) {
+    -webkit-transform: rotate(240deg);
+}
+
+ul.site_nav:hover li:nth-of-type(3) {
+    -webkit-transform: rotate(180deg);
+}
+
+ul.site_nav:hover li:nth-of-type(4) {
+    -webkit-transform: rotate(120deg);
+}
+
+ul.site_nav:hover li:nth-of-type(5) {
+    -webkit-transform: rotate(60deg);
+}
+
+ul.site_nav:hover li:nth-of-type(1) span {
+    -webkit-transform: rotate(-300deg);
+}
+
+ul.site_nav:hover li:nth-of-type(2) span {
+    -webkit-transform: rotate(-240deg);
+}
+
+ul.site_nav:hover li:nth-of-type(3) span {
+    -webkit-transform: rotate(-180deg);
+}
+
+ul.site_nav:hover li:nth-of-type(4) span {
+    -webkit-transform: rotate(-120deg);
+}
+
+ul.site_nav:hover li:nth-of-type(5) span {
+    -webkit-transform: rotate(-60deg);
+}
+
+*:not(body) {
+    backface-visibility: hidden;
+}
+
 .fa-square-o:before {
     line-height: 38px;
 }
- /* Fix white screens on animation */
+
+
+/* Fix white screens on animation */
+
 
 /* site nav css end*/
 
@@ -226,6 +331,7 @@ blockquote {
     color: #aaa;
     border-left: 0;
 }
+
 blockquote:before {
     content: '“';
     font-size: 70px;
@@ -244,42 +350,47 @@ blockquote:after {
     margin-top: -60px;
 }
 
-ol li ul{
+ol li ul {
     list-style: none;
     padding-left: 0;
 }
 
-.button_fresh{
+.button_fresh {
     float: right;
     margin: -40px 0 0 0;
     color: #000;
 }
 
-.item_lists_resps{
+.item_lists_resps {
     display: none;
 }
-.show_item_lists{
+
+.show_item_lists {
     width: 40%;
     float: left;
     margin-left: 70px;
     max-height: 516px;
     overflow-y: overlay;
 }
-.show_item_lists h2{
+
+.show_item_lists h2 {
     font-weight: 800;
     color: #999;
 }
-.show_item_lists ul{
+
+.show_item_lists ul {
     margin-left: 0;
     padding-left: 30px;
     list-style: none;
 }
-.show_item_lists ul{
+
+.show_item_lists ul {
     margin-left: 0;
     padding-left: 30px;
     list-style: none;
 }
-.show_item_lists a{
+
+.show_item_lists a {
     width: 100%;
     display: inline-block;
     overflow: hidden;
@@ -289,6 +400,7 @@ ol li ul{
     color: #999;
     line-height: 25px;
 }
+
 .show_item_lists a:before {
     content: "#";
     display: inline;
