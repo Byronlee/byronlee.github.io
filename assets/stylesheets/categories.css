@@ -84,3 +84,9 @@
     float: left;
     margin-left: 10%;
 }
+
+@media (max-width: 865px) {
+  .categories-lists{
+    display: none;
+  }
+}
