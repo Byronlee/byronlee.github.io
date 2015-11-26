@@ -1,13 +1,14 @@
-
-.projects_page{
+.projects_page {
     width: 73%;
     margin: 0 auto;
 }
-.projects_page .projects_title{
+
+.projects_page .projects_title {
     border-bottom: 5px solid #ddd;
     margin-bottom: 40px;
 }
-.projects_page .projects_title h1:before{
+
+.projects_page .projects_title h1:before {
     content: "###";
     width: 70px;
     height: 49px;
@@ -16,33 +17,42 @@
     color: #f1f1f1;
     line-height: 49px;
 }
-.projects_page .projects_title h1{
+
+.projects_page .projects_title h1 {
     color: green;
     font-weight: bold;
 }
 
-.projects_page .project_lists{
+.projects_page .project_lists {}
 
-}
+.projects_page .project_lists .media-list {}
 
-.projects_page .project_lists .media-list{
-
-}
-
-.projects_page .project_lists .media-list .media{
+.projects_page .project_lists .media-list .media {
     border-bottom: 1px solid #f1f1f1;
     padding-bottom: 15px;
     margin-bottom: 20px;
 }
 
-.projects_page .project_lists .media-list .media a img{
-   width: 70px;
+.projects_page .project_lists .media-list .media a img {
+    width: 70px;
 }
 
-.projects_page .project_lists .media-list .media .media-body ul{
+.projects_page .project_lists .media-list .media .media-body ul {
     padding-left: 0;
 }
 
-.projects_page .project_lists .media-list .media .media-body ul li{
+.projects_page .project_lists .media-list .media .media-body ul li {
     font-size: 13px;
+}
+
+@media (max-width: 865px) {
+    .projects_page {
+        width: 100%;
+    }
+    .projects_page .projects_title h1 {
+        font-size: 17px;
+    }
+    .projects_page .projects_title h1:before {
+        content: none;
+    }
 }

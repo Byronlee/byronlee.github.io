@@ -364,3 +364,16 @@ ul.site_nav li:nth-of-type(6) {
 .jqconsole-output {
   color: white;
 }
+
+@media (max-width: 865px) {
+    .resume {
+        .infor {
+            display: none;
+        }
+        #console, .dispaly {
+            width: 100%;
+        }
+    }
+}
+
+

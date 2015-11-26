@@ -1,24 +1,34 @@
 body {
     background-color: #333;
     color: #000;
-    height: 100%; }
+    height: 100%;
+}
 
 ul.site_nav li:nth-of-type(6) {
     z-index: 1;
-    background: #000 !important; }
+    background: #000 !important;
+}
 
 .container {
-    width: 80%; }
+    width: 80%;
+}
+
 .container .slice {
     background-color: #fff;
     width: 100%;
     height: 100%;
     border-bottom: 5px solid green;
-    padding-bottom: 60px; }
+    padding-bottom: 60px;
+}
+
 .container .slice:last-child {
-    border-bottom: 0px solid green; }
+    border-bottom: 0px solid green;
+}
+
 .container .slice h4.span11 {
-    margin-top: 0; }
+    margin-top: 0;
+}
+
 .container .label-important {
     font-size: 16px;
     padding: 10px;
@@ -27,48 +37,75 @@ ul.site_nav li:nth-of-type(6) {
     webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
-    margin-left: 50px; }
+    margin-left: 50px;
+}
+
 .container .header img {
     width: 100%;
-    height: 250px; }
+    height: 250px;
+}
+
 .container .user_infor .span2 {
-    margin-top: -80px; }
+    margin-top: -80px;
+}
+
 .container .user_infor .span2 img {
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+}
+
 .container .user_infor .span10 {
-    margin-top: 23px; }
+    margin-top: 23px;
+}
+
 .container .user_infor .span10 p span {
-    margin-right: 12px; }
+    margin-right: 12px;
+}
+
 .container .job_hunting_and_experence {
     margin-left: 25px;
-    float: left; }
+    float: left;
+}
+
 .container .job_hunting_and_experence .item {
     margin-top: 40px;
-    margin-bottom: 40px; }
+    margin-bottom: 40px;
+}
+
 .container .job_hunting_and_experence .item h4 span {
-    color: #ccc; }
+    color: #ccc;
+}
+
 .container .job_hunting_and_experence .item h4:before {
     content: "";
     width: 30px;
     height: 19px;
     background-color: green;
     float: left;
-    margin-right: 10px; }
+    margin-right: 10px;
+}
+
 .container .job_hunting_and_experence p {
     font-size: 20px;
     color: #777;
-    margin-top: 34px; }
-.container .job_hunting_and_experence .job_flow {
-    margin-top: 40px; }
-.container .job_hunting_and_experence .job_flow small{
-    color:#666;
+    margin-top: 34px;
 }
+
+.container .job_hunting_and_experence .job_flow {
+    margin-top: 40px;
+}
+
+.container .job_hunting_and_experence .job_flow small {
+    color: #666;
+}
+
 .container .job_hunting_and_experence .job_flow li.line {
     height: 3px;
     width: 95%;
     float: left;
     background-color: #c1c1c1;
-    margin: 27px 0; }
+    margin: 27px 0;
+}
+
 .container .job_hunting_and_experence .job_flow .media {
     border: 1px solid #c1c1c1;
     float: left;
@@ -76,7 +113,9 @@ ul.site_nav li:nth-of-type(6) {
     margin-top: 0px;
     width: 264px;
     overflow: visible;
-    margin-right: 50px; }
+    margin-right: 50px;
+}
+
 .container .job_hunting_and_experence .job_flow .media:after {
     content: "";
     float: left;
@@ -86,70 +125,107 @@ ul.site_nav li:nth-of-type(6) {
     position: relative;
     top: 35px;
     left: 80px;
-    margin-top: -30px; }
+    margin-top: -30px;
+}
+
 .container .job_hunting_and_experence .job_flow .media:last-child {
-    margin-left: 200px; }
+    margin-left: 200px;
+}
+
 .container .job_hunting_and_experence .job_flow .media:last-child:after {
-    top: -100px; }
-.container .job_hunting_and_experence .job_flow .media .media-heading{
+    top: -100px;
+}
+
+.container .job_hunting_and_experence .job_flow .media .media-heading {
     margin: 0 0 -5px;
 }
+
 .container .job_hunting_and_experence .job_flow .media p {
     margin-top: 0px;
-    font-size: 16px; }
+    font-size: 16px;
+}
+
 .container ul.pull-left.skills {
     margin-left: 100px;
     font-size: 15px;
     color: #444;
-    list-style: square; }
+    list-style: square;
+}
+
 .container ul.pull-left.skills.second {
-    margin-left: 120px; }
+    margin-left: 120px;
+}
+
 .container ul.pull-left.skills li {
-    line-height: 25px; }
+    line-height: 25px;
+}
+
 .container .experience {
     margin-bottom: 50px;
-    font-size: 16px; }
+    font-size: 16px;
+}
+
 .container .experience .axle {
     width: 3px;
     height: 835px;
     float: left;
     background-color: #ccc;
-    margin-left: 55px; }
+    margin-left: 55px;
+}
+
 .container .experience .content {
     float: left;
     padding-left: 60px;
     margin-top: 35px;
-    width: 90%; }
+    width: 90%;
+}
+
 .container .experience .content .item {
     margin-bottom: 50px;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 30px; }
+    padding-bottom: 30px;
+}
+
 .container .experience .content .item:last-child {
-    border-bottom: 0px solid #ddd; }
+    border-bottom: 0px solid #ddd;
+}
+
 .container .experience .content .item .project_name_and_word_role h4 .role {
     font-size: 15px;
     margin-left: 11px;
     color: #888;
-    font-weight: 200; }
+    font-weight: 200;
+}
+
 .container .experience .content .item .project_name_and_word_role h4:before {
     content: "";
     width: 30px;
     height: 19px;
     background-color: green;
     float: left;
-    margin-right: 10px; }
+    margin-right: 10px;
+}
+
 .container .experience .content .item .project_infor p {
     line-height: 30px;
-    color: #333; }
+    color: #333;
+}
+
 .container .experience .content .item .project_infor p .title {
     font-weight: 800;
-    padding-right: 20px; }
+    padding-right: 20px;
+}
+
 .container .experience .content .item .work_content ul li {
     line-height: 30px;
     color: #444;
-    list-style: square; }
+    list-style: square;
+}
+
 .container .experience .content .item .work_content ul li span:first-child {
-    color: #ccc; }
+    color: #ccc;
+}
+
 .container .experience .content .time {
     width: 55px;
     height: 55px;
@@ -160,110 +236,191 @@ ul.site_nav li:nth-of-type(6) {
     line-height: 55px;
     text-align: center;
     cursor: pointer;
-    background-color: #ccc; }
+    background-color: #ccc;
+}
+
 .container .experience .content .description {
     float: left;
-    margin: -45px 0 0 96px; }
+    margin: -45px 0 0 96px;
+}
+
 .container .strive {
     width: 75%;
-    margin-left: 13%; }
+    margin-left: 13%;
+}
+
 .container .strive .span4 {
-    margin-bottom: 80px; }
+    margin-bottom: 80px;
+}
+
 .container .strive .span4 h4 {
-    font-size: 60px; }
+    font-size: 60px;
+}
+
 .container .strive .span4 .span9 {
-    margin-top: 15px; }
+    margin-top: 15px;
+}
+
 .container .apply .span4 {
-    margin-left: 70px; }
+    margin-left: 70px;
+}
+
 .container .apply .span6 ul {
     list-style: none;
-    margin: 43px 0 0 53px; }
+    margin: 43px 0 0 53px;
+}
+
 .container .apply .span6 ul li {
     font-size: 27px;
     font-weight: bolder;
-    line-height: 45px; }
+    line-height: 45px;
+}
+
 .container .contact {
     width: 48%;
     margin-left: 30%;
-    margin-bottom: 70px; }
+    margin-bottom: 70px;
+}
+
 .container .contact ul {
     list-style: none;
-    margin-bottom: 70px; }
+    margin-bottom: 70px;
+}
+
 .container .contact ul li {
     line-height: 30px;
     font-size: 17px;
-    font-weight: bolder; }
+    font-weight: bolder;
+}
+
 .container .interest {
-    margin-left: 40px; }
+    margin-left: 40px;
+}
+
 .container .interest .span8 ul li {
-    line-height: 30px; }
+    line-height: 30px;
+}
+
 .container .interest .span1 {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
-    margin: 166px 0 0 0; }
+    margin: 166px 0 0 0;
+}
+
 .container .interest .span3 {
-    margin-top: 79px; }
+    margin-top: 79px;
+}
+
 .container .comments {
-    margin-left: 40px; }
+    margin-left: 40px;
+}
+
 .container .comments .span8 ul li {
-    line-height: 30px; }
+    line-height: 30px;
+}
+
 .container .comments .span1 {
-    margin: 166px 0 0 0; }
+    margin: 166px 0 0 0;
+}
 
 .infor {
     position: absolute;
     width: 32%;
-    height: 100%; }
+    height: 100%;
+}
+
 .infor img.gb {
-    margin: 35% 0 0 26%; }
+    margin: 35% 0 0 26%;
+}
+
 .infor div {
     width: 5px;
     word-wrap: break-word;
-    position: absolute; }
+    position: absolute;
+}
 
 .dispaly {
     width: 68%;
     float: right;
-    hight: 100%; }
+    hight: 100%;
+}
+
 
 /* The console container element */
+
 #console {
     position: absolute;
     /*      width: 100%;*/
     width: 68%;
     height: 100%;
-    /*   background-color:black;*/ }
+    /*   background-color:black;*/
+}
+
 
 /* The inner console element. */
+
 .jqconsole {
-    padding: 10px; }
+    padding: 10px;
+}
+
 
 /* The cursor. */
+
 .jqconsole-cursor {
-    background-color: gray; }
+    background-color: gray;
+}
+
 
 /* The cursor color when the console looses focus. */
+
 .jqconsole-blurred .jqconsole-cursor {
-    background-color: #666; }
+    background-color: #666;
+}
+
 
 /* The current prompt text color */
+
 .jqconsole-prompt {
-    color: #0d0; }
+    color: #0d0;
+}
+
 
 /* The command history */
+
 .jqconsole-old-prompt {
     color: #0b0;
-    font-weight: normal; }
+    font-weight: normal;
+}
+
 
 /* The text color when in input mode. */
+
 .jqconsole-input {
-    color: #dd0; }
+    color: #dd0;
+}
+
 
 /* Previously entered input. */
+
 .jqconsole-old-input {
     color: #bb0;
-    font-weight: normal; }
+    font-weight: normal;
+}
+
 
 /* The text color of the output. */
+
 .jqconsole-output {
-    color: white; }
+    color: white;
+}
+
+@media (max-width: 865px) {
+    .resume {
+        .infor {
+            display: none;
+        }
+        #console, .dispaly {
+            width: 100%;
+        }
+    }
+}
