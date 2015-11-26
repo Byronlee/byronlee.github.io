@@ -28,7 +28,7 @@ title : Sitemap
         {% if page.url contains "home_page" %}
           <priority>1.0</priority>
         {% else %}
-          <priority>1.o</priority>
+          <priority>1.0</priority>
         {% endif %}
       {% endif %}
     </url>
