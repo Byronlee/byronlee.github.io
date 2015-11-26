@@ -7,6 +7,10 @@
   width: 55%;
   margin: 0 auto;
   margin-top: 100px; }
+  @media (max-width: 865px) {
+    .archive_list {
+      width: 100%;
+      margin-top: 0; } }
   .archive_list h2 {
     float: left;
     margin-left: -100px;

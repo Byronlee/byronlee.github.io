@@ -61,4 +61,15 @@
         width: 100%;
         margin-top: 0;
     }
+    ul.site_nav {
+        display: none;
+    }
+    .archive_list ul li h3 {
+        font-size: 14px;
+        font-weight: normal;
+        margin: 3px 0px;
+    }
+    .archive_list ul span {
+        font-size: 14px;
+    }
 }
