@@ -113,27 +113,30 @@ ul.site_nav li:nth-of-type(6) {
     margin-top: 0px;
     width: 264px;
     overflow: visible;
-    margin-right: 50px;
+    margin-right: 25px;
 }
 
 .container .job_hunting_and_experence .job_flow .media:after {
     content: "";
     float: left;
     width: 3px;
-    height: 30px;
+    height: 40px;
     background-color: #c1c1c1;
     position: relative;
-    top: 35px;
+    top: 46px;
     left: 80px;
-    margin-top: -30px;
+    margin-top: -40px;
 }
 
 .container .job_hunting_and_experence .job_flow .media:last-child {
     margin-left: 200px;
 }
+.container .job_hunting_and_experence .job_flow .media:nth-last-child(2) {
+    margin-left: 85px;
+}
 
-.container .job_hunting_and_experence .job_flow .media:last-child:after {
-    top: -100px;
+.container .job_hunting_and_experence .job_flow .media:last-child:after, .container .job_hunting_and_experence .job_flow .media:nth-last-child(2):after {
+    top: -102px;
 }
 
 .container .job_hunting_and_experence .job_flow .media .media-heading {
@@ -423,4 +426,31 @@ ul.site_nav li:nth-of-type(6) {
             width: 100%;
         }
     }
+}
+
+
+.line div{
+      float: left;
+    margin-top: -25px;
+    margin-left: 120px;
+    width: 80%;
+}
+
+.line div span{
+      float: left;
+    width: 15px;
+    height: 15px;
+    background: green;
+    border-radius: 15px;
+    margin: 20px 15px 0 0;
+}
+
+.line div p {
+      font-size: 11px  !important;;
+    margin: 0;
+    line-height: 12px;
+    margin-left: -53px;
+    text-align: left;
+    float: left;
+    margin-top: -7px  !important;;
 }

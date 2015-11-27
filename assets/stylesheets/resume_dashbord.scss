@@ -92,7 +92,7 @@ ul.site_nav li:nth-of-type(6) {
         width: 95%;
         float: left;
         background-color: #c1c1c1;
-        margin: 27px 0;
+        margin: 40px 0;
       }
       .media{
         border: 1px solid #c1c1c1;
@@ -109,12 +109,12 @@ ul.site_nav li:nth-of-type(6) {
           content: "";
           float: left;
           width: 3px;
-          height: 30px;
+          height: 40px;
           background-color: #c1c1c1;
           position: relative;
-          top: 35px;
+          top: 46px;
           left: 80px;
-          margin-top: -30px;
+          margin-top: -40px;
         }
         &:last-child{
           margin-left: 200px;
@@ -376,4 +376,36 @@ ul.site_nav li:nth-of-type(6) {
     }
 }
 
+.container .job_hunting_and_experence .job_flow .media:nth-last-child(2) {
+    margin-left: 85px;
+}
 
+.container .job_hunting_and_experence .job_flow .media:last-child:after, .container .job_hunting_and_experence .job_flow .media:nth-last-child(2):after {
+    top: -102px;
+}
+
+.line div{
+      float: left;
+    margin-top: -25px;
+    margin-left: 120px;
+    width: 80%;
+}
+
+.line div span{
+      float: left;
+    width: 15px;
+    height: 15px;
+    background: green;
+    border-radius: 15px;
+    margin: 20px 15px 0 0;
+}
+
+.line div p {
+      font-size: 11px  !important;;
+    margin: 0;
+    line-height: 12px;
+    margin-left: -53px;
+    text-align: left;
+    float: left;
+    margin-top: -7px  !important;;
+}
