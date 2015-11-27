@@ -103,7 +103,7 @@ ul.site_nav li:nth-of-type(6) {
     width: 95%;
     float: left;
     background-color: #c1c1c1;
-    margin: 27px 0;
+    margin: 40px 0;
 }
 
 .container .job_hunting_and_experence .job_flow .media {
@@ -131,11 +131,13 @@ ul.site_nav li:nth-of-type(6) {
 .container .job_hunting_and_experence .job_flow .media:last-child {
     margin-left: 200px;
 }
+
 .container .job_hunting_and_experence .job_flow .media:nth-last-child(2) {
     margin-left: 85px;
 }
 
-.container .job_hunting_and_experence .job_flow .media:last-child:after, .container .job_hunting_and_experence .job_flow .media:nth-last-child(2):after {
+.container .job_hunting_and_experence .job_flow .media:last-child:after,
+.container .job_hunting_and_experence .job_flow .media:nth-last-child(2):after {
     top: -102px;
 }
 
@@ -419,25 +421,60 @@ ul.site_nav li:nth-of-type(6) {
 
 @media (max-width: 865px) {
     .resume {
+        .infor {}
         .infor {
-            display: none;
+            display: none !important;
         }
-        #console, .dispaly {
-            width: 100%;
+        #console,
+        .dispaly {
+            width: 100% !important;
         }
     }
+    .navbar-inverse,
+    .slice {
+        display: none;
+    }
+    .slice:last-child {
+        display: block;
+    }
+    .container {
+        width: 100%;
+    }
+    .container-fluid {
+        margin-top: 0px !important;
+    }
+    body {
+        padding: 0 !important;
+    }
+    .container .contact {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    .container .label-important {
+        margin-left: 25px !important;
+    }
+    #disqus_thread {
+            padding: 10px !important;
+    }
+    .mobile_resume{
+        display: block !important;
+        width: 100%;
+    }
+}
+.mobile_resume {
+    display: none;
 }
 
-
-.line div{
-      float: left;
+.line div {
+    float: left;
     margin-top: -25px;
     margin-left: 120px;
     width: 80%;
 }
 
-.line div span{
-      float: left;
+.line div span {
+    float: left;
     width: 15px;
     height: 15px;
     background: green;
@@ -446,11 +483,13 @@ ul.site_nav li:nth-of-type(6) {
 }
 
 .line div p {
-      font-size: 11px  !important;;
+    font-size: 11px !important;
+    ;
     margin: 0;
     line-height: 12px;
     margin-left: -53px;
     text-align: left;
     float: left;
-    margin-top: -7px  !important;;
+    margin-top: -7px !important;
+    ;
 }
