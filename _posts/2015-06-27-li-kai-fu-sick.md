@@ -2,7 +2,7 @@
 layout: post
 title: 观看《筑梦者之李开复》之后，想对老师说的两个人的心里话
 header: Pages
-categories: [生活感悟 北漂]
+categories: [生活感悟, 北漂]
 tags: [健康, 北京, 疾病]
 ---
 
@@ -39,9 +39,12 @@ tags: [健康, 北京, 疾病]
 一个曾经也在手术台上重度挣扎了六七个小时的小伙伴
 
 此文来自观看《筑梦者之李开复》之后，想对老师说的两个人的心里话
-  <p style="text-align: right">     祝老师早日康复</p>
-  <p style="text-align: right">       一个好人</p>
-  <p style="text-align: right">    2015/06/27</p>
+
+<p style="text-align: right">     祝老师早日康复</p>
+
+<p style="text-align: right">       一个好人</p>
+
+<p style="text-align: right">    2015/06/27</p>
 
 附上《筑梦者之李开复》视频
 <div>
