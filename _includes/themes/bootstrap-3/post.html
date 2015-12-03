@@ -2,7 +2,13 @@
   <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
     <div class="post_infor clearfix">
         <div class="pull-left clearfix">
-        <span >发布日期：{{ page.date | date: "%Y-%m-%d" }}</span>
+        <span >发布日期：{{ page.date | date: "%Y-%m-%d" }}&nbsp;&nbsp;&nbsp;</span>
+        <span class="page_view"></span>
+          <script type="text/javascript">
+            $.post('http://pageview.anjingdenaobu.com/asynces/views', {site_id: "1", path: document.location.pathname}, function(data){
+              $('.page_view').html("浏览("+ data + ")")
+          })
+          </script>
         </div>
         <div class="pull-right clearfix">
             <!-- JiaThis Button BEGIN -->
@@ -38,7 +44,7 @@
       {% assign categories_list = page.categories %}
       {% include JB/categories_list %}
     </ul>
-  {% endunless %}  
+  {% endunless %}
 
   {% unless page.tags == empty %}
     <ul class="tag_box inline">
@@ -46,8 +52,8 @@
       {% assign tags_list = page.tags %}
       {% include JB/tags_list %}
     </ul>
-  {% endunless %}  
-  
+  {% endunless %}
+
     <hr>
     <ul class="pagination">
     {% if page.previous %}
