@@ -28,65 +28,52 @@ tags: [产品, 安静的脑补]
 
 第一步：在网页加载前预设key, 我们存在cookies中，方便前端使用
 
-```ruby
-
-class ApplicationController < ActionController::Base
-  before_action :authorization
-  def authorization
-    cookies[:auth_token] = SecureRandom.hex(32) if cookies[:auth_token].blank?
-  end
-end
-
-```
+    class ApplicationController < ActionController::Base
+      before_action :authorization
+      def authorization
+        cookies[:auth_token] = SecureRandom.hex(32) if cookies[:auth_token].blank?
+      end
+    end
 
 第二步：同时我们把这个key放入到事件二维码中，用户扫码后，服务器端也会收到这个key，用户就可以扫码这个二维码了
 
-```ruby
-
-  def login_qr_code_image_url
-    "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=#{WeixinClient.ticket(cookies[:auth_token])}"
-  end
-
-```
+    def login_qr_code_image_url
+      "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=#{WeixinClient.ticket(cookies[:auth_token])}"
+    end
 
 第三步：用户扫码后，服务端，收到请求,我们解析出是谁在扫码，并把他的id存在key中，同时通知前端来刷新
 
-```ruby
+    class Weixin::MessagesController < ActionController::Base
+      skip_before_filter :verify_authenticity_token
+      skip_authorization_check
 
-class Weixin::MessagesController < ActionController::Base
-  skip_before_filter :verify_authenticity_token
-  skip_authorization_check
+      def create
+        @xml = params
+        Rails.logger.info "received message from wechat: #{@xml}"
+        Rails.logger.info "开始通知前段，后台已经收到数据"
+        broadcast
+        Rails.logger.info "login_event_key为: #{login_event_key}"
+        return render text: Settings.logined_reply.call(@xml) if $cache.read([:ajdnb, login_event_key]).present?
+        @user = User.find_or_create(@xml["FromUserName"], 'QR_code')
+        $cache.write([:ajdnb, login_event_key], @user.id)
+        render text: Settings.login_reply.call(@xml)
+      end
 
-  def create
-    @xml = params
-    Rails.logger.info "received message from wechat: #{@xml}"
-    Rails.logger.info "开始通知前段，后台已经收到数据"
-    broadcast
-    Rails.logger.info "login_event_key为: #{login_event_key}"
-    return render text: Settings.logined_reply.call(@xml) if $cache.read([:ajdnb, login_event_key]).present?
-    @user = User.find_or_create(@xml["FromUserName"], 'QR_code')
-    $cache.write([:ajdnb, login_event_key], @user.id)
-    render text: Settings.login_reply.call(@xml)
-  end
+      def broadcast
+        channel = Settings.login_callback_channel.call(login_event_key)
+        Rails.logger.info "channel 为: #{channel}, host为：#{Settings.faye_host}"
+        client = Faye::Client.new(Settings.faye_host + '/faye')
+        client.publish(channel, {})
+      end
 
-  def broadcast
-    channel = Settings.login_callback_channel.call(login_event_key)
-    Rails.logger.info "channel 为: #{channel}, host为：#{Settings.faye_host}"
-    client = Faye::Client.new(Settings.faye_host + '/faye')
-    client.publish(channel, {})
-  end
+      private
 
-  private
-
-  def login_event_key
-    @xml["EventKey"].gsub("qrscene_", "")
-  end
-
-```
+      def login_event_key
+        @xml["EventKey"].gsub("qrscene_", "")
+      end
+    end
 
 第四步：Javascript监听后台的发布广播事件
-
-```javascript
 
      var faye;
      faye = new Faye.Client('http://' + window.location.host + '/faye')
@@ -94,21 +81,16 @@ class Weixin::MessagesController < ActionController::Base
        window.location.href="/weixin_sign_in_callback";
      });
 
-```
 
 第五步：Javascript监听到后，会请求到服务端，根据key,找出user。并登陆
 
-```ruby
-
-  def weixin_sign_in_callback
-    redirect_to :back if user_signed_in?
-    session[:user_id] ||= $cache.read([:ajdnb, cookies[:auth_token]])
-    user = User.find(session[:user_id])
-    sign_in(user)
-    redirect_to after_sign_in_path_for(user)
-  end
-
-```
+    def weixin_sign_in_callback
+      redirect_to :back if user_signed_in?
+      session[:user_id] ||= $cache.read([:ajdnb, cookies[:auth_token]])
+      user = User.find(session[:user_id])
+      sign_in(user)
+      redirect_to after_sign_in_path_for(user)
+    end
 
 一切OK，上线，OMG， 慢！消息丢失率太高！
 
