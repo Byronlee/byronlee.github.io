@@ -16,9 +16,9 @@ title: 2016行为和目标指南
 <br>
 <br>
 
-###  年度必须实现目标 &nbsp;&nbsp; (0/0)
+###  年度必须实现目标 &nbsp;&nbsp; (0/28)
 
-// 生活类 (10/13)
+// 生活类 (0/7)
 
 * <input type="checkbox" /> &nbsp; &nbsp;一定结束单身【必须】
 * <input type="checkbox" /> &nbsp; &nbsp;6月6日哥结婚，礼金2W，房子赠送100英寸的电视
@@ -29,7 +29,7 @@ title: 2016行为和目标指南
 * <input type="checkbox" /> &nbsp; &nbsp;继续学吉他（至少能够熟练的弹奏10首曲子）
 
 
-// 技术线路 (1/14)
+// 技术线路 (0/6)
 
 * <input type="checkbox" /> &nbsp; &nbsp;熟练的掌握React相关技术
 * <input type="checkbox" /> &nbsp; &nbsp;学会使用React Native写App
@@ -39,7 +39,7 @@ title: 2016行为和目标指南
 * <input type="checkbox" /> &nbsp; &nbsp;深度会使用Growing产品，能做产品经理，业务人员角度分析问题
 
 
-// 产品类 (7/9)
+// 产品类 (0/5)
 
 * <input type="checkbox" /> &nbsp; &nbsp;继续辅佐肖敏的产品
 * <input type="checkbox" /> &nbsp; &nbsp;继续维护doyoudo产品
@@ -47,7 +47,7 @@ title: 2016行为和目标指南
 * <input type="checkbox" /> &nbsp; &nbsp;把脑补用户做到100万
 * <input type="checkbox" /> &nbsp; &nbsp;那每个外包产品做好
 
-// 事业创业类 (11/11)
+// 事业创业类 (0/7)
 
 * <input type="checkbox" /> &nbsp; &nbsp; 把成都外包建设好，拿到40万的业绩
 * <input type="checkbox" /> &nbsp; &nbsp; 继续做好doyoudo的维护
@@ -57,7 +57,7 @@ title: 2016行为和目标指南
 * <input type="checkbox" /> &nbsp; &nbsp; 月收入达到35K
 * <input type="checkbox" /> &nbsp; &nbsp; 存款至少完成25w
 
-// 线下活动类 (3/3)
+// 线下活动类 (0/3)
 
 * <input type="checkbox" /> &nbsp; &nbsp;组织一次脑补线下活动
 * <input type="checkbox" /> &nbsp; &nbsp;RubyConf2016
