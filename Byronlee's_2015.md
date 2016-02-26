@@ -156,20 +156,21 @@ title: 2015行为和目标指南
   </tbody>
 </table>
 
-###  年度必须实现目标 &nbsp;&nbsp; (1/50)
+###  年度必须实现目标 &nbsp;&nbsp; (32/50)
 
-// 生活类 (6/13)
+// 生活类 (10/13)
 
-* <input type="checkbox" /> &nbsp; &nbsp;参加2-3次北京本地义工活动
+* <input type="checkbox" checked/> &nbsp; &nbsp;参加2-3次北京本地义工活动[年前的社区活动1月23号]
 * <input type="checkbox" checked /> &nbsp; &nbsp;一共看至少看15本书
 * <input type="checkbox" /> &nbsp; &nbsp;持续健身，目标长到150斤，有一定的胸肌
 * <input type="checkbox" checked /> &nbsp; &nbsp;在暑假前尽量克服热过敏
 * <input type="checkbox" checked /> &nbsp; &nbsp;在9月前去大医院认真的看一次咽炎(尽量彻底治愈)
-* <input type="checkbox" /> &nbsp; &nbsp;看视频（翟鸿燊），5集
+* <input type="checkbox" checked/> &nbsp; &nbsp;看视频（翟鸿燊），5集 [将zapppapp
+]
 * <input type="checkbox" checked /> &nbsp; &nbsp;每天、每周一小结，每月一大结，年终一总结
-* <input type="checkbox" /> &nbsp; &nbsp;学习魔术（至少5个拿得出手的）
+* <input type="checkbox" checked/> &nbsp; &nbsp;学习魔术（至少5个拿得出手的）
 * <input type="checkbox" /> &nbsp; &nbsp;学佛教（完成有关经文学习的文章一篇，能够熟练的理解一篇经文）
-* <input type="checkbox" /> &nbsp; &nbsp;学吉他（至少能够熟练的弹奏10首曲子）
+* <input type="checkbox" checked /> &nbsp; &nbsp;学吉他（至少能够熟练的弹奏10首曲子）
 * <input type="checkbox" /> &nbsp; &nbsp;解决单身问题（传说实在七月）
 * <input type="checkbox" checked /> &nbsp; &nbsp;至少去三个外省城市(黑龙江, 郑州, 青岛)
 * <input type="checkbox" checked /> &nbsp; &nbsp;全力支持爸爸在家里把房子修好（六月低）
@@ -193,36 +194,36 @@ title: 2015行为和目标指南
 * <input type="checkbox" /> &nbsp; &nbsp;学习Go语言
 
 
-// 产品类 (1/9)
+// 产品类 (7/9)
 
 * <input type="checkbox" /> &nbsp; &nbsp;收集所有网站的架构，然后分享出来，罗列出主要开发者(周边可以联想到很多盈利模式)
 * <input type="checkbox" checked /> &nbsp; &nbsp;尽可能的实现帮助肖敏，开发一套完整的在线教育网站
-* <input type="checkbox" /> &nbsp; &nbsp;总结一款产品面试，一般会经过那些环境，回收到哪些常用的质疑？
-* <input type="checkbox" /> &nbsp; &nbsp;GItPage`s View Count
-* <input type="checkbox" /> &nbsp; &nbsp;时间猫
-* <input type="checkbox" /> &nbsp; &nbsp;36kr所有文章的统计分析
-* <input type="checkbox" /> &nbsp; &nbsp;开发出自己实用的这款时间目标管理软件（web）
-* <input type="checkbox" /> &nbsp; &nbsp;手机电话联系人统计分析软件
+* <input type="checkbox" checked /> &nbsp; &nbsp;总结一款产品面试，一般会经过那些环境，回收到哪些常用的质疑？
+* <input type="checkbox" checked /> &nbsp; &nbsp;GItPage`s View Count
+* <input type="checkbox" checked /> &nbsp; &nbsp;时间猫
+* <input type="checkbox" checked /> &nbsp; &nbsp;36kr所有文章的统计分析
+* <input type="checkbox" checked /> &nbsp; &nbsp;开发出自己实用的这款时间目标管理软件（web）
+* <input type="checkbox" checked /> &nbsp; &nbsp;手机电话联系人统计分析软件
 * <input type="checkbox" /> &nbsp; &nbsp;Password再改一下UI
 
 
-// 事业创业类 (5/11)
+// 事业创业类 (11/11)
 
-* <input type="checkbox" /> &nbsp; &nbsp;熟练的掌握投融资整个流程（熟练掌握各个流程节点输入输出什么）
+* <input type="checkbox" checked /> &nbsp; &nbsp;熟练的掌握投融资整个流程（熟练掌握各个流程节点输入输出什么）
 * <input type="checkbox" checked /> &nbsp; &nbsp;全力帮助速加拿到投资，并全力支持他公司的发展
 * <input type="checkbox" checked /> &nbsp; &nbsp;帮助肖敏扩大业务
-* <input type="checkbox" /> &nbsp; &nbsp;能够熟练的带一个团队做一个独立的项目，整个流程把控，自己有自己的独特见解
+* <input type="checkbox" checked /> &nbsp; &nbsp;能够熟练的带一个团队做一个独立的项目，整个流程把控，自己有自己的独特见解
 * <input type="checkbox" checked /> &nbsp; &nbsp;月收入达到26K
-* <input type="checkbox" /> &nbsp; &nbsp;存款至少完成15w
+* <input type="checkbox" checked /> &nbsp; &nbsp;存款至少完成15w
 * <input type="checkbox" checked /> &nbsp; &nbsp;\#创业准备# 点子初步的诞生和确定
-* <input type="checkbox" /> &nbsp; &nbsp;\#创业准备# 至少结缘两位技术牛逼的大神
-* <input type="checkbox" /> &nbsp; &nbsp;\#创业准备# 至少结缘一位投资人
+* <input type="checkbox" checked /> &nbsp; &nbsp;\#创业准备# 至少结缘两位技术牛逼的大神
+* <input type="checkbox" checked /> &nbsp; &nbsp;\#创业准备# 至少结缘一位投资人
 * <input type="checkbox" checked /> &nbsp; &nbsp;\#创业装备# 至少结缘两位靠谱的创业者CEO
-* <input type="checkbox" /> &nbsp; &nbsp;\#创业准备# 能够完整写一份有质量的BP（知道其中各个注重点）
+* <input type="checkbox" checked /> &nbsp; &nbsp;\#创业准备# 能够完整写一份有质量的BP（知道其中各个注重点）
 
 
-// 线下活动类 (2/3)
+// 线下活动类 (3/3)
 
 * <input type="checkbox" checked /> &nbsp; &nbsp;拿下 Google I/O 门票
 * <input type="checkbox" checked /> &nbsp; &nbsp;RubyConf2015
-* <input type="checkbox" /> &nbsp; &nbsp;WISE
+* <input type="checkbox" checked /> &nbsp; &nbsp;WISE
