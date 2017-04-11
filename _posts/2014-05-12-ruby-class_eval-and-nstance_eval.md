@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 对ruby中的class << object以及class_eval和instance_eval的探讨
+title: 对ruby中的class 《 object以及class_eval和instance_eval的探讨
 header: Pages
 categories: [技术经验, Ruby]
 tags: [Ruby, 元编程]
@@ -9,20 +9,20 @@ tags: [Ruby, 元编程]
 
 ## 他们主要特点
 
-* class << object : 给当前对象object(可能是类本身,或者实例对象)添加 singleton_method
-* object.instance_eval : 给当前对象object(可能是类本身,或者实例对象)添加 singleton_method 与class << object相似
+* class 《 object : 给当前对象object(可能是类本身,或者实例对象)添加 singleton_method
+* object.instance_eval : 给当前对象object(可能是类本身,或者实例对象)添加 singleton_method 与class 《 object相似
 * Object.class_eval : 相当于(但实事不是)打开当前Object(只能是类) 给他添加 __实例方法__,具体原理看下面分析
 
 ## 他们具体的区别
 
-### class << object
+### class 《 object
 
 __object 可能是类本身,或者实例对象__
 
 * object 是一个实例对象,则添加的方法只对该实例对象生效
 * {% highlight ruby%}
   a = Array.new
-  class << a
+  class 《 a
      def size
         puts super
         "Hello,World"
@@ -42,7 +42,7 @@ __object 可能是类本身,或者实例对象__
   1.9.3-p374 :025 > class A
   1.9.3-p374 :026?>   end
    => nil
-  1.9.3-p374 :027 > class << A
+  1.9.3-p374 :027 > class 《 A
   1.9.3-p374 :028?>   def f
   1.9.3-p374 :029?>     p "2"
   1.9.3-p374 :030?>     end
@@ -133,7 +133,7 @@ __object 可能是类本身,或者实例对象__
 
   #当然,也可以是这样
   class Array
-    class << self
+    class 《 self
       def hint
         "hello"
       end
@@ -172,7 +172,6 @@ A.method1
 {% endhighlight %}
 ### 总结
 
-* class << object : 其实就是操作的object eigenclass
+* class 《 object : 其实就是操作的object eigenclass
 * object.instance_eval : 其实就是操作的object eigenclass
 * Object.class_eval : 其实修改的是Object的类体
-
